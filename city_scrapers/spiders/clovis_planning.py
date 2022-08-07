@@ -66,14 +66,14 @@ class ClovisPlanningSpider(CityScrapersSpider):
 
     def _parse_location(self, item):
         return {
-            "address": item.css("td.venue").get().strip(),
+            "address": item.css("td.venue::text").get().strip(),
             "name": "",
         }
 
     def _parse_links(self, item):
         links = []
         for name in ("Agenda", "Packet", "Minutes"):
-            link = item.css(f"td.{name.lower()} a::attr(href)")
+            link = item.css(f"td.{name.lower()} a::attr(href)").get()
             if link:
                 links.append({"href": link, "title": name})
         return links
