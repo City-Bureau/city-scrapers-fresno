@@ -1,16 +1,20 @@
 from datetime import datetime
 from os.path import dirname, join
 
-import pytest
-from city_scrapers_core.constants import NOT_CLASSIFIED
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
-from city_scrapers.spiders.fresno_planning_commission import FresnoPlanningCommissionSpider
+from city_scrapers.spiders.fresno_planning_commission import (
+    FresnoPlanningCommissionSpider,
+)
 
 test_response = file_response(
     join(dirname(__file__), "files", "fresno_planning_commission.html"),
-    url="https://www.co.fresno.ca.us/departments/public-works-planning/divisions-of-public-works-and-planning/development-services-division/planning-and-land-use/planning-commission/plann/-toggle-allupcoming",
+    url=(
+        "https://www.co.fresno.ca.us/departments/public-works-planning/"
+        "divisions-of-public-works-and-planning/development-services-division/"
+        "planning-and-land-use/planning-commission/plann/-toggle-allupcoming"
+    ),
 )
 spider = FresnoPlanningCommissionSpider()
 

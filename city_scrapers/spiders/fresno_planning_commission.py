@@ -1,14 +1,18 @@
-from dateutil import parser
 from city_scrapers_core.constants import NOT_CLASSIFIED
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
+from dateutil import parser
 
 
 class FresnoPlanningCommissionSpider(CityScrapersSpider):
     name = "fresno_planning_commission"
     agency = "Fresno County Planning Commission"
     timezone = "America/Los_Angeles"
-    start_urls = ["https://www.co.fresno.ca.us/departments/public-works-planning/divisions-of-public-works-and-planning/development-services-division/planning-and-land-use/planning-commission/plann/-toggle-allupcoming"]
+    start_urls = [
+        "https://www.co.fresno.ca.us/departments/public-works-planning/"
+        "divisions-of-public-works-and-planning/development-services-division/"
+        "planning-and-land-use/planning-commission/plann/-toggle-allupcoming"
+    ]
 
     def parse(self, response):
         for item in response.css("table tbody tr"):
