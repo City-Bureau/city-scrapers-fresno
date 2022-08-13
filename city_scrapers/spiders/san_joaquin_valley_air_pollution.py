@@ -1,11 +1,7 @@
-from pickle import NONE
 from city_scrapers_core.constants import BOARD
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
-from datetime import date, datetime
 from dateutil.parser import parser
-
-import re
 
 
 class SanJoaquinValleyAirPollutionSpider(CityScrapersSpider):
@@ -110,10 +106,10 @@ class SanJoaquinValleyAirPollutionSpider(CityScrapersSpider):
             "hrefMinutes": minutes, 
             "titleMinutes": "Minutes",
             "hrefPresentations": presentations, 
-            "titleMinutes": "Presentations",
+            "titlePresentations": "Presentations",
             "hrefRecording": recording, 
             "titleRecording": "Recording"
-            }]
+        }]
 
     def _parse_source(self, response):
         """Parse or generate source."""
