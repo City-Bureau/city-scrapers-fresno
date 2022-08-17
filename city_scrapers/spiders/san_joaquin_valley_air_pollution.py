@@ -40,7 +40,9 @@ class SanJoaquinValleyAirPollutionSpider(CityScrapersSpider):
 
     def _parse_title(self, item):
         """Parse or generate meeting title."""
-        return "San Joaquin Valley Unified Air Pollution Control District Governing Board"
+        return (
+            "San Joaquin Valley Unified Air Pollution Control District Governing Board"
+        )
 
     def _parse_description(self, item):
         """Parse or generate meeting description."""
@@ -95,21 +97,25 @@ class SanJoaquinValleyAirPollutionSpider(CityScrapersSpider):
             minutes = "https://www.valleyair.org/Board_meetings/GB/" + minutesRaw
 
         if presentationsRaw:
-            presentations = "https://www.valleyair.org/Board_meetings/GB/" + presentationsRaw
+            presentations = (
+                "https://www.valleyair.org/Board_meetings/GB/" + presentationsRaw
+            )
 
         if recordingRaw:
             recording = recordingRaw
-        
-        return [{
-            "hrefAgenda": agenda, 
-            "titleAgenda": "Agenda",
-            "hrefMinutes": minutes, 
-            "titleMinutes": "Minutes",
-            "hrefPresentations": presentations, 
-            "titlePresentations": "Presentations",
-            "hrefRecording": recording, 
-            "titleRecording": "Recording"
-        }]
+
+        return [
+            {
+                "hrefAgenda": agenda,
+                "titleAgenda": "Agenda",
+                "hrefMinutes": minutes,
+                "titleMinutes": "Minutes",
+                "hrefPresentations": presentations,
+                "titlePresentations": "Presentations",
+                "hrefRecording": recording,
+                "titleRecording": "Recording",
+            }
+        ]
 
     def _parse_source(self, response):
         """Parse or generate source."""

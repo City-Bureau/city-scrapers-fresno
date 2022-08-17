@@ -1,5 +1,3 @@
-from cgitb import text
-
 from city_scrapers_core.constants import CITY_COUNCIL
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
@@ -10,7 +8,9 @@ class PortervilleCityCouncilSpider(CityScrapersSpider):
     name = "porterville_city_council"
     agency = "Porterville City Council"
     timezone = "America/Chicago"
-    start_urls = ["https://www.ci.porterville.ca.us/government/city_council/council_meeting_dates.php"]
+    start_urls = [
+        "https://www.ci.porterville.ca.us/government/city_council/council_meeting_dates.php"  # noqa
+    ]
 
     def parse(self, response):
         """
@@ -68,7 +68,7 @@ class PortervilleCityCouncilSpider(CityScrapersSpider):
 
     def _parse_time_notes(self, item):
         """Parse any additional notes on the timing of the meeting"""
-        time_notes = "Regular meetings are held on the first and third Tuesdays of the month, starting at 5:30 p.m. for Closed Session, and 6:30 p.m. for the public meeting."
+        time_notes = "Regular meetings are held on the first and third Tuesdays of the month, starting at 5:30 p.m. for Closed Session, and 6:30 p.m. for the public meeting."  # noqa
         return time_notes
 
     def _parse_all_day(self, item):
