@@ -5,7 +5,7 @@ from dateutil.parser import parser
 
 
 class ClovisCityCouncilSpider(CityScrapersSpider):
-    name = "clovis_city_council"
+    name = "fre_clovis_city_council"
     agency = "Clovis City Council"
     timezone = "America/Chicago"
 
