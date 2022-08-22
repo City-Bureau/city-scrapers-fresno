@@ -7,12 +7,12 @@ from city_scrapers_core.spiders import CityScrapersSpider
 
 
 class FresnoHousingSpider(CityScrapersSpider):
-    name = "fresno_housing"
+    name = "fre_housing"
     agency = "Fresno Housing Authority"
     timezone = "America/Chicago"
     current_year = date.today().year
     start_urls = [
-        f"https://fresnohousing.org/about-us/board-documents/board-documents-{current_year}/"
+        f"https://fresnohousing.org/about-us/board-documents/board-documents-{current_year}/"  # noqa
     ]
 
     def parse(self, response):

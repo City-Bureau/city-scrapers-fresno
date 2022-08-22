@@ -1,16 +1,18 @@
+import ssl
+
 from city_scrapers_core.constants import CITY_COUNCIL
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
 from dateutil.parser import parser
 
+ssl._create_default_https_context = ssl._create_unverified_context
 
-class PortervilleCityCouncilSpider(CityScrapersSpider):
-    name = "fre_porterville_city_council"
-    agency = "Porterville City Council"
+
+class FreKingsburgCityCouncilSpider(CityScrapersSpider):
+    name = "fre_kingsburg_city_council"
+    agency = "Kingsburg City Council"
     timezone = "America/Chicago"
-    start_urls = [
-        "https://www.ci.porterville.ca.us/government/city_council/council_meeting_dates.php"  # noqa
-    ]
+    start_urls = ["https://www.cityofkingsburg-ca.gov/agendacenter"]
 
     def parse(self, response):
         """
@@ -19,7 +21,7 @@ class PortervilleCityCouncilSpider(CityScrapersSpider):
         Change the `_parse_title`, `_parse_start`, etc methods to fit your scraping
         needs.
         """
-        for item in response.css("div[id='post'] ul li"):
+        for item in response.css("div[id='cat9'] .catAgendaRow"):
             meeting = Meeting(
                 title=self._parse_title(item),
                 description=self._parse_description(item),
@@ -40,8 +42,9 @@ class PortervilleCityCouncilSpider(CityScrapersSpider):
 
     def _parse_title(self, item):
         """Parse or generate meeting title."""
-        title = "City Council Meeting"
-        return title
+        titleRaw = (item.css("td:nth-child(1) p a::text ").get()).strip()
+        title = titleRaw.split("Agenda")
+        return title[0]
 
     def _parse_description(self, item):
         """Parse or generate meeting description."""
@@ -53,13 +56,10 @@ class PortervilleCityCouncilSpider(CityScrapersSpider):
 
     def _parse_start(self, item):
         """Parse start datetime as a naive datetime object."""
+        month = item.css("td:nth-child(1) h4 strong abbr::text").get()
+        dayYear = item.css("td:nth-child(1) h4 strong::text").get()
 
-        date = (item.css("::text").get()).strip()
-
-        time = "14:30:00"
-
-        dt_obj = date + " " + time
-
+        dt_obj = month + " " + dayYear + " 14:00:00"
         return parser().parse(dt_obj)
 
     def _parse_end(self, item):
@@ -68,8 +68,7 @@ class PortervilleCityCouncilSpider(CityScrapersSpider):
 
     def _parse_time_notes(self, item):
         """Parse any additional notes on the timing of the meeting"""
-        time_notes = "Regular meetings are held on the first and third Tuesdays of the month, starting at 5:30 p.m. for Closed Session, and 6:30 p.m. for the public meeting."  # noqa
-        return time_notes
+        return ""
 
     def _parse_all_day(self, item):
         """Parse or generate all-day status. Defaults to False."""
@@ -78,13 +77,20 @@ class PortervilleCityCouncilSpider(CityScrapersSpider):
     def _parse_location(self, item):
         """Parse or generate location."""
         return {
-            "address": "291 North Main Street Porterville, California 93257",
-            "name": "Council Chamber at City Hall",
+            "address": "1401 Draper Street, Kingsburg, CA 93631",
+            "name": "Council Chamber",
         }
 
     def _parse_links(self, item):
         """Parse or generate links."""
-        return [{"href": "", "title": ""}]
+
+        return [
+            {
+                "href": "https://www.cityofkingsburg-ca.gov"
+                + item.css("td:nth-child(1) p a::attr(href)").get(),  # noqa
+                "title": "Meeting Agenda",
+            }
+        ]
 
     def _parse_source(self, response):
         """Parse or generate source."""
