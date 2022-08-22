@@ -78,9 +78,9 @@ def test_source():
 def test_links():
     assert parsed_items[0]["links"] == [
         {
-            "hrefAgenda": "http://hanfordca.iqm2.com/Citizens/FileOpen.aspx?Type=14&ID=1689&Inline=True", # noqa
-            "hrefAgendaPacket": "http://hanfordca.iqm2.com/Citizens/FileOpen.aspx?Type=1&ID=1689&Inline=True", # noqa
-            "hrefMinutes": "http://hanfordca.iqm2.com/Citizens/FileOpen.aspx?Type=12&ID=1784&Inline=True", # noqa
+            "hrefAgenda": "http://hanfordca.iqm2.com/Citizens/FileOpen.aspx?Type=14&ID=1689&Inline=True",  # noqa
+            "hrefAgendaPacket": "http://hanfordca.iqm2.com/Citizens/FileOpen.aspx?Type=1&ID=1689&Inline=True",  # noqa
+            "hrefMinutes": "http://hanfordca.iqm2.com/Citizens/FileOpen.aspx?Type=12&ID=1784&Inline=True",  # noqa
             "titleAgenda": "Agenda",
             "titleAgendaPacket": "Agenda Packet",
             "titleMinutes": "Meeting Minutes",

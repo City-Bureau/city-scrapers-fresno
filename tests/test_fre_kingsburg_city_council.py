@@ -79,7 +79,7 @@ def test_source():
 def test_links():
     assert parsed_items[0]["links"] == [
         {
-            "href": "https://www.cityofkingsburg-ca.gov/AgendaCenter/ViewFile/Agenda/_08172022-724", # noqa
+            "href": "https://www.cityofkingsburg-ca.gov/AgendaCenter/ViewFile/Agenda/_08172022-724",  # noqa
             "title": "Meeting Agenda",
         }
     ]

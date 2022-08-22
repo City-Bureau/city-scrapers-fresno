@@ -2,7 +2,6 @@ from datetime import datetime
 from os.path import dirname, join
 
 import pytest
-from city_scrapers_core.constants import NOT_CLASSIFIED
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
@@ -10,7 +9,7 @@ from city_scrapers.spiders.clovis_city_council import ClovisCityCouncilSpider
 
 test_response = file_response(
     join(dirname(__file__), "files", "clovis_city_council.html"),
-    url="https://meetings.municode.com/PublishPage?cid=CLOVIS&ppid=5157d66d-a361-43e8-87a4-3d5eca4821de&p=1",
+    url="https://meetings.municode.com/PublishPage?cid=CLOVIS&ppid=5157d66d-a361-43e8-87a4-3d5eca4821de&p=1",  # noqa
 )
 spider = ClovisCityCouncilSpider()
 
@@ -72,15 +71,15 @@ def test_location():
 def test_source():
     assert (
         parsed_items[0]["source"]
-        == "https://meetings.municode.com/PublishPage?cid=CLOVIS&ppid=5157d66d-a361-43e8-87a4-3d5eca4821de&p=1"
+        == "https://meetings.municode.com/PublishPage?cid=CLOVIS&ppid=5157d66d-a361-43e8-87a4-3d5eca4821de&p=1"  # noqa
     )
 
 
 def test_links():
     assert parsed_items[0]["links"] == [
         {
-            "href": "https://meetings.municode.com/d/f?u=https://mccmeetings.blob.core.usgovcloudapi.net/clovis-pubu/MEET-Agenda-7b1add8e8e3441b7aa5d36b337aacb2c.pdf&n=Agenda-City%20Council%20Meeting-August 1, 2022 6.00 PM.pdf"
-            + " https://meetings.municode.com/d/f?u=https://mccmeetings.blob.core.usgovcloudapi.net/clovis-pubu/MEET-Packet-7b1add8e8e3441b7aa5d36b337aacb2c.pdf&n=AgendaPacket-City%20Council%20Meeting-August 1, 2022 6.00 PM.pdf",
+            "href": "https://meetings.municode.com/d/f?u=https://mccmeetings.blob.core.usgovcloudapi.net/clovis-pubu/MEET-Agenda-7b1add8e8e3441b7aa5d36b337aacb2c.pdf&n=Agenda-City%20Council%20Meeting-August 1, 2022 6.00 PM.pdf"  # noqa
+            + " https://meetings.municode.com/d/f?u=https://mccmeetings.blob.core.usgovcloudapi.net/clovis-pubu/MEET-Packet-7b1add8e8e3441b7aa5d36b337aacb2c.pdf&n=AgendaPacket-City%20Council%20Meeting-August 1, 2022 6.00 PM.pdf",  # noqa
             "title": "Meeting Agenda and Meeting Packet",
         }
     ]

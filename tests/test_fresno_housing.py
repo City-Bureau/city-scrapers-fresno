@@ -1,9 +1,6 @@
 from datetime import datetime
 from os.path import dirname, join
-from pickle import NONE
 
-import pytest
-from city_scrapers_core.constants import NOT_CLASSIFIED
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
@@ -74,7 +71,7 @@ def test_source():
 def test_links():
     assert parsed_items[0]["links"] == [
         {
-            "href": "https://fresnohousing.org/wp-content/uploads/2022/01/01.25.22-Board-Meeting-Packet-v2.pdf",
+            "href": "https://fresnohousing.org/wp-content/uploads/2022/01/01.25.22-Board-Meeting-Packet-v2.pdf",  # noqa
             "title": "Meeting Packet",
         }
     ]
