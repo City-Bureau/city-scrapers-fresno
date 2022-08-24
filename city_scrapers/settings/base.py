@@ -1,3 +1,4 @@
+import logging
 import os
 
 # Scrapy settings for city_scrapers project
