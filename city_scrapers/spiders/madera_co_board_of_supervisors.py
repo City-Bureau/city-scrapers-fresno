@@ -5,7 +5,7 @@ from dateutil import parser
 
 
 class MaderaCoBoardOfSupervisorsSpider(CityScrapersSpider):
-    name = "madera_co_board_of_supervisors"
+    name = "fre_madera_co_board_of_supervisors"
     agency = "Madera County Board of Supervisors"
     timezone = "America/Los_Angeles"
     start_urls = [

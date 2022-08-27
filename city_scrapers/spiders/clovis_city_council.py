@@ -5,11 +5,13 @@ from dateutil.parser import parser
 
 
 class ClovisCityCouncilSpider(CityScrapersSpider):
-    name = "clovis_city_council"
+    name = "fre_clovis_city_council"
     agency = "Clovis City Council"
     timezone = "America/Chicago"
 
-    start_urls = ["https://meetings.municode.com/PublishPage?cid=CLOVIS&ppid=5157d66d-a361-43e8-87a4-3d5eca4821de&p=1"]
+    start_urls = [
+        "https://meetings.municode.com/PublishPage?cid=CLOVIS&ppid=5157d66d-a361-43e8-87a4-3d5eca4821de&p=1"  # noqa
+    ]
 
     def parse(self, response):
         """
@@ -55,10 +57,10 @@ class ClovisCityCouncilSpider(CityScrapersSpider):
 
     def _parse_start(self, item):
         """Parse start datetime as a naive datetime object."""
-        #start time
+        # start time
         startTime = item.css("td:nth-child(3)::text").get()
 
-        #start date
+        # start date
         startDate = item.css("td:nth-child(2)::text").get()
 
         dt_obj = startDate + startTime
@@ -89,7 +91,12 @@ class ClovisCityCouncilSpider(CityScrapersSpider):
         """Parse or generate links."""
         hrefAgenda = item.css("td:nth-child(5) a::attr(href)").get()
         hrefPacket = item.css("td:nth-child(6) a::attr(href)").get()
-        return [{"href": hrefAgenda.strip() + ' ' + hrefPacket.strip(), "title": "Meeting Agenda and Meeting Packet"}]
+        return [
+            {
+                "href": hrefAgenda.strip() + " " + hrefPacket.strip(),
+                "title": "Meeting Agenda and Meeting Packet",
+            }
+        ]
 
     def _parse_source(self, response):
         """Parse or generate source."""

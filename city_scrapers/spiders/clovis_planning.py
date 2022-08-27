@@ -5,7 +5,7 @@ from dateutil import parser
 
 
 class ClovisPlanningSpider(CityScrapersSpider):
-    name = "clovis_planning"
+    name = "fre_clovis_planning"
     agency = "Clovis Planning Commission"
     timezone = "America/Los_Angeles"
     start_urls = [
