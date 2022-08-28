@@ -1,19 +1,14 @@
-import re
-from datetime import date, datetime
-
-from city_scrapers_core.constants import BOARD
+from city_scrapers_core.constants import CITY_COUNCIL
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
+from dateutil.parser import parser
 
 
-class FresnoHousingSpider(CityScrapersSpider):
-    name = "fre_housing"
-    agency = "Fresno Housing Authority"
+class FreHanfordCityCouncilSpider(CityScrapersSpider):
+    name = "fre_hanford_city_council"
+    agency = "Fresno Hanford City Council"
     timezone = "America/Chicago"
-    current_year = date.today().year
-    start_urls = [
-        f"https://fresnohousing.org/about-us/board-documents/board-documents-{current_year}/"  # noqa
-    ]
+    start_urls = ["http://hanfordca.iqm2.com/Citizens/Calendar.aspx"]
 
     def parse(self, response):
         """
@@ -22,9 +17,13 @@ class FresnoHousingSpider(CityScrapersSpider):
         Change the `_parse_title`, `_parse_start`, etc methods to fit your scraping
         needs.
         """
-        for item in response.css(".listitems li"):
-            title = item.css(".left::text").get()
-            if title:
+        for item in response.css(
+            "div[id='ContentPlaceholder1_pnlMeetings'] .MeetingRow"
+        ):
+            title = item.css(".RowBottom .RowDetails::text").get()
+            titleSubstring = "City Council"
+            meetingCancelled = item.css(".RowTop div:nth-child(3) span::text").get()
+            if (titleSubstring in title) and (not meetingCancelled):
                 meeting = Meeting(
                     title=self._parse_title(item),
                     description=self._parse_description(item),
@@ -45,10 +44,8 @@ class FresnoHousingSpider(CityScrapersSpider):
 
     def _parse_title(self, item):
         """Parse or generate meeting title."""
-        title = item.css(".left::text").get()
-        if "special" in title.lower():
-            return "Special Board Meeting"
-        return "Regular Board Meeting"
+        title = item.css(".RowBottom .RowDetails::text").get()
+        return title
 
     def _parse_description(self, item):
         """Parse or generate meeting description."""
@@ -56,23 +53,12 @@ class FresnoHousingSpider(CityScrapersSpider):
 
     def _parse_classification(self, item):
         """Parse or generate classification from allowed options."""
-        return BOARD
+        return CITY_COUNCIL
 
     def _parse_start(self, item):
         """Parse start datetime as a naive datetime object."""
-        # all meetings start at 5:00PM
-        meeting_time = "13:00:00"
-        # obtain meeting title that contains meeting month and day
-        title = item.css(".left::text").get()
-        test_str = title
-        result = re.findall(r"\w+ \d{1,2}, \d{4}", test_str)
-        result2 = re.findall(r"\w+ \d{4}", test_str)
-        if result:
-            start = result[0] + " " + meeting_time
-            return datetime.strptime(start, "%B %d, %Y %H:%M:%S")
-        if result2:
-            start = result2[0] + " " + meeting_time
-            return datetime.strptime(start, "%B %Y %H:%M:%S")
+        dt_obj = item.css(".RowTop .RowLink a::text").get()
+        return parser().parse(dt_obj)
 
     def _parse_end(self, item):
         """Parse end datetime as a naive datetime object. Added by pipeline if None"""
@@ -89,14 +75,31 @@ class FresnoHousingSpider(CityScrapersSpider):
     def _parse_location(self, item):
         """Parse or generate location."""
         return {
-            "address": "1260 Fulton Street (2nd Floor), Fresno, CA. 93721",
-            "name": "",
+            "address": "400 N. Douty St. Hanford, CA 93230",
+            "name": "Council Chambers",
         }
 
     def _parse_links(self, item):
         """Parse or generate links."""
-        href = item.css(".readmore::attr(href)").get()
-        return [{"href": href, "title": "Meeting Packet"}]
+        return [
+            {
+                "hrefAgenda": "http://hanfordca.iqm2.com/Citizens/"
+                + item.css(
+                    ".RowTop .MeetingLinks div:nth-child(1) a::attr(href)"
+                ).get(),
+                "titleAgenda": "Agenda",
+                "hrefAgendaPacket": "http://hanfordca.iqm2.com/Citizens/"
+                + item.css(
+                    ".RowTop .MeetingLinks div:nth-child(2) a::attr(href)"
+                ).get(),
+                "titleAgendaPacket": "Agenda Packet",
+                "hrefMinutes": "http://hanfordca.iqm2.com/Citizens/"
+                + item.css(
+                    ".RowTop .MeetingLinks div:nth-child(4) a::attr(href)"
+                ).get(),
+                "titleMinutes": "Meeting Minutes",
+            }
+        ]
 
     def _parse_source(self, response):
         """Parse or generate source."""
