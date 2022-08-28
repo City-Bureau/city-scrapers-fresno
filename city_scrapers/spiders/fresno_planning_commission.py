@@ -5,7 +5,7 @@ from dateutil import parser
 
 
 class FresnoPlanningCommissionSpider(CityScrapersSpider):
-    name = "fresno_planning_commission"
+    name = "fre_planning_commission"
     agency = "Fresno County Planning Commission"
     timezone = "America/Los_Angeles"
     start_urls = [
