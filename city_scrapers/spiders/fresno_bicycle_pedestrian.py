@@ -1,7 +1,7 @@
 from city_scrapers_core.constants import ADVISORY_COMMITTEE
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
-from datetime import date, datetime
+from dateutil.parser import parser
 
 
 class FresnoBicyclePedestrianSpider(CityScrapersSpider):
@@ -9,8 +9,6 @@ class FresnoBicyclePedestrianSpider(CityScrapersSpider):
     agency = "Fresno Bicycle and Pedestrian Advisory Committee"
     timezone = "America/Chicago"
     start_urls = ["https://fresno.legistar.com/Calendar.aspx"]
-    # Add the titles of any links not included in the scraped results
-    link_types = []
 
     def parse(self, response):
         """
@@ -19,9 +17,9 @@ class FresnoBicyclePedestrianSpider(CityScrapersSpider):
         Change the `_parse_title`, `_parse_start`, etc methods to fit your scraping
         needs.
         """
-        for item in response.css(".rgMasterTable tbody tr"):
+        for item in response.css(".rgMasterTable tr")[1:]:
             title = item.css("td:nth-child(1) font font::text").get()
-            if title == 'Bicycle and Pedestrian Advisory Committee':
+            if title == "Bicycle and Pedestrian Advisory Committee":
                 meeting = Meeting(
                     title=self._parse_title(item),
                     description=self._parse_description(item),
@@ -55,10 +53,10 @@ class FresnoBicyclePedestrianSpider(CityScrapersSpider):
 
     def _parse_start(self, item):
         """Parse start datetime as a naive datetime object. Added by pipeline if None"""
-        #dt_string = item.css("td:nth-child(4) font font::text").get()
-        #return datetime.strptime(dt_string, "%H:%M:%S")
-        dt_string = "12/11/2018 09:15:32"
-        return datetime.strptime(dt_string, "%d/%m/%Y %H:%M:%S")
+        date = item.css("td:nth-child(2) font::text").get()
+        time = item.css("td:nth-child(4) font font::text").get()
+        dt_obj = date + " " + time
+        return parser().parse(dt_obj)
 
     def _parse_end(self, item):
         """Parse end datetime as a naive datetime object. Added by pipeline if None"""
@@ -74,16 +72,22 @@ class FresnoBicyclePedestrianSpider(CityScrapersSpider):
 
     def _parse_location(self, item):
         """Parse or generate location."""
-        location1 = item.css("td:nth-child(5) font::text").get() 
+        location1 = item.css("td:nth-child(5) font::text").get()
         location2 = item.css("td:nth-child(5) font em::text").get()
-        return {
-            "address": location1 + ' ' + location2,
-            "name": ""
-        }
+        return {"address": location1 + " " + location2, "name": ""}
 
     def _parse_links(self, item):
         """Parse or generate links."""
-        return [{"href": "", "title": ""}]
+        return [
+            {
+                "hrefMeetingDetails": "https://fresno.legistar.com/"
+                + item.css("td:nth-child(6) font a::attr(href)").get(),  # noqa
+                "titleMeetingDetails": "Meeting Details",
+                "hrefAgenda": "https://fresno.legistar.com/"
+                + item.css("td:nth-child(7) font span a::attr(href)").get(),  # noqa
+                "titleAgenda": "Meeting Agenda",
+            }
+        ]
 
     def _parse_source(self, response):
         """Parse or generate source."""
