@@ -56,7 +56,7 @@ def test_time_notes():
 def test_id():
     assert (
         parsed_items[0]["id"]
-        == "porterville_city_council/202201041430/x/city_council_meeting"
+        == "fre_porterville_city_council/202201041430/x/city_council_meeting"
     )  # noqa
 
 

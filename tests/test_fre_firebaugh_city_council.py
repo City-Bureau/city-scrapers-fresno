@@ -6,15 +6,17 @@ from city_scrapers_core.constants import CITY_COUNCIL
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
-from city_scrapers.spiders.porterville_city_council import PortervilleCityCouncilSpider
+from city_scrapers.spiders.fre_firebaugh_city_council import (
+    FreFirebaughCityCouncilSpider,
+)
 
 test_response = file_response(
-    join(dirname(__file__), "files", "porterville_city_council.html"),
-    url="https://www.ci.porterville.ca.us/government/city_council/council_meeting_dates.php",  # noqa
+    join(dirname(__file__), "files", "fre_firebaugh_city_council.html"),
+    url="https://firebaugh.org/meetingsagendas/",
 )
-spider = PortervilleCityCouncilSpider()
+spider = FreFirebaughCityCouncilSpider()
 
-freezer = freeze_time("2022-08-15")
+freezer = freeze_time("2022-08-28")
 freezer.start()
 
 parsed_items = [item for item in spider.parse(test_response)]
@@ -39,25 +41,22 @@ def test_description():
 
 
 def test_start():
-    assert parsed_items[0]["start"] == datetime(2022, 1, 4, 14, 30)
+    assert parsed_items[0]["start"] == datetime(2022, 8, 15, 18, 0)
 
 
 # def test_end():
-# assert parsed_items[0]["end"] == datetime(2022, 1, 4, 16, 30)
+#     assert parsed_items[0]["end"] == datetime(2019, 1, 1, 0, 0)
 
 
 def test_time_notes():
-    assert (
-        parsed_items[0]["time_notes"]
-        == "Regular meetings are held on the first and third Tuesdays of the month, starting at 5:30 p.m. for Closed Session, and 6:30 p.m. for the public meeting."  # noqa
-    )  # noqa
+    assert parsed_items[0]["time_notes"] == ""
 
 
 def test_id():
     assert (
         parsed_items[0]["id"]
-        == "porterville_city_council/202201041430/x/city_council_meeting"
-    )  # noqa
+        == "fre_firebaugh_city_council/202208151800/x/city_council_meeting"
+    )
 
 
 def test_status():
@@ -66,20 +65,22 @@ def test_status():
 
 def test_location():
     assert parsed_items[0]["location"] == {
-        "name": "Council Chamber at City Hall",
-        "address": "291 North Main Street Porterville, California 93257",
+        "name": "Firebaugh Community Center",
+        "address": "1655 13th St, Firebaugh, CA 93622",
     }
 
 
 def test_source():
-    assert (
-        parsed_items[0]["source"]
-        == "https://www.ci.porterville.ca.us/government/city_council/council_meeting_dates.php"  # noqa
-    )  # noqa
+    assert parsed_items[0]["source"] == "https://firebaugh.org/meetingsagendas/"
 
 
 def test_links():
-    assert parsed_items[0]["links"] == [{"href": "", "title": ""}]
+    assert parsed_items[0]["links"] == [
+        {
+            "href": "https://firebaugh.org/wp-content/uploads/2022/08/Agenda-22-08-15.pdf",  # noqa
+            "title": "Agenda",
+        }
+    ]
 
 
 def test_classification():

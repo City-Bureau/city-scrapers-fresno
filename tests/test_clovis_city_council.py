@@ -42,10 +42,6 @@ def test_start():
     assert parsed_items[0]["start"] == datetime(2022, 8, 1, 18, 0)
 
 
-def test_end():
-    assert parsed_items[0]["end"] == datetime(2022, 8, 1, 20, 0)
-
-
 def test_time_notes():
     assert parsed_items[0]["time_notes"] == ""
 
@@ -53,7 +49,7 @@ def test_time_notes():
 def test_id():
     assert (
         parsed_items[0]["id"]
-        == "clovis_city_council/202208010600/x/city_council_meeting"
+        == "fre_clovis_city_council/202208011800/x/city_council_meeting"
     )
 
 
