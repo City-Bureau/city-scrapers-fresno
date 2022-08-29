@@ -1,0 +1,4598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<!-- Google Tag Manager -->
+				<script>(function(w,d,s,l,i){w.GATrackingId='UA-204532869-92';w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+				})(window,document,'script','cpDataLayer','GTM-WKGQMK5');</script>
+				<!-- End Google Tag Manager --><!-- Google Tag Manager for GA4 -->
+				<script>(function(w,d,s,l,i){w.GAMeasurementID='G-PJF64QEYP4';w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+				})(window,document,'script','cpDataLayerGA4','GTM-K73C5PS');</script>
+				<!-- End Google Tag Manager for GA4 -->
+				<script type='text/javascript'>
+					var enableTelemetry = 'false'
+					var aiConfig = {
+					instrumentationKey: '1cde048e-3185-4906-aa46-c92a7312b60f'						
+					}
+					var appInsights = window.appInsights || function (a) { function b(a) { c[a] = function () { var b = arguments; c.queue.push(function () { c[a].apply(c, b) }) } } var c = { config: a }, d = document, e = window; setTimeout(function () { var b = d.createElement('script'); b.src = a.url || 'https://az416426.vo.msecnd.net/scripts/a/ai.0.js', d.getElementsByTagName('script')[0].parentNode.appendChild(b) }); try { c.cookie = d.cookie } catch (a) { } c.queue = []; for (var f = ['Event', 'Exception', 'Metric', 'PageView', 'Trace', 'Dependency']; f.length;)b('track' + f.pop()); if (b('setAuthenticatedUserContext'), b('clearAuthenticatedUserContext'), b('startTrackEvent'), b('stopTrackEvent'), b('startTrackPage'), b('stopTrackPage'), b('flush'), !a.disableExceptionTracking) { f = 'onerror', b('_' + f); var g = e[f]; e[f] = function (a, b, d, e, h) { var i = g && g(a, b, d, e, h); return !0 !== i && c['_' + f](a, b, d, e, h), i } } return c }(aiConfig);
+					window.appInsights = appInsights, appInsights.queue && 0 === appInsights.queue.length;
+					// Add telemetry initializer
+					appInsights.queue.push(function() {
+						appInsights.context.addTelemetryInitializer(function(envelope) {
+							var telemetryItem = envelope.data.baseData;
+							// To check the telemetry item’s type:
+							if (!false)
+							{
+								//If the telemetry is not enabled, we still want to capture Google map custom event, so only allow that
+								if (envelope.name.indexOf('.Event') == -1)
+									return false;
+							}
+						});
+					});						
+					appInsights.trackPageView();
+				</script>
+	<script>
+		function populateAntiForgery(token) {
+			var input = document.createElement("input");
+			input.name = "__RequestVerificationToken";
+			input.type = "hidden";
+			input.value = token;
+			var absPat = /^https?:\/\/|^\/\//i;
+			var forms = document.getElementsByTagName("form");
+			for (var i = 0; i < forms.length; i++) {
+				if (forms[i].method == "post" &&
+					!forms[i].querySelector('[name="__RequestVerificationToken"]') &&
+					!absPat.test(forms[i].getAttribute("action"))) {
+					forms[i].appendChild(input.cloneNode());
+				}
+			}
+		}
+
+		function getAntiForgeryToken(callback, error) {
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "/antiforgery");
+			xhr.addEventListener("load", function() {
+				try {
+					if (this.status !== 200) {
+						throw Error("Invalid status. Could not retrieve antiforgery token.");
+		}
+					var obj = JSON.parse(this.responseText);
+					callback(obj.token);
+				} catch (e) {
+					typeof error === "function" && error(e);
+				}
+			});
+			xhr.send();
+		}
+
+		getAntiForgeryToken(function(token) {
+			if (document.readyState === "complete"
+				|| document.readyState === "loaded" 
+				|| document.readyState === "interactive") {
+				populateAntiForgery(token);
+				return;
+			}
+			document.addEventListener("DOMContentLoaded", function() {
+				populateAntiForgery(token);
+			}, false);
+		}, console.error);
+			</script>
+			
+	
+<script type="text/javascript">
+		window.departmentHeader = {};
+        window.isResponsiveEnabled = true;
+		window.isRemoveSetHeights= false;
+		if (window.isRemoveSetHeights) {
+			document.documentElement.className += ' removeSetHeights';
+		}
+		window.mainMenuMediaQuery = 'screen and (max-width: 40em)';
+		window.isMobileBrowserIncludingTablets = false;
+		window.fixedResponsiveMenu = false;
+		window.fullWidthResponsiveMenu = false;
+		window.responsiveMenuHeight = '';
+		window.responsiveMenuFontSize = '';
+		(function () {
+			window.setSizeCookie = function () {
+				document.cookie = "dpi=" + window.devicePixelRatio + "; path=/";
+				document.cookie = "viewportWidth=" + window.innerWidth + "; path=/";
+				document.cookie = "viewportHeight=" + window.innerHeight + "; path=/";
+				if (screen && screen.width && screen.height) {
+					document.cookie = "screenWidth=" + screen.width + "; path=/";
+					document.cookie = "screenHeight=" + screen.height + "; path=/";
+				}
+				document.cookie = "responsiveGhost=1; path=/";
+			};
+
+			setSizeCookie();
+		}());
+</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	
+	<meta name="theme-color" content="#ae1c1f">
+	<link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+		<title>Agenda Center • Chowchilla, CA • CivicEngage</title>
+	
+				
+	<!--[if IE 6]><script language="JavaScript" type="text/javascript"> var isie6 = true; </script><![endif]-->
+	<!--[if IE 7]><script language="JavaScript" type="text/javascript"> var isie7 = true; </script><![endif]-->
+	<!--[if IE 8]><script language="JavaScript" type="text/javascript"> var isie8 = true; </script><![endif]-->
+	<!--[if IE 9]><script language="JavaScript" type="text/javascript"> var isie8 = true; </script><![endif]-->
+	<script type="text/javascript"><!--
+	var intCountryCode = 840;
+	var externalSiteDialogHeight = '390px';
+	var order = '';
+//--></script>
+	
+	<link href="/-917433784.css" rel="stylesheet" type="text/css" />	<link href="/2107064204.css" rel="stylesheet" type="text/css" />
+
+	<link rel="stylesheet" type="text/css" href="/Assets/Styles/Print.css" media="print">
+<script type="text/javascript" src="/asset.axd?id=dgAAAB-LCAAAAAAABAAdjTkOhTAQQ-_iGgaGrcg1KBEFCkEiBUsY0P9CuTsDnfX8LN8YYbobGwxaG-ZNDiSYPrYo8_vpwj9laqgi_3YrTB772CewooK4n2R-uIbjW6twKS1yZiqJmWslVj_KptYAI-F08QHSzjRqdgAAAA%3d%3d"></script>
+	<script type="text/javascript">
+		window.Pages = window.Pages || {};
+		// FrontEnd RWD initialization
+		window.Pages.rwdReady = $.Deferred();
+		window.Pages.toolBarDeferred = $.Deferred();
+		window.Pages.rwdSetupComplete = $.Deferred();
+		window.Pages.megaMenuLoaded = $.Deferred();
+		window.Pages.angularToolbarComplete = $.Deferred();
+		window.Pages.frontEndToolbarComplete = $.Deferred();
+	</script>
+	<!--CPHeadContent-->
+	<script src="/-781690472.js" type="text/javascript"></script>
+	
+	
+	
+<script type="text/javascript" src="/Scripts/HtmlExtensionSupport.js"></script>
+
+<link type="text/css" href="/asset.axd?id=kgAAAB-LCAAAAAAABABVjTEKhDAURO8ydYj5K1qk9RiLxRIjiCZZzF8RJHf34xZiN_PewBwYYN8HvrDoUmQfGQrjxaIw9otfp1m7FEKK2uUsOsGaop6Dbcr8uT2VvvQKjq_JztXfbFJfhkjXmogaIU7-67aRAMvrz5cTeII6tJIAAAA%3d" rel="stylesheet"/>
+
+	<link href="/718583105.css" rel="stylesheet" type="text/css" />
+    <script src="/14692419.js" type="text/javascript"></script>    
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	        $('body').append('<div id="cpDatePickerWrapperAgenda" class="bottom leftEdge" style="position:absolute; width: 300px"></div>');
+		    cp.datetimepicker.createDatePicker('#StartDatePicker', {format:'mm/dd/yyyy'});
+		    cp.datetimepicker.createDatePicker('#EndDatePicker', { format: 'mm/dd/yyyy' });		    
+			$('.popoutContainer > a').click(function (e) {
+				e.preventDefault();
+			});
+			todayDate = new Date();
+
+			$('#searchButton').click(function () {
+				doSearch();
+				return false;
+			});
+
+			$('#searchField').keypress(function (e) {
+			    if (e.which == 13 || e.keyCode == 13) {			     
+			        $('#searchButton').trigger('click');
+			    }			    
+			});
+
+			$('#selectCategoryButton').click(function () {
+	           	//Hide all popups already open if nesessary.
+	           	$('.popUp').fadeOut(200).removeClass('popped');
+	           	$('.popUpParent').removeClass('popped'); 
+
+				$elem = $('#categoryList');
+	        	if ($elem.is(':visible')) {
+	        		$('div.header').css('z-index', '1');
+				} else {
+	        		$('.listingCollapse').css('z-index', '1');
+	        		$('div.header').css('z-index', '3');
+				}
+				displayHideCategories();
+				return false;
+			});
+
+			checkUncheckAllCategoriesCB();
+
+			$('#submittedIn').change(function () {
+				updateSubmittedRangeDates();
+				return false;
+			});
+
+			var match = RegExp('[?&]' + 'dateSelector' + '=([^&]*)')
+                    .exec(window.location.search);
+
+			var dateRangeVal = null;
+			if (match != null)
+				dateRangeVal = decodeURIComponent(match[1].replace(/\+/g, ' '));
+			if (dateRangeVal != null) {
+				switch (dateRangeVal) {
+					case "":
+						$('#timePeriod').html('<span>Time Period</span>');
+						break;
+					case "1":
+						$('#timePeriod').html('<span>Last Week</span>');
+						break;
+					case "2":
+						$('#timePeriod').html('<span>Last Month</span>');
+						break;
+					case "3":
+						$('#timePeriod').html('<span>Last 6 Months</span>');
+						break;
+					case "4":
+						$('#timePeriod').html('<span>Last Year</span>');
+						break;
+				}
+			}
+		});
+
+		function showTimePeriodDropdown(event) {
+		    $('#dateRangePopup').removeClass('popped');
+	    	openPopUp('dateRangePopup', event);
+	        var $elem = $('#dateRangePopup');
+	        $('.popoutContainer').css('z-index', '1');
+	        $('.listingCollapse').css('z-index', '1');
+
+	        if ($elem.is(':visible')) {
+	            $elem.parent().css('z-index', '101');
+	            $('div.header').css('z-index', '3');
+	        }
+	    }
+
+		function checkUncheckAllCategoriesCB() {
+			if ($('input:not(:checked)[name=chkCategoryID]').length == 0)
+				attrOrProps($('#allCategories'), "checked", true);
+			else
+				removeAttrOrProps($('#allCategories'), "checked");
+		}
+
+		function checkUncheckAll(checked) {
+			var $cbs = $('input[name=chkCategoryID]');
+			if (checked) {
+				$cbs.each(function () {
+					$(this).attr('checked', true);
+				});
+			}
+			else {
+				$cbs.each(function () {
+					$(this).removeAttr('checked');
+				});
+			}
+		}
+
+		function displayHideCategories() {
+			$('#categoryList').toggle();
+		}
+
+		function doSearch() {		    
+			var term = $('#searchField').val();
+
+			var startDate = $('#StartDatePicker').val();
+			var endDate = $('#EndDatePicker').val();
+			var dt = $('input[name=dateRange]').val();
+			var dateSelector = $('#submittedIn').val();
+
+			if (startDate!='' && endDate!='' && dt == '')
+				dateSelector = '';
+
+			var $cbs = $('input:checked[name=chkCategoryID]');
+			var cids = '';
+			$cbs.each(function () {
+				cids += $(this).val() + ',';
+			});
+
+			if ($('#allCategories').is(':checked'))
+				cids = 'all';
+
+			document.location = '/AgendaCenter/Search/?term=' + escape(term.trim()) + '&CIDs=' + cids.trim() + '&startDate=' + startDate + '&endDate=' + endDate + '&dateRange=' + dt + '&dateSelector=' + dateSelector;
+
+		}
+
+		function validSearchTerm(term) {
+			return (term && term != null && term.trim() != '' && term.trim() != $('#searchField').attr('placeholder'));
+		}
+
+		function getDatePicker(id) {		    
+		    var datePicker = $('#' + id);
+			return datePicker;
+		}
+
+		function updateSubmittedRangeDates() {
+			var value = $('#submittedIn').val();
+			var myDate = new Date();
+			myDate.setFullYear(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate());
+
+			if (value != '') {
+				$(".submittedEnd").each(function () {
+				    getDatePicker($(this).attr('id')).val(
+    					myDate.getMonth()+1+"/"+myDate.getDate()+"/"+myDate.getFullYear());
+				});
+			}
+			else
+				$('input[name=EndDatePicker]').val('');
+
+			switch (value) {
+				case "1":
+					$('input[name=dateRange]').val('1 week');
+					myDate.setDate(myDate.getDate() - 7);
+					break;
+				case "2":
+					$('input[name=dateRange]').val('1 month');
+					myDate.setMonth(myDate.getMonth() - 1);
+					break;
+				case "3":
+					$('input[name=dateRange]').val('6 months');
+					myDate.setMonth(myDate.getMonth() - 6);
+					break;
+				case "4":
+					$('input[name=dateRange]').val('1 year');
+					myDate.setMonth(myDate.getMonth() - 12);
+					break;
+				default:
+					$('input[name=StartDatePicker]').val('');
+			}
+			if (value != '') {
+				$(".submittedStart").each(function () {
+				    getDatePicker($(this).attr('id')).val(
+                      myDate.getMonth()+1 + "/" + myDate.getDate() + "/" + myDate.getFullYear());
+				});
+			}
+		}
+
+		function changeDateRange(rangeVal, displayText) {
+			$('#timePeriod').html('<span>' + displayText + '</span>');
+			$('#liTimePeriod').show();
+			$('#submittedIn').val(rangeVal);
+			$('#dateRangePopup').hide();
+			$('#timePeriod').toggleClass('open');
+			updateSubmittedRangeDates();
+
+		}
+
+		function displayDateRangePopup() {
+			$('#dateRangePopup').toggle();
+			$('#dateRangePopup').toggleClass('open');
+			return false;
+		}
+
+		function resetDateDefaults() {
+			$('#liTimePeriod').hide();
+			$('#timePeriod').html('<span>Time Period</span>');
+			$('input[name=StartDatePicker]').val('');
+			$('input[name=EndDatePicker]').val('');
+			$('#dateRangePopup').hide();
+			$('#timePeriod').toggleClass('open');
+		}
+
+		
+	</script>
+	
+	<script src="/2068681422.js" type="text/javascript"></script>
+<script type="text/javascript">
+	window.onload = function () {
+		document.onclick = function () {
+			$('.popUp').fadeOut(200).removeClass('popped');
+			$('.popUpParent').removeClass('popped');
+		};
+	};
+
+	$(document).ready(function (e) {
+		//Trying to go to a particular agenda.
+		if (window.location.href.indexOf('/?#') != -1) {
+			var dateYearInfo = findCatIDAgendaIDAndYearFromUrl();
+			var year = dateYearInfo.year;
+			var catID = dateYearInfo.catID;
+			var agendaID = dateYearInfo.agendaID;
+			var rowAgendaID = "tr[id^=row" + agendaID + "]";
+
+			$.ajax({
+				type: 'POST',
+				url: '/AgendaCenter/UpdateCategoryList',
+				data: { year: year, catID: catID },
+				success: function (response) {
+					//Changing the arrow display.
+					var $elem1 = $('#span' + catID);
+					$elem1.html('&#9660');
+					$('#section' + catID).replaceWith(response);
+					$('ul.years li').removeClass('current');
+					$('ul.years li').each(function (e) {
+						if ($(this).text() == year.toString())
+							$(this).addClass('current');
+					});
+					//$('ul.years').html($('<li class="current"><a>' + year + '</a></li>'));
+					$('.catAgendaRow').hide();
+					var row = $(rowAgendaID);
+					row.show();
+					row.length && row[0].scrollIntoView(true);
+				}
+			});
+		}
+	});
+
+	function findCatIDAgendaIDAndYearFromUrl() {
+		var url = window.location.href;
+		var urlBreakpoint = url.indexOf('/?#');
+		var hashIndex = urlBreakpoint + 3;
+		var indexOfHyphenBeforeAgendaID = url.lastIndexOf('-');
+		var indexOfHyphenBeforeCatID = url.substring(0, urlBreakpoint).lastIndexOf('-');
+		var agendaID = parseInt(url.substring(indexOfHyphenBeforeAgendaID + 1));
+		var catID = parseInt(url.substring(indexOfHyphenBeforeCatID + 1, urlBreakpoint));
+		var dateString = url.substring(hashIndex, indexOfHyphenBeforeAgendaID);
+		var year = dateString.substring(dateString.length - 4);
+		return { year: year, catID: catID, agendaID: agendaID };
+	}
+</script>
+<meta property="og:title" content="Agenda Center" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.cityofchowchilla.org/agendacenter" />
+<meta property="og:description" content="Agenda Center " />
+
+
+
+
+	<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="/App_Themes/ie8.css"><![endif]-->
+	<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/App_Themes/ie7.css"><![endif]-->
+	<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="/App_Themes/ie6.css"><![endif]-->
+	<!--[if lt IE 9]><script type="text/javascript" src="/Scripts/html5.js"></script><![endif]-->
+
+	<script type="text/javascript">
+		setEditorVariables(false, 840);
+		function getPrintPreviewType() { return 0; } function printPreview() {pPreview(getPrintPreviewType()); }
+	</script>
+	
+</head>
+<body class="wide " >
+
+	<script>jQuery(document).click(function (event) {
+	var target = jQuery(event.target);
+	if (target.attr('src') && target.parents('.image').length && target.parents('.widget').length) {
+		var text = target.attr('title');
+		
+		if (!text.length) {
+			text = "N/A";
+		}
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Image',
+				eventAction: 'Image - ' + text,
+				eventLabel: window.location.href
+			});
+	}
+	if (target.is('button') || target.hasClass('button') || target.parents().hasClass('button')) {
+		var text = "";
+		if (target.parents('.button')[0]) {
+			text = target.parents('.button')[0].text;
+		} else if (target.text().length) {
+			text = target.text();
+		} else if (target.attr('title').length) {
+			text = target.attr('title');
+		}
+		if (!text.length) {
+			text = "N/A";
+		}
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Button',
+				eventAction: 'Button - ' + text,
+				eventLabel: window.location.href
+			});
+	}
+	if (target.parents('.widgetCustomHtml').length) {
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Custom Html',
+				eventAction: 'Custom Html Clicked',
+				eventLabel: window.location.href
+			});
+	}
+	if (target.parents('.editor').length) {
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Editor',
+				eventAction: 'Editor Link Clicked',
+				eventLabel: window.location.href
+			});
+	}
+	if (target.parents('.GraphicLinks').length) {
+		var text = "";
+		var targetGraphicLink = target;
+		if (target.hasClass('widgetGraphicLinksLink')) {
+			targetGraphicLink = jQuery(target.children()[0]);
+		}
+		if (targetGraphicLink.hasClass('text')) {
+			text = targetGraphicLink.text();
+		} else if (targetGraphicLink.attr('src').length) {
+			if (targetGraphicLink.attr('alt').length) {
+				text = targetGraphicLink.attr('alt');
+			} else {
+				text = targetGraphicLink.attr('src');
+			}
+		} else {
+			text = "N/A";
+		}
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Graphic Links',
+				eventAction: 'Graphic Link - ' + text,
+				eventLabel: window.location.href
+			});
+	}
+	if (target.parents('.InfoAdvanced').length) {
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Info Advanced',
+				eventAction: 'Info Advanced Clicked',
+				eventLabel: window.location.href
+			});
+	}
+	if (target.parents('.list').length) {
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'List',
+				eventAction: 'List Clicked',
+				eventLabel: window.location.href
+			});
+	}
+	if (target.parents('.megaMenuItem').length || target.parents('.topMenuItem').length) {
+		var megaMenuText = jQuery('.topMenuItem.mouseover').find('span').text();
+		var breadCrumbs = [];
+		jQuery('.breadCrumbs > li').each(function () {
+			 breadCrumbs.push(this.textContent);
+		});
+		var pageTitle = breadCrumbs.join('>');
+		var subTitleText = target.parents('.megaMenuItem').children('.widgetTitle').children().text();
+		var text = "";
+		if (pageTitle) {
+			text += pageTitle + " | ";
+		} else {
+			text += document.title + ' - ';
+		}
+		if (target.text() == "" && megaMenuText == "") {
+			text += "N/A";
+		} else if (target.text().length && megaMenuText.length) {
+			if (megaMenuText == target.text()) {
+				text += megaMenuText;
+			} else {
+				text += megaMenuText + " - " + subTitleText + " - " + target.text();
+			}
+		} else if (target.text() == "") {
+			text += megaMenuText;
+		} else {
+			text += target.text();
+		}
+		if (!text.length) {
+			text = "N/A";
+		}
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Mega Menu',
+				eventAction: 'Mega Menu : ' + text,
+				eventLabel: window.location.href
+			});
+	}
+	if (target.parents('.widgetNewsFlash').length && target.parents('.widgetItem').length) {
+		var text = jQuery(target.parents('.widgetItem')[0]).find('.widgetTitle').children().text();
+		if (!text.length) {
+			text = "N/A";
+		}
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'News Flash',
+				eventAction: 'News Flash - ' + text,
+				eventLabel: window.location.href
+			});
+	}
+	if (target.hasClass('widgetQuickLinksLink') || target.find('.widgetQuickLinksLink').length) {
+		var text = target.text();
+		if (!text.length) {
+			text = "N/A";
+		}
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Quick Links',
+				eventAction: 'Quick Links - ' + text,
+				eventLabel: window.location.href
+			});
+	}
+	if (target.attr('src') && target.parents('.cpSlideshow').length) {
+		var text = target.attr('title');
+		if (!text.length) {
+			text = "N/A";
+		}
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Slideshow',
+				eventAction: 'Slideshow - ' + text,
+				eventLabel: window.location.href
+			});
+	}
+	if (target.parents('.widgetText').length) {
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Text',
+				eventAction: 'Text Link Clicked',
+				eventLabel: window.location.href
+			});
+	}
+});</script>
+
+	<div id="fb-root"></div>
+<div id=skipToContentLinks>
+<a href="#contentarea" target="_self" class="skipToContentLink">Skip to Main Content</a>
+</div>
+	<form id="frmReferenceFormForTelerikEditorDialogs"></form>
+
+		<input type="hidden" id="GoogleMapsKey" value="AIzaSyDWUuE-ifkbhxblF920N8MjpBdTg1Wt784" />
+	
+	
+
+<link href="/745732998.css" rel="stylesheet" type="text/css" />
+
+<div tabindex="0"></div>
+<div id="SplashMessageWrapper" class="cp-Splash-wrapper">
+    <div role="dialog" aria-labelledby="cp-Splash-title" aria-describedby="editorContentDesc" aria-modal="true" tabindex="-1" id="SplashMessage" class="hidden cp-Splash cp-Splash--modal is-open">
+        <div class="cp-Splash-header">
+            <h3 class="cp-Splash-title" id="cp-Splash-title">Loading</h3>
+            <button class="cp-Splash-Btn cp-Splash-close" aria-label="Close">
+                <svg id="iconClose" viewBox="0 0 25 25">
+                    <title>Close</title>
+                    <polygon style="fill:currentcolor"
+                             points="18.806,6.98 18.075,6.248 12.532,11.792 6.989,6.248 6.257,6.98 11.786,12.508 6.212,18.084 6.943,18.815 12.532,13.224 18.12,18.815 18.851,18.084 13.277,12.508"></polygon>
+                </svg>
+            </button>
+        </div>
+        <div class="cp-Splash-body">
+            <div class="cp-Splash-Prose editorContent fr-view fr-element" id="editorContentDesc">
+                <!-- Content from the Froala Editor will go here. -->
+                Loading
+            </div>
+        </div>
+        <div class="cp-Splash-footer">
+            <button class="cp-Splash-Btn cp-Splash-Btn--NoShow">Do Not Show Again</button>
+            <button class="cp-Splash-Btn cp-Splash-Btn--Close">Close</button>
+        </div>
+    </div>
+</div>
+<div tabindex="0"></div>
+
+<script src="/Assets/Scripts/APIClient.js"></script>
+<script src="/Assets/Scripts/MomentJs/2.29.1/moment.min.js"></script>
+<script src="/Assets/Scripts/SplashModal/SplashModalRender.js"></script>
+<script>
+
+		$(document).ready(function () {
+			var filter = {
+				targetId: '',
+				targetType: 0
+			}
+
+            new SplashModalRender().triggerRender(filter);
+		});
+</script>
+	
+<input type="hidden" id="cpcDomain" value="https://cp-civicplusuniversity2.civicplus.com">
+	<input type="hidden" id="hdnStructureID" value="7" />
+	<input type="hidden" id="hdnContentCollectionID" value="b39bb79f-f67f-4b36-8261-7f8e724fc7ad" />
+	<input type="hidden" id="hdnWorkingCopyID" value="00000000-0000-0000-0000-000000000000" />
+	<input type="hidden" id="hdnThemeID" value="18" />
+	<input type="hidden" id="pageIsFrontEnd" value="true" />
+	<input type="hidden" id="pageModuleID" value="65" />
+	<input type="hidden" id="pagePageID" />
+	<input type="hidden" id="hdnModuleEligibleForJquery224Upgrade" value="true" />
+
+		<input type="hidden" id="hdnModuleID" value="65" />
+		<div id="stickyPlaceholder"></div>
+	<div id="outer-wrap" class="outer-wrap">
+		<div id="inner-wrap" class="inner-wrap">
+				<div id="divToolbars" class="cpToolbars newCP" style="">
+					
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/App_Themes/CP/ie7.css"><![endif]-->
+<!-- Allow Dashboard, Favorites Enabled -->
+
+<!-- Begin Signed Out Bar -->
+<div class="cpToolbar user public">
+    <div class="inner selfClear">
+        <p class="dropdown"><a href="/MyAccount/ProfileCreate" role="button" class="myConnections" id="signedOutToolbarCreateProfileButton">Create an Account</a> <span class="welcomeMessage">- Increase your productivity, customize your experience, and engage in information you care about. &nbsp;&nbsp;</span></p>
+        <ul class="nav secondary">
+	        <li><a href="/MyAccount" role="button" class="button" id="loggedOutToolbarSignInButton"><span>Sign In</span></a></li>
+        </ul>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#signedOutToolbarCreateProfileButton').keypress(function (e) { if (e.which === 0) return; $(this).click(); });
+        $('#signedOutToolbarCreateProfileButton').click(function (event) {
+        	event.preventDefault();
+        	window.location.href = '/MyAccount/ProfileCreate?from=url&url=/&dn=' + window.location.origin;
+        });
+
+			
+				$('#loggedOutToolbarSignInButton').click(function (event) {
+					event.preventDefault();
+					window.location.href = '/MyAccount/?from=url&url=' + encodeURIComponent(window.location.href.replace(window.location.origin, '')) + '&dn=' + window.location.host;
+				});
+			
+
+		if ('False' == 'True') {
+            $('#loggedOutToolbarSignInButton').hide();
+		}
+    })
+</script>
+<!-- End Signed Out Bar -->
+
+				</div>
+			<div id="bodyWrapper">
+				<div id="mainNavHolderMobile" class="mainNavHolderMobile"></div>
+				
+<div data-cpRole="structuralContainer" id="bodyContainerTS">
+<div data-cpRole="banner" id="banner69"><!-- Header Container --><header data-cpRole="structuralContainer" id="headerContainerTS" class="fixedTopTS">
+<div class="siteWrap3"><div data-cpRole="banner" id="bannerLogoTS" class="bannerLogoTS empty">
+
+
+
+
+				<a style="			display: block; text-align: center;
+" class="bannerObject" href="/" target="_self"><img alt="Homepage" class="bannerObject" height="74" src="/ImageRepository/Document?documentID=2605" width="314" /></a>
+
+</div><div data-cpRole="contentContainer" id="socialTS">	<div id="cc1440fe00-b053-4b58-9c2a-ae3f6df9f6a3" data-containerid="1440fe00-b053-4b58-9c2a-ae3f6df9f6a3" class="pageContent cpGrid cpGrid24 isLockedContainer showInMobile">
+				                
+
+		<div class="row outer wide"><!--
+--><div class="outer col col24 first last" style="" data-widgetcontainerid="7e78c2da-cea1-442b-841e-77c3d80b1d23">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col24 first last id146ef976-c82f-4550-b00a-53cf59a8b996" style="" data-widgetcontainerid="146ef976-c82f-4550-b00a-53cf59a8b996">	
+<div data-widget-id="6914ee09-ee8b-400a-b120-9045873e5894" data-widget-controller-path="/GraphicLinks/Widget">
+
+
+
+
+<div id="graphicLinkWidget6914ee09-ee8b-400a-b120-9045873e5894" class="widget widgetGraphicLinks skin67 widgetOptionSet34 wide" data-elementqueryclasses='{"wide-narrow":"min-width:1em"}' data-elementquerymatch='matchMultiColumn' data-elementqueryunmatch='unmatchMultiColumn' data-modulewidgettype="graphicLinks">
+	<div class="widgetHeader">
+		<div class="">
+				</div>
+	</div>
+	<div class="widgetBody cpGrid cpGrid4 ">	
+			<div class="row autoWidths center wide"><!--
+--><div class="col col1 first "><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks"><a class="widgetDesc widgetGraphicLinksLink" href="https://www.facebook.com/City-of-Chowchilla-California-Government-261650325178/" target="_self"  aria-label="Facebook graphic"><img src="/ImageRepository/Document?documentID=2623" 
+     class="graphicButtonLink" alt="Facebook" 
+     onmouseover="this.src='/ImageRepository/Document?documentID=2623'" 
+	onmouseout="this.src='/ImageRepository/Document?documentID=2623'"
+     onfocus="this.src='/ImageRepository/Document?documentID=2623'" 
+	onblur="this.src='/ImageRepository/Document?documentID=2623'"> </a></div><!--
+--></div></div><!----><div class="col col1  "><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks"><a class="widgetDesc widgetGraphicLinksLink" href="https://twitter.com/Chowchilla_CA" target="_self"  aria-label="Twitter graphic"><img src="/ImageRepository/Document?documentID=2625" 
+     class="graphicButtonLink" alt="Twitter" 
+     onmouseover="this.src='/ImageRepository/Document?documentID=2625'" 
+	onmouseout="this.src='/ImageRepository/Document?documentID=2625'"
+     onfocus="this.src='/ImageRepository/Document?documentID=2625'" 
+	onblur="this.src='/ImageRepository/Document?documentID=2625'"> </a></div><!--
+--></div></div><!----><div class="col col1  "><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks"><a class="widgetDesc widgetGraphicLinksLink" href="https://www.instagram.com/cityofchowchilla/?hl=en" target="_self"  aria-label="Instagram graphic"><img src="/ImageRepository/Document?documentID=2624" 
+     class="graphicButtonLink" alt="Instagram" 
+     onmouseover="this.src='/ImageRepository/Document?documentID=2624'" 
+	onmouseout="this.src='/ImageRepository/Document?documentID=2624'"
+     onfocus="this.src='/ImageRepository/Document?documentID=2624'" 
+	onblur="this.src='/ImageRepository/Document?documentID=2624'"> </a></div><!--
+--></div></div><!----><div class="col col1  last"><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks"><a class="widgetDesc widgetGraphicLinksLink" href="https://studio.youtube.com/channel/UCMgnbBIcAnO0E_tX1XyHaxQ/videos/upload?filter=%5B%5D&amp;sort=%7B%22columnType%22%3A%22date%22%2C%22sortOrder%22%3A%22DESCENDING%22%7D" target="_self"  aria-label="YouTube graphic"><img src="/ImageRepository/Document?documentID=2626" 
+     class="graphicButtonLink" alt="YouTube" 
+     onmouseover="this.src='/ImageRepository/Document?documentID=2626'" 
+	onmouseout="this.src='/ImageRepository/Document?documentID=2626'"
+     onfocus="this.src='/ImageRepository/Document?documentID=2626'" 
+	onblur="this.src='/ImageRepository/Document?documentID=2626'"> </a></div><!--
+--></div></div><!--			--></div>
+	</div>
+	<div class="widgetFooter">
+			</div>
+</div>
+
+</div>
+	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!--		--></div> <!-- outer row -->
+
+
+	</div>
+</div><div data-cpRole="contentContainer" id="searchTS">	<div id="cc4e818b54-19c0-4aed-b5f6-4532c87ee821" data-containerid="4e818b54-19c0-4aed-b5f6-4532c87ee821" class="pageContent cpGrid cpGrid24 isLockedContainer showInMobile">
+				                
+
+		<div class="row outer wide"><!--
+--><div class="outer col col24 first last" style="" data-widgetcontainerid="524cf90e-edbf-460a-acfc-ba8489624f88">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col24 first last id5b62691f-704f-48cf-a334-693be4b0f370" style="" data-widgetcontainerid="5b62691f-704f-48cf-a334-693be4b0f370">	
+<div data-widget-id="cefb3619-994f-4465-a5d3-de8c98729755" data-widget-controller-path="/Layout/WidgetSearch">
+	
+		<script defer type="text/javascript" src="/Common/Controls/jquery-ui/js/jquery.ui.autocomplete.min.js"></script>
+	<script defer src="/Areas/Layout/Assets/Scripts/Search.js" type="text/javascript"></script>
+	<script defer type="text/javascript">
+
+		$(document).ready(function () {
+			try {
+				$(".widgetSearchButton.widgetSearchButtoncefb3619-994f-4465-a5d3-de8c98729755").click(function (e) {
+				e.preventDefault();
+					if ($("#ysnSearchOnlyDeptcefb3619-994f-4465-a5d3-de8c98729755").is(':checked')) {
+						doWidgetSearch($(this).siblings(".widgetSearchBox").val(), Number(0));
+					} else {
+						doWidgetSearch($(this).siblings(".widgetSearchBox").val(), 0);
+					}
+			});
+			$("#searchFieldcefb3619-994f-4465-a5d3-de8c98729755").keypress(function (e) {
+				if (window.clipboardData) {
+					if (e.keyCode == 13) {
+							if ($("#ysnSearchOnlyDeptcefb3619-994f-4465-a5d3-de8c98729755").is(':checked')) {
+								doWidgetSearch($(this).val(), Number(0));
+							} else {
+								doWidgetSearch($(this).val(), 0);
+							}
+						return false;
+					}
+				} else {
+					if (e.which == 13) {
+							if ($("#ysnSearchOnlyDeptcefb3619-994f-4465-a5d3-de8c98729755").is(':checked')) {
+								doWidgetSearch($(this).val(), Number(0));
+							} else {
+								doWidgetSearch($(this).val(), 0);
+							}
+						return false;
+					}
+				}
+				return true;
+			});
+
+				if (true) {
+					var currentRequest = null;
+
+					var $searchField = $("#searchFieldcefb3619-994f-4465-a5d3-de8c98729755").autocomplete({
+						source: function (request, response) {
+							currentRequest = $.ajax({
+								url: '/Search/AutoComplete',
+								dataType: "json",
+								timeout: 10000,
+								beforeSend: function () {
+									if (currentRequest != null) {
+										currentRequest.abort();
+									}
+								},
+								data:
+								{
+									term: request.term,
+								},
+								success: function (data) {
+									response(data);
+									$('.autoCompleteError').remove();
+								},
+								error: function (xmlhttprequest, textstatus, message) {
+									if (textstatus === "timeout") {
+										if ($("#searchFieldcefb3619-994f-4465-a5d3-de8c98729755").siblings('.autoCompleteError').length == 0)
+											$('<span class="autoCompleteError"><p class="alert error">Search autocomplete is currently not responding. Please try again later.</p></span>').insertAfter($("#searchFieldcefb3619-994f-4465-a5d3-de8c98729755"));
+									}
+								}
+							});
+						},
+						html: true,
+						delay: 500,
+						select: function (event, ui) {
+							$(this).val(ui.item.value);
+							$(this).next().click();
+						}
+					});
+
+					if (false && true) {
+						$searchField.data("ui-autocomplete")._renderItem = function (ul, item) {
+							return $("<li class=\"itemList\"></li>")
+								.data("ui-autocomplete-item", item)
+								.append("<a>" + item.label + "</a>")
+								.appendTo(ul);
+						};
+					}
+					else {
+						$searchField.data("autocomplete")._renderItem = function (ul, item) {
+							return $("<li></li>")
+								.data("item.autocomplete", item)
+								.append("<a>" + item.label + "</a>")
+								.appendTo(ul);
+						};
+					}
+}
+}
+			catch(e) {} //we're going to eat this error. Autocomplete won't work but we dont wan't to break anything else on the page.
+		});
+	</script>
+
+	<section id="widgetPreviewSearch" class="widget widgetSearch skin62 widgetOptionSet33" style="display: block;" aria-label="Search">
+				<!-- For the button right and inside -->
+		<div class="widgetBody buttonRightInside">
+			<input class="widgetSearchBox widgetSearchBoxcefb3619-994f-4465-a5d3-de8c98729755" cp5ph="true" id="searchFieldcefb3619-994f-4465-a5d3-de8c98729755" name="searchField" onchange="searchBtnApplyQuery();" placeholder="Search..." title="Search..." type="text" value="" />
+							<a href="/Search/Results" id="btnSearchIcon" class="widgetSearchButton widgetSearchButtoncefb3619-994f-4465-a5d3-de8c98729755" role="button"><img alt="Search button" class="imageHover" data-hover="/ImageRepository/Document?documentID=2610" data-image="/ImageRepository/Document?documentID=2609" src="/ImageRepository/Document?documentID=2609" /></a>
+
+			<label class="searchLabel" for="searchFieldcefb3619-994f-4465-a5d3-de8c98729755">Search</label>
+		</div>
+
+	</section>
+
+
+<style scoped>
+    
+        .widgetSearch ::-webkit-input-placeholder {
+        color: #FFFFFF;
+      }
+        .widgetSearch :-moz-placeholder { /* Firefox 18- */
+       color: #FFFFFF;
+    }
+        .widgetSearch ::-moz-placeholder {  /* Firefox 19+ */
+       color: #FFFFFF;
+    }
+    .widgetSearch :-ms-input-placeholder {
+       color: #FFFFFF;
+    }
+    
+
+	.widgetSearch .widgetBody .widgetSearchBoxcefb3619-994f-4465-a5d3-de8c98729755
+	{
+        color: #FFFFFF;
+		background-color: #3E3E3E;
+border: none;
+border-radius: 50px;
+height: 61px;
+padding: 0 60px 0 30px;
+font: normal normal 14px/24px Montserrat;
+	}
+	.widgetSearch .widgetBody .widgetSearchButtoncefb3619-994f-4465-a5d3-de8c98729755
+	{
+		margin: 7px 7px 0 0;
+	}
+	.widgetSearch .widgetSearch-onlyDeptcefb3619-994f-4465-a5d3-de8c98729755
+	{
+		display: inline-block;
+		color: #333;
+		
+		
+		 padding-top: 10px;
+	}
+	#ysnSearchOnlyDeptcefb3619-994f-4465-a5d3-de8c98729755
+	{
+		position: relative;
+		top: .125em;
+	}
+
+</style>
+
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
+
+	<script type="text/javascript">
+	//Updates search icons href to have the correct queryString
+	function searchBtnApplyQuery() {
+		document.getElementById("btnSearchIcon").href = "/Search?searchPhrase=" + document.getElementById("searchFieldcefb3619-994f-4465-a5d3-de8c98729755").value;
+    }
+	</script>
+
+</div>
+	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!--		--></div> <!-- outer row -->
+
+
+	</div>
+</div><nav data-cpRole="nav" id="mainNav" class="siteNav mainNav" role="navigation">
+<ol id="mainNavMenu" data-parent="1" class="rootNavMenu" role="menu"><!--
+--><li id="MainItem27" class="topMenuItem" aria-haspopup="true" role="menuitem" data-pageid="27" data-displaymegamenu="True"><!--
+			--><!--
+			--><a id="mainNavGovernment" class="navMainItem mainNavItem mainNavItem1" href="/27/Government" target="_self">Government</a><!--
+			--><!--
+			--></li><!----><li id="MainItem101" class="topMenuItem" aria-haspopup="true" role="menuitem" data-pageid="101" data-displaymegamenu="True"><!--
+			--><!--
+			--><a id="mainNavDepartments" class="navMainItem mainNavItem mainNavItem2" href="/101/Departments" target="_self">Departments</a><!--
+			--><!--
+			--></li><!----><li id="MainItem35" class="topMenuItem" aria-haspopup="true" role="menuitem" data-pageid="35" data-displaymegamenu="True"><!--
+			--><!--
+			--><a id="mainNavBusiness" class="navMainItem mainNavItem mainNavItem3" href="/35/Business" target="_self">Business</a><!--
+			--><!--
+			--></li><!----><li id="MainItem31" class="topMenuItem" aria-haspopup="true" role="menuitem" data-pageid="31" data-displaymegamenu="True"><!--
+			--><!--
+			--><a id="mainNavCommunity" class="navMainItem mainNavItem mainNavItem4" href="/31/Community" target="_self">Community</a><!--
+			--><!--
+			--></li><!----><li id="MainItem9" class="topMenuItem" aria-haspopup="true" role="menuitem" data-pageid="9" data-displaymegamenu="True"><!--
+			--><!--
+			--><a id="mainNavHowDoI" class="navMainItem mainNavItem mainNavItem5" href="/9/How-Do-I" target="_self">How Do I...</a><!--
+			--><!--
+			--></li><!---->
+</ol>
+
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var menuID = 'mainNavMenu';
+			var menuType = MAIN_MENU;
+
+			//setup menu manager properties for main menu
+			if (!menuManager.mobileMainNav && true)
+				menuManager.adjustMainItemsWidth('#' + menuID);
+			menuManager.isMainMenuEditable = false;
+			menuManager.mainMenuMaxSubMenuLevels = 4;
+			menuManager.setMOMMode(2, menuType);
+
+			//Init main menu
+			var setupDraggable = menuManager.isMainMenuEditable;
+			var urlToGetHiddenMenus = '/Pages/MenuMain/HiddenMainSubMenus?pageID=1&moduleID=65&themeID=18&menuContainerID=mainNav';
+
+			menuManager.setupMenu(menuID, 'mainNav', menuType, setupDraggable, urlToGetHiddenMenus);
+			menuManager.mainMenuInit = true;
+			menuManager.mainMenuTextResizer = true;
+			if (1.00 > 0)
+				menuManager.mainMenuTextResizerRatio = 1.00;
+			if (window.isResponsiveEnabled)
+				menuManager.mainMenuReady.resolve();
+
+		});
+	</script>
+
+
+<aside data-cpRole="megaMenu" id="megaMenu" class="megaMenu" style="display: none;"><input type="hidden" id="megaMenuPopupDirection" value="0"><input type="hidden" id="megaMenuWidthReference" value="1"><aside data-cpRole="contentContainer" id="mainNavMegaMenu27" class="contentTop mainNavMegaMenu megaMenuContainer pageID_27 hidden" data-orientation="horizontal">	<div id="cce91cd3de-09c6-4fa4-88e1-712ac2a5a218" data-containerid="e91cd3de-09c6-4fa4-88e1-712ac2a5a218" class="pageContent cpGrid cpGrid24 showInMobile">
+				                
+
+
+
+	</div>
+</aside><aside data-cpRole="contentContainer" id="mainNavMegaMenu101" class="contentTop mainNavMegaMenu megaMenuContainer pageID_101 hidden" data-orientation="horizontal">	<div id="ccc94fb526-6e37-445a-8675-b31509a312fa" data-containerid="c94fb526-6e37-445a-8675-b31509a312fa" class="pageContent cpGrid cpGrid24 showInMobile">
+				                
+
+
+
+	</div>
+</aside><aside data-cpRole="contentContainer" id="mainNavMegaMenu35" class="contentTop mainNavMegaMenu megaMenuContainer pageID_35 hidden" data-orientation="horizontal">	<div id="cca70dc30a-5773-402a-ad26-787e51e4b4e0" data-containerid="a70dc30a-5773-402a-ad26-787e51e4b4e0" class="pageContent cpGrid cpGrid24 showInMobile">
+				                
+
+
+
+	</div>
+</aside><aside data-cpRole="contentContainer" id="mainNavMegaMenu31" class="contentTop mainNavMegaMenu megaMenuContainer pageID_31 hidden" data-orientation="horizontal">	<div id="cc7269f8be-e0bf-4def-aedb-2291bedda3d8" data-containerid="7269f8be-e0bf-4def-aedb-2291bedda3d8" class="pageContent cpGrid cpGrid24 showInMobile">
+				                
+
+
+
+	</div>
+</aside><aside data-cpRole="contentContainer" id="mainNavMegaMenu9" class="contentTop mainNavMegaMenu megaMenuContainer pageID_9 hidden" data-orientation="horizontal">	<div id="cc8ef699f1-f4aa-46f1-b6e1-8f025b7fe595" data-containerid="8ef699f1-f4aa-46f1-b6e1-8f025b7fe595" class="pageContent cpGrid cpGrid24 showInMobile">
+				                
+
+
+
+	</div>
+</aside></aside></nav></div>
+</header><!-- Banner --><div data-cpRole="structuralContainer" id="bannerContainerTS" class="noOverflowTS">
+<div data-cpRole="banner" id="banner1"><div data-cpRole="structuralContainer" id="bannerSizingTS">
+<div data-cpRole="structuralContainer" id="bannerContentTS">
+<div class="siteWrap3"><div data-cpRole="contentContainer" id="contentTS">	<div id="cc48bb6528-c1a6-41db-90ee-d87644eed670" data-containerid="48bb6528-c1a6-41db-90ee-d87644eed670" class="pageContent cpGrid cpGrid24 showInMobile">
+				                
+
+
+
+	</div>
+</div></div>
+</div>
+</div>
+
+
+
+
+			<div id="bannerImagesJSON54" class="hidden"></div>
+				<div id="bannerSlideshowControls_banner1" class="bannerSlideshowControlsNew none " style="display:none">
+					<button id="arrowPrev_banner1" class="arrowNew prev cp-Btn--nonStyled" aria-label="Banner Arrow Previous"><svg class=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#iconSlideshowArrowLeft"></use></svg></button>
+					<button id="arrowNext_banner1" class="arrowNew next cp-Btn--nonStyled" aria-label="Banner Arrow Next"><svg class=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#iconSlideshowArrowRight"></use></svg></button>
+				</div>
+			<script type="text/javascript">
+				onOrLive($(window), function () {
+					$.when(window.Pages.rwdSetupComplete)
+						.done(function () {
+							renderExternalBannerSlideshow('banner1',
+									{"BannerOptionID":54,"ThemeID":18,"SlotName":"banner1","Name":"Default","IsDefault":true,"BannerMode":2,"SlideShowSlideTiming":"5","SlideshowTransition":0,"SlideShowTransitionTiming":"1","ImageScale":true,"ImageAlignment":1,"ImageScroll":true,"MuteSound":true,"VideoType":0,"Status":40,"SlideshowControlsPosition":0,"SlideshowControlsAlignment":0,"SlideshowBannerControlsColorScheme":0,"BannerImages":[{"BannerImageID":124,"BannerOptionID":54,"FileName":"/ImageRepository/Document?documentID=1995","Height":307,"Width":818,"StartingOn":null,"StoppingOn":null,"IsLink":false,"LinkAddress":null,"Sequence":0,"RecordStatus":0,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/","AltText":""},{"BannerImageID":113,"BannerOptionID":54,"FileName":"/ImageRepository/Document?documentID=2666","Height":700,"Width":2200,"StartingOn":null,"StoppingOn":null,"IsLink":false,"LinkAddress":null,"Sequence":1,"RecordStatus":0,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/","AltText":""},{"BannerImageID":112,"BannerOptionID":54,"FileName":"/ImageRepository/Document?documentID=2667","Height":700,"Width":2200,"StartingOn":null,"StoppingOn":null,"IsLink":false,"LinkAddress":null,"Sequence":2,"RecordStatus":0,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/","AltText":""},{"BannerImageID":123,"BannerOptionID":54,"FileName":"/ImageRepository/Document?documentID=880","Height":550,"Width":1800,"StartingOn":null,"StoppingOn":null,"IsLink":false,"LinkAddress":null,"Sequence":3,"RecordStatus":0,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/","AltText":""},{"BannerImageID":126,"BannerOptionID":54,"FileName":"/ImageRepository/Document?documentID=299","Height":550,"Width":1800,"StartingOn":null,"StoppingOn":null,"IsLink":false,"LinkAddress":null,"Sequence":4,"RecordStatus":0,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/","AltText":""}],"BannerVideos":[{"BannerVideoID":1,"BannerOptionID":54,"VideoFileName":"","ImageFileName":"EmptyBannerBkg202204141046139106.png","IsLink":false,"LinkAddress":null,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/","VideoFileID":"00000000-0000-0000-0000-000000000000","ImageFileID":"00000000-0000-0000-0000-000000000000","VideoWidth":0,"VideoHeight":0,"ImageWidth":0,"ImageHeight":0,"LinkedVideoUrl":"","RecordStatus":0,"AltText":null}],"RecordStatus":0,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/"},
+								'/App_Themes/2022 - Interior/Images/',
+								'Rotating',
+								'1');
+						});
+				}, "load");				
+			</script>
+
+
+</div>
+</div><!-- Content container --><div data-cpRole="structuralContainer" id="mainContainerTS">
+<div class="siteWrap2"><div data-cpRole="structuralContainer" id="mainWrapTS" class="mainWrap" role="main">
+<div data-cpRole="structuralContainer" id="outerContentWrapTS" class="outerContentWrap">
+<div data-cpRole="structuralContainer" id="contentWrapTS" class="contentWrap">
+<div data-cpRole="breadCrumbs" id="breadCrumbs" class="breadCrumbContainer">		<ol class="semanticList breadCrumbs">
+			<li><a class="breadCrumb" href="/">Home</a></li><li>Agenda Center</li>
+		</ol>
+
+	   
+    
+</div><div data-cpRole="mainContentContainer" id="moduleContent">
+	<a id="contentarea"></a>
+	
+<!-- BEGIN AgendaCenterContent.aspx ***** -->
+     
+<input type="hidden" name="dateRange" />
+	<div id="AgendaCenterContent" class="newCP moduleContentNew ">
+		<div class="contentMain selfClear">
+			<div class="header selfClear">
+				<div class="graphic">
+					<a href="/AgendaCenter">
+						<img src="/Areas/AgendaCenter/Assets/Images/HomeModuleIconLarge.png" alt="Agendas module icon" width="74" height="74" />
+					</a>
+				</div>
+				
+				<div class="text">
+                    
+					    <h1>Agenda Center</h1>
+				    View current agendas and minutes for City boards and commissions. Previous years' agendas and minutes can be found in the <a class=Hyperlink target=_self title="Document Center" href=/DocumentCenter>Document Center</a>. <a href="http://www.adobe.com/products/acrobat/readstep2.html" target=_self>Adobe Reader</a> may be required to view some documents.<a href="http://www.adobe.com/products/acrobat/readstep2.html" target=_self></a> <img src="/common/images/getacro.gif" alt="Get Adobe Acrobat"></a>
+				</div>
+			
+				
+				<div class="tools">
+					<h3>Tools</h3>
+					<ul>
+						
+								<li><a href="/rss.aspx#agendaCenter" aria-label="AgendaCenterRSS" class="RSS">RSS</a></li>
+						<li><a href="/list.aspx#agendaCenter" class="notifyMe">Notify Me®</a></li>
+						
+					</ul>
+				</div>
+				
+				<div class="search selfClear">
+					<h3>Search Agendas by:</h3>
+					<div class="noWrap">
+						<div class="popoutContainer">
+							<label class="screenRead" for="timePeriod">Time Period</label> 
+							<a id="timePeriod" onkeypress="return this.onclick();" onclick="showTimePeriodDropdown(event); return false;" href="" class="button"><span>Time Period</span></a>
+							<div class="popout popUp" style="display:none;" id="dateRangePopup">
+								<div class="popoutTop">
+									<div class="popoutBtm">									
+										<ol name="quickDateRange" id="submittedIn">
+											<li id="liTimePeriod" style="display:none;"><a href=""onkeypress="this.onclick();" onclick="resetDateDefaults(); return false;">Time Period</a></li>
+											<li><a href=""onkeypress="this.onclick();" onclick="changeDateRange('1', 'Last Week'); return false;">Last Week</a></li>
+											<li><a href="" onkeypress="this.onclick();" onclick="changeDateRange('2', 'Last Month'); return false;">Last Month</a></li>
+											<li><a href="" onkeypress="this.onclick();" onclick="changeDateRange('3', 'Last 6 Months'); return false;">Last 6 Months</a></li>
+											<li><a href="" onkeypress="this.onclick();" onclick="changeDateRange('4', 'Last Year'); return false;">Last Year</a></li>
+										</ol>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="date">						
+                            <div class="t-widget t-datepicker">
+                                <div class="t-picker-wrap">                                    
+									<label class="screenRead" for="StartDatePicker">Start Date</label>                                  
+                                    <input class="submittedStart" cp5ph="true" id="StartDatePicker" name="StartDate" placeholder="Start Date" title="Start Date" type="text" value="" />
+                                </div>                                
+                            </div>
+						</div>                         
+						<div class="date">						
+                            <div class="t-widget t-datepicker">
+                                <div class="t-picker-wrap">                                
+									<label class="screenRead" for="EndDatePicker">End Date</label>                                 
+                                  <input class="submittedEnd" cp5ph="true" id="EndDatePicker" name="EndDate" placeholder="End Date" title="End Date" type="text" value="" />
+                               </div>
+                             </div>
+						</div>
+					</div>
+					<div class="noWrap">
+						<label class="screenRead" for="searchField">Word or Phrase</label>
+						<input cp5ph="true" id="searchField" name="searchField" placeholder="Word or Phrase" title="Word or Phrase" type="text" value="" />
+					</div>
+					<!--[if lte IE 7]><span style="display:none;">&nbsp;</span><![endif]-->
+					<a href="#categoryList" id="selectCategoryButton" class="button mega"><span>Select a Category</span></a>
+					<label class="screenRead" for="searchButton">Search</label>
+					<input type="image" id="searchButton"  src="/Common/images/SearchButton.png" title="Agenda Center Search" alt="Agenda Center Search">
+					<div id="categoryList" style="display:none; " class="categoryList">
+						<div>
+							
+									 <ol>
+									 									 
+										 <li>
+										 <input type="checkbox" onkeypress="this.onclick();" onclick="checkUncheckAll(this.checked);" id="allCategories" checked>
+										 <label for="allCategories">All Categories</label>
+										 </li>
+								
+										<li>
+										 <input type="checkbox" id="3" onkeypress="this.onclick();" onclick="checkUncheckAllCategoriesCB()" name="chkCategoryID" value="3"
+										 
+											 checked="checked"											 
+									 
+										 >
+										 <label for="3">
+								Airport Advisory Committee
+								
+										 </label>
+										 </li>
+								
+										<li>
+										 <input type="checkbox" id="2" onkeypress="this.onclick();" onclick="checkUncheckAllCategoriesCB()" name="chkCategoryID" value="2"
+										 
+											 checked="checked"											 
+									 
+										 >
+										 <label for="2">
+								City Council
+								
+										 </label>
+										 </li>
+								
+									 </ol>
+					
+									 <ol>
+									 
+										<li>
+										 <input type="checkbox" id="4" onkeypress="this.onclick();" onclick="checkUncheckAllCategoriesCB()" name="chkCategoryID" value="4"
+										 
+											 checked="checked"											 
+									 
+										 >
+										 <label for="4">
+								Heritage Preservation Commission
+								
+										 </label>
+										 </li>
+								
+										<li>
+										 <input type="checkbox" id="5" onkeypress="this.onclick();" onclick="checkUncheckAllCategoriesCB()" name="chkCategoryID" value="5"
+										 
+											 checked="checked"											 
+									 
+										 >
+										 <label for="5">
+								Planning Commission
+								
+										 </label>
+										 </li>
+								
+									 </ol>
+					
+									 <ol>
+									 
+										<li>
+										 <input type="checkbox" id="15" onkeypress="this.onclick();" onclick="checkUncheckAllCategoriesCB()" name="chkCategoryID" value="15"
+										 
+											 checked="checked"											 
+									 
+										 >
+										 <label for="15">
+								Public Safety Sales Tax Oversight Committee
+								
+										 </label>
+										 </li>
+								
+										<li>
+										 <input type="checkbox" id="7" onkeypress="this.onclick();" onclick="checkUncheckAllCategoriesCB()" name="chkCategoryID" value="7"
+										 
+											 checked="checked"											 
+									 
+										 >
+										 <label for="7">
+								Redevelopment Successor Agency Oversight Board (Former)
+								
+										 </label>
+										 </li>
+								
+									 </ol>
+					
+						</div>
+					</div>
+				</div>
+						</div>
+			
+
+	<!-- Category list starts(when headers are off) -->
+	
+		<!-- Only render the section if there are agendas to display -->
+			
+				<div class="listing listingCollapse noHeader" id="cat2">
+					<h2 tabindex="0" onkeypress="this.onclick();" onclick="expandCollaspseCategory(2)"><span id="span2">&#9658</span>City Council</h2>
+					
+
+<span id="section2">
+	<script type="text/javascript">
+	    //Remove href attribute from the year clicked.
+	    $(document).ready(function () {
+	        $('.current').children().removeAttr('href');
+	    });
+	</script>	
+		<ul class="years">	
+			<li class=current><a id="a02" aria-label="City Council 2022" href="javascript:changeYear(2022, 2,'a0')">2022</a></li>
+			
+				<li ><a id="a12" aria-label="City Council 2021" href="javascript:changeYear(2021, 2, 'a1')">2021</a></li>
+		
+				<li ><a id="a22" aria-label="City Council 2020" href="javascript:changeYear(2020, 2, 'a2')">2020</a></li>
+			
+			<li>
+		
+				<div class="popoutContainer popUpParent">
+					<a href="" id="btnViewMore2" aria-label="ViewMore2" onkeypress="this.onclick();" onclick="showMoreYears(2, 'yearDD2', event); return false;">View More</a>
+					<div id="yearDD2" class="popout popUp" style="display:none;">
+						<div class="popoutTop">
+							<div class="popoutBtm">
+								<ol>
+							
+									<li><a id="anchYearDD32" aria-label="City Council 2019" href="javascript:changeYear(2019, 2,'anchYearDD3')">2019</a></li>
+						
+									<li><a id="anchYearDD42" aria-label="City Council 2018" href="javascript:changeYear(2018, 2,'anchYearDD4')">2018</a></li>
+						
+									<li><a id="anchYearDD52" aria-label="City Council 2017" href="javascript:changeYear(2017, 2,'anchYearDD5')">2017</a></li>
+						
+									<li><a id="anchYearDD62" aria-label="City Council 2016" href="javascript:changeYear(2016, 2,'anchYearDD6')">2016</a></li>
+						
+									<li><a id="anchYearDD72" aria-label="City Council 2015" href="javascript:changeYear(2015, 2,'anchYearDD7')">2015</a></li>
+						
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+		
+			</li>
+		</ul>
+	<!--The table needs a position-relative to avoid weird issues with IE where the controls would just dissapear. -->
+	<table id="table2" summary="List of Agendas" style="display:none; position:relative;">
+		<thead>
+			<tr>
+				<th scope="col">
+					Agenda
+				</th>
+					<th scope="col" class="minutes">
+						Minutes
+					</th>
+				
+				<th scope="col" class="downloads">
+					Download
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		<!-- Agendas for a category starts -->
+	
+
+<tr id="row482e3cca0ec" class="catAgendaRow">
+	<td>
+		<h4 id="h408232022-482">
+			<a id="_08232022-482" name="_08232022-482"></a>
+			<strong aria-label="Agenda for August 23, 2022"><abbr title="August">Aug</abbr> 23, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="August">Aug</abbr> 19, 2022 4:55 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="08232022-482" name="482" href="/AgendaCenter/ViewFile/Agenda/_08232022-482" target="_blank" aria-describedby="h408232022-482">
+		City Council Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer482" class="popoutContainer">
+			<a href="" id="btnAgendaDD482" onkeypress="this.onclick();" onclick="showDownloadMenu(482, 2, 'agendaDD482', event, false); return false;" class="button"><span id="spanDD482">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD482" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="August 23, 2022, City Council Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_08232022-482" id="anch2482e3cca0ec" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row47988bf19ee" class="catAgendaRow">
+	<td>
+		<h4 id="h408092022-479">
+			<a id="_08092022-479" name="_08092022-479"></a>
+			<strong aria-label="Agenda for August 9, 2022"><abbr title="August">Aug</abbr> 9, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="August">Aug</abbr> 5, 2022 4:29 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="08092022-479" name="479" href="/AgendaCenter/ViewFile/Agenda/_08092022-479" target="_blank" aria-describedby="h408092022-479">
+		City Council Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer479" class="popoutContainer">
+			<a href="" id="btnAgendaDD479" onkeypress="this.onclick();" onclick="showDownloadMenu(479, 2, 'agendaDD479', event, false); return false;" class="button"><span id="spanDD479">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD479" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="August 09, 2022, City Council Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_08092022-479" id="anch247988bf19ee" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row4800f25fc5e" class="catAgendaRow">
+	<td>
+		<h4 id="h408092022-480">
+			<a id="_08092022-480" name="_08092022-480"></a>
+			<strong aria-label="Agenda for August 9, 2022"><abbr title="August">Aug</abbr> 9, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="August">Aug</abbr> 8, 2022 5:23 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="08092022-480" name="480" href="/AgendaCenter/ViewFile/Agenda/_08092022-480" target="_blank" aria-describedby="h408092022-480">
+		City Council Special Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer480" class="popoutContainer">
+			<a href="" id="btnAgendaDD480" onkeypress="this.onclick();" onclick="showDownloadMenu(480, 2, 'agendaDD480', event, false); return false;" class="button"><span id="spanDD480">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD480" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="August 09, 2022, City Council Special Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_08092022-480" id="anch24800f25fc5e" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row478d4ef4c5a" class="catAgendaRow">
+	<td>
+		<h4 id="h408032022-478">
+			<a id="_08032022-478" name="_08032022-478"></a>
+			<strong aria-label="Agenda for August 3, 2022"><abbr title="August">Aug</abbr> 3, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="August">Aug</abbr> 2, 2022 3:54 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="08032022-478" name="478" href="/AgendaCenter/ViewFile/Agenda/_08032022-478" target="_blank" aria-describedby="h408032022-478">
+		City Council Special Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer478" class="popoutContainer">
+			<a href="" id="btnAgendaDD478" onkeypress="this.onclick();" onclick="showDownloadMenu(478, 2, 'agendaDD478', event, false); return false;" class="button"><span id="spanDD478">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD478" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="August 03, 2022, City Council Special Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_08032022-478" id="anch2478d4ef4c5a" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="August 03, 2022, City Council Special Meeting. Previous Version" id="anch4478d4ef4c5a" class="previous" href="/AgendaCenter/PreviousVersions/_08032022-478">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row477136a646f" class="catAgendaRow">
+	<td>
+		<h4 id="h407262022-477">
+			<a id="_07262022-477" name="_07262022-477"></a>
+			<strong aria-label="Agenda for July 26, 2022"><abbr title="July">Jul</abbr> 26, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="July">Jul</abbr> 22, 2022 3:56 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="07262022-477" name="477" href="/AgendaCenter/ViewFile/Agenda/_07262022-477" target="_blank" aria-describedby="h407262022-477">
+		City Council Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer477" class="popoutContainer">
+			<a href="" id="btnAgendaDD477" onkeypress="this.onclick();" onclick="showDownloadMenu(477, 2, 'agendaDD477', event, false); return false;" class="button"><span id="spanDD477">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD477" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="July 26, 2022, City Council Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_07262022-477" id="anch2477136a646f" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="July 26, 2022, City Council Meeting. Previous Version" id="anch4477136a646f" class="previous" href="/AgendaCenter/PreviousVersions/_07262022-477">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row476bcfc37c5" class="catAgendaRow">
+	<td>
+		<h4 id="h407222022-476">
+			<a id="_07222022-476" name="_07222022-476"></a>
+			<strong aria-label="Agenda for July 22, 2022"><abbr title="July">Jul</abbr> 22, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="July">Jul</abbr> 21, 2022 12:06 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="07222022-476" name="476" href="/AgendaCenter/ViewFile/Agenda/_07222022-476" target="_blank" aria-describedby="h407222022-476">
+		City Council Special Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer476" class="popoutContainer">
+			<a href="" id="btnAgendaDD476" onkeypress="this.onclick();" onclick="showDownloadMenu(476, 2, 'agendaDD476', event, false); return false;" class="button"><span id="spanDD476">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD476" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="July 22, 2022, City Council Special Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_07222022-476" id="anch2476bcfc37c5" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row4735def0a55" class="catAgendaRow">
+	<td>
+		<h4 id="h407122022-473">
+			<a id="_07122022-473" name="_07122022-473"></a>
+			<strong aria-label="Agenda for July 12, 2022"><abbr title="July">Jul</abbr> 12, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="July">Jul</abbr> 8, 2022 4:05 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="07122022-473" name="473" href="/AgendaCenter/ViewFile/Agenda/_07122022-473" target="_blank" aria-describedby="h407122022-473">
+		City Council / Redevelopment Successor Agency Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer473" class="popoutContainer">
+			<a href="" id="btnAgendaDD473" onkeypress="this.onclick();" onclick="showDownloadMenu(473, 2, 'agendaDD473', event, false); return false;" class="button"><span id="spanDD473">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD473" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="July 12, 2022, City Council / Redevelopment Successor Agency Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_07122022-473" id="anch24735def0a55" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row4707c27e44c" class="catAgendaRow">
+	<td>
+		<h4 id="h406282022-470">
+			<a id="_06282022-470" name="_06282022-470"></a>
+			<strong aria-label="Agenda for June 28, 2022"><abbr title="June">Jun</abbr> 28, 2022</strong>
+			
+				&thinsp;&mdash;&thinsp;Amended <abbr title="June">Jun</abbr> 24, 2022 3:06 PM
+			
+			</a></h4>
+    <p>
+    
+			<a id="06282022-470" name="470" href="/AgendaCenter/ViewFile/Agenda/_06282022-470" target="_blank" aria-describedby="h406282022-470">
+		City Council/Redevelopment Successor Agency/Public Finance Authority Joint Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer470" class="popoutContainer">
+			<a href="" id="btnAgendaDD470" onkeypress="this.onclick();" onclick="showDownloadMenu(470, 2, 'agendaDD470', event, false); return false;" class="button"><span id="spanDD470">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD470" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="June 28, 2022, City Council/Redevelopment Successor Agency/Public Finance Authority Joint Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_06282022-470" id="anch24707c27e44c" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="June 28, 2022, City Council/Redevelopment Successor Agency/Public Finance Authority Joint Meeting. Previous Version" id="anch44707c27e44c" class="previous" href="/AgendaCenter/PreviousVersions/_06282022-470">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row471e5e3e1f6" class="catAgendaRow">
+	<td>
+		<h4 id="h406282022-471">
+			<a id="_06282022-471" name="_06282022-471"></a>
+			<strong aria-label="Agenda for June 28, 2022"><abbr title="June">Jun</abbr> 28, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="June">Jun</abbr> 24, 2022 3:02 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="06282022-471" name="471" href="/AgendaCenter/ViewFile/Agenda/_06282022-471" target="_blank" aria-describedby="h406282022-471">
+		Proposed 2022/23 Fiscal Year Budget
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer471" class="popoutContainer">
+			<a href="" id="btnAgendaDD471" onkeypress="this.onclick();" onclick="showDownloadMenu(471, 2, 'agendaDD471', event, false); return false;" class="button"><span id="spanDD471">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD471" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="June 28, 2022, Proposed 2022/23 Fiscal Year Budget. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_06282022-471" id="anch2471e5e3e1f6" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row46845c2338e" class="catAgendaRow">
+	<td>
+		<h4 id="h406142022-468">
+			<a id="_06142022-468" name="_06142022-468"></a>
+			<strong aria-label="Agenda for June 14, 2022"><abbr title="June">Jun</abbr> 14, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="June">Jun</abbr> 10, 2022 3:58 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="06142022-468" name="468" href="/AgendaCenter/ViewFile/Agenda/_06142022-468" target="_blank" aria-describedby="h406142022-468">
+		City Council Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer468" class="popoutContainer">
+			<a href="" id="btnAgendaDD468" onkeypress="this.onclick();" onclick="showDownloadMenu(468, 2, 'agendaDD468', event, false); return false;" class="button"><span id="spanDD468">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD468" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="June 14, 2022, City Council Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_06142022-468" id="anch246845c2338e" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="June 14, 2022, City Council Meeting. Previous Version" id="anch446845c2338e" class="previous" href="/AgendaCenter/PreviousVersions/_06142022-468">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row465e9b0400d" class="catAgendaRow">
+	<td>
+		<h4 id="h406082022-465">
+			<a id="_06082022-465" name="_06082022-465"></a>
+			<strong aria-label="Agenda for June 8, 2022"><abbr title="June">Jun</abbr> 8, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="June">Jun</abbr> 7, 2022 2:12 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="06082022-465" name="465" href="/AgendaCenter/ViewFile/Agenda/_06082022-465" target="_blank" aria-describedby="h406082022-465">
+		2022/23 Budget Workshop
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer465" class="popoutContainer">
+			<a href="" id="btnAgendaDD465" onkeypress="this.onclick();" onclick="showDownloadMenu(465, 2, 'agendaDD465', event, false); return false;" class="button"><span id="spanDD465">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD465" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="June 08, 2022, 2022/23 Budget Workshop. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_06082022-465" id="anch2465e9b0400d" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row464f0211807" class="catAgendaRow">
+	<td>
+		<h4 id="h405242022-464">
+			<a id="_05242022-464" name="_05242022-464"></a>
+			<strong aria-label="Agenda for May 24, 2022"><abbr title="May">May</abbr> 24, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="May">May</abbr> 19, 2022 5:11 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="05242022-464" name="464" href="/AgendaCenter/ViewFile/Agenda/_05242022-464" target="_blank" aria-describedby="h405242022-464">
+		City Council / Redevelopment Successor Agency Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer464" class="popoutContainer">
+			<a href="" id="btnAgendaDD464" onkeypress="this.onclick();" onclick="showDownloadMenu(464, 2, 'agendaDD464', event, false); return false;" class="button"><span id="spanDD464">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD464" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="May 24, 2022, City Council / Redevelopment Successor Agency Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_05242022-464" id="anch2464f0211807" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row46349fe1c49" class="catAgendaRow">
+	<td>
+		<h4 id="h405182022-463">
+			<a id="_05182022-463" name="_05182022-463"></a>
+			<strong aria-label="Agenda for May 18, 2022"><abbr title="May">May</abbr> 18, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="May">May</abbr> 17, 2022 4:33 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="05182022-463" name="463" href="/AgendaCenter/ViewFile/Agenda/_05182022-463" target="_blank" aria-describedby="h405182022-463">
+		City Council Special Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer463" class="popoutContainer">
+			<a href="" id="btnAgendaDD463" onkeypress="this.onclick();" onclick="showDownloadMenu(463, 2, 'agendaDD463', event, false); return false;" class="button"><span id="spanDD463">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD463" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="May 18, 2022, City Council Special Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_05182022-463" id="anch246349fe1c49" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row462a7199670" class="catAgendaRow">
+	<td>
+		<h4 id="h405162022-462">
+			<a id="_05162022-462" name="_05162022-462"></a>
+			<strong aria-label="Agenda for May 16, 2022"><abbr title="May">May</abbr> 16, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="May">May</abbr> 14, 2022 4:39 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="05162022-462" name="462" href="/AgendaCenter/ViewFile/Agenda/_05162022-462" target="_blank" aria-describedby="h405162022-462">
+		City Council Goal Setting Workshop
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer462" class="popoutContainer">
+			<a href="" id="btnAgendaDD462" onkeypress="this.onclick();" onclick="showDownloadMenu(462, 2, 'agendaDD462', event, false); return false;" class="button"><span id="spanDD462">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD462" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="May 16, 2022, City Council Goal Setting Workshop. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_05162022-462" id="anch2462a7199670" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row4612c79a69f" class="catAgendaRow">
+	<td>
+		<h4 id="h405102022-461">
+			<a id="_05102022-461" name="_05102022-461"></a>
+			<strong aria-label="Agenda for May 10, 2022"><abbr title="May">May</abbr> 10, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="May">May</abbr> 6, 2022 2:27 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="05102022-461" name="461" href="/AgendaCenter/ViewFile/Agenda/_05102022-461" target="_blank" aria-describedby="h405102022-461">
+		City Council / Redevelopment Successor Agency Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer461" class="popoutContainer">
+			<a href="" id="btnAgendaDD461" onkeypress="this.onclick();" onclick="showDownloadMenu(461, 2, 'agendaDD461', event, false); return false;" class="button"><span id="spanDD461">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD461" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="May 10, 2022, City Council / Redevelopment Successor Agency Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_05102022-461" id="anch24612c79a69f" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row45822e4b222" class="catAgendaRow">
+	<td>
+		<h4 id="h404262022-458">
+			<a id="_04262022-458" name="_04262022-458"></a>
+			<strong aria-label="Agenda for April 26, 2022"><abbr title="April">Apr</abbr> 26, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="April">Apr</abbr> 22, 2022 2:56 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="04262022-458" name="458" href="/AgendaCenter/ViewFile/Agenda/_04262022-458" target="_blank" aria-describedby="h404262022-458">
+		City Council Town Hall Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer458" class="popoutContainer">
+			<a href="" id="btnAgendaDD458" onkeypress="this.onclick();" onclick="showDownloadMenu(458, 2, 'agendaDD458', event, false); return false;" class="button"><span id="spanDD458">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD458" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="April 26, 2022, City Council Town Hall Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_04262022-458" id="anch245822e4b222" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row459abc06f21" class="catAgendaRow">
+	<td>
+		<h4 id="h404262022-459">
+			<a id="_04262022-459" name="_04262022-459"></a>
+			<strong aria-label="Agenda for April 26, 2022"><abbr title="April">Apr</abbr> 26, 2022</strong>
+			
+				&thinsp;&mdash;&thinsp;Amended <abbr title="April">Apr</abbr> 23, 2022 10:43 AM
+			
+			</a></h4>
+    <p>
+    
+			<a id="04262022-459" name="459" href="/AgendaCenter/ViewFile/Agenda/_04262022-459" target="_blank" aria-describedby="h404262022-459">
+		City Council Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer459" class="popoutContainer">
+			<a href="" id="btnAgendaDD459" onkeypress="this.onclick();" onclick="showDownloadMenu(459, 2, 'agendaDD459', event, false); return false;" class="button"><span id="spanDD459">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD459" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="April 26, 2022, City Council Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_04262022-459" id="anch2459abc06f21" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="April 26, 2022, City Council Meeting. Previous Version" id="anch4459abc06f21" class="previous" href="/AgendaCenter/PreviousVersions/_04262022-459">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row454ebfee2a9" class="catAgendaRow">
+	<td>
+		<h4 id="h404122022-454">
+			<a id="_04122022-454" name="_04122022-454"></a>
+			<strong aria-label="Agenda for April 12, 2022"><abbr title="April">Apr</abbr> 12, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="April">Apr</abbr> 7, 2022 1:50 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="04122022-454" name="454" href="/AgendaCenter/ViewFile/Agenda/_04122022-454" target="_blank" aria-describedby="h404122022-454">
+		City Council / Redevelopment Successor Agency Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer454" class="popoutContainer">
+			<a href="" id="btnAgendaDD454" onkeypress="this.onclick();" onclick="showDownloadMenu(454, 2, 'agendaDD454', event, false); return false;" class="button"><span id="spanDD454">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD454" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="April 12, 2022, City Council / Redevelopment Successor Agency Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_04122022-454" id="anch2454ebfee2a9" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row455a2d0ecc4" class="catAgendaRow">
+	<td>
+		<h4 id="h404122022-455">
+			<a id="_04122022-455" name="_04122022-455"></a>
+			<strong aria-label="Agenda for April 12, 2022"><abbr title="April">Apr</abbr> 12, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="April">Apr</abbr> 11, 2022 12:27 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="04122022-455" name="455" href="/AgendaCenter/ViewFile/Agenda/_04122022-455" target="_blank" aria-describedby="h404122022-455">
+		City Council Special Closed Session Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer455" class="popoutContainer">
+			<a href="" id="btnAgendaDD455" onkeypress="this.onclick();" onclick="showDownloadMenu(455, 2, 'agendaDD455', event, false); return false;" class="button"><span id="spanDD455">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD455" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="April 12, 2022, City Council Special Closed Session Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_04122022-455" id="anch2455a2d0ecc4" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row4539f9c84e3" class="catAgendaRow">
+	<td>
+		<h4 id="h403312022-453">
+			<a id="_03312022-453" name="_03312022-453"></a>
+			<strong aria-label="Agenda for March 31, 2022"><abbr title="March">Mar</abbr> 31, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="March">Mar</abbr> 30, 2022 3:53 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="03312022-453" name="453" href="/AgendaCenter/ViewFile/Agenda/_03312022-453" target="_blank" aria-describedby="h403312022-453">
+		City Council Special Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer453" class="popoutContainer">
+			<a href="" id="btnAgendaDD453" onkeypress="this.onclick();" onclick="showDownloadMenu(453, 2, 'agendaDD453', event, false); return false;" class="button"><span id="spanDD453">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD453" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="March 31, 2022, City Council Special Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_03312022-453" id="anch24539f9c84e3" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row45253520830" class="catAgendaRow">
+	<td>
+		<h4 id="h403222022-452">
+			<a id="_03222022-452" name="_03222022-452"></a>
+			<strong aria-label="Agenda for March 22, 2022"><abbr title="March">Mar</abbr> 22, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="March">Mar</abbr> 18, 2022 9:50 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="03222022-452" name="452" href="/AgendaCenter/ViewFile/Agenda/_03222022-452" target="_blank" aria-describedby="h403222022-452">
+		City Council Special Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer452" class="popoutContainer">
+			<a href="" id="btnAgendaDD452" onkeypress="this.onclick();" onclick="showDownloadMenu(452, 2, 'agendaDD452', event, false); return false;" class="button"><span id="spanDD452">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD452" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="March 22, 2022, City Council Special Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_03222022-452" id="anch245253520830" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row4501ef1da95" class="catAgendaRow">
+	<td>
+		<h4 id="h403082022-450">
+			<a id="_03082022-450" name="_03082022-450"></a>
+			<strong aria-label="Agenda for March 8, 2022"><abbr title="March">Mar</abbr> 8, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="March">Mar</abbr> 4, 2022 12:30 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="03082022-450" name="450" href="/AgendaCenter/ViewFile/Agenda/_03082022-450" target="_blank" aria-describedby="h403082022-450">
+		City Council Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer450" class="popoutContainer">
+			<a href="" id="btnAgendaDD450" onkeypress="this.onclick();" onclick="showDownloadMenu(450, 2, 'agendaDD450', event, false); return false;" class="button"><span id="spanDD450">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD450" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="March 08, 2022, City Council Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_03082022-450" id="anch24501ef1da95" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row449185949c3" class="catAgendaRow">
+	<td>
+		<h4 id="h402222022-449">
+			<a id="_02222022-449" name="_02222022-449"></a>
+			<strong aria-label="Agenda for February 22, 2022"><abbr title="February">Feb</abbr> 22, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="February">Feb</abbr> 18, 2022 3:11 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="02222022-449" name="449" href="/AgendaCenter/ViewFile/Agenda/_02222022-449" target="_blank" aria-describedby="h402222022-449">
+		City Council Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_02222022-449" aria-label="February 22, 2022, City Council Meeting. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer449" class="popoutContainer">
+			<a href="" id="btnAgendaDD449" onkeypress="this.onclick();" onclick="showDownloadMenu(449, 2, 'agendaDD449', event, false); return false;" class="button"><span id="spanDD449">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD449" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="February 22, 2022, City Council Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_02222022-449" id="anch2449185949c3" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row4478a643a5c" class="catAgendaRow">
+	<td>
+		<h4 id="h402082022-447">
+			<a id="_02082022-447" name="_02082022-447"></a>
+			<strong aria-label="Agenda for February 8, 2022"><abbr title="February">Feb</abbr> 8, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="February">Feb</abbr> 4, 2022 1:02 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="02082022-447" name="447" href="/AgendaCenter/ViewFile/Agenda/_02082022-447" target="_blank" aria-describedby="h402082022-447">
+		City Council Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_02082022-447" aria-label="February 08, 2022, City Council Meeting. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer447" class="popoutContainer">
+			<a href="" id="btnAgendaDD447" onkeypress="this.onclick();" onclick="showDownloadMenu(447, 2, 'agendaDD447', event, false); return false;" class="button"><span id="spanDD447">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD447" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="February 08, 2022, City Council Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_02082022-447" id="anch24478a643a5c" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row4467358578f" class="catAgendaRow">
+	<td>
+		<h4 id="h401252022-446">
+			<a id="_01252022-446" name="_01252022-446"></a>
+			<strong aria-label="Agenda for January 25, 2022"><abbr title="January">Jan</abbr> 25, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="January">Jan</abbr> 21, 2022 2:15 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="01252022-446" name="446" href="/AgendaCenter/ViewFile/Agenda/_01252022-446" target="_blank" aria-describedby="h401252022-446">
+		City Council / Redevelopment Successor Agency Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_01252022-446" aria-label="January 25, 2022, City Council / Redevelopment Successor Agency Meeting. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer446" class="popoutContainer">
+			<a href="" id="btnAgendaDD446" onkeypress="this.onclick();" onclick="showDownloadMenu(446, 2, 'agendaDD446', event, false); return false;" class="button"><span id="spanDD446">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD446" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="January 25, 2022, City Council / Redevelopment Successor Agency Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_01252022-446" id="anch24467358578f" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row44411bf88dc" class="catAgendaRow">
+	<td>
+		<h4 id="h401112022-444">
+			<a id="_01112022-444" name="_01112022-444"></a>
+			<strong aria-label="Agenda for January 11, 2022"><abbr title="January">Jan</abbr> 11, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="January">Jan</abbr> 7, 2022 12:50 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="01112022-444" name="444" href="/AgendaCenter/ViewFile/Agenda/_01112022-444" target="_blank" aria-describedby="h401112022-444">
+		City Council Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_01112022-444" aria-label="January 11, 2022, City Council Meeting. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer444" class="popoutContainer">
+			<a href="" id="btnAgendaDD444" onkeypress="this.onclick();" onclick="showDownloadMenu(444, 2, 'agendaDD444', event, false); return false;" class="button"><span id="spanDD444">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD444" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="January 11, 2022, City Council Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_01112022-444" id="anch244411bf88dc" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+		<!-- Agendas for a category ends -->					
+		</tbody>
+	</table>
+</span>
+				</div>
+		
+		<!-- Only render the section if there are agendas to display -->
+			
+				<div class="listing listingCollapse noHeader" id="cat3">
+					<h2 tabindex="0" onkeypress="this.onclick();" onclick="expandCollaspseCategory(3)"><span id="span3">&#9658</span>Airport Advisory Committee</h2>
+					
+
+<span id="section3">
+	<script type="text/javascript">
+	    //Remove href attribute from the year clicked.
+	    $(document).ready(function () {
+	        $('.current').children().removeAttr('href');
+	    });
+	</script>	
+		<ul class="years">	
+			<li class=current><a id="a03" aria-label="Airport Advisory Committee 2022" href="javascript:changeYear(2022, 3,'a0')">2022</a></li>
+			
+				<li ><a id="a13" aria-label="Airport Advisory Committee 2021" href="javascript:changeYear(2021, 3, 'a1')">2021</a></li>
+		
+				<li ><a id="a23" aria-label="Airport Advisory Committee 2020" href="javascript:changeYear(2020, 3, 'a2')">2020</a></li>
+			
+			<li>
+		
+				<div class="popoutContainer popUpParent">
+					<a href="" id="btnViewMore3" aria-label="ViewMore3" onkeypress="this.onclick();" onclick="showMoreYears(3, 'yearDD3', event); return false;">View More</a>
+					<div id="yearDD3" class="popout popUp" style="display:none;">
+						<div class="popoutTop">
+							<div class="popoutBtm">
+								<ol>
+							
+									<li><a id="anchYearDD33" aria-label="Airport Advisory Committee 2019" href="javascript:changeYear(2019, 3,'anchYearDD3')">2019</a></li>
+						
+									<li><a id="anchYearDD43" aria-label="Airport Advisory Committee 2018" href="javascript:changeYear(2018, 3,'anchYearDD4')">2018</a></li>
+						
+									<li><a id="anchYearDD53" aria-label="Airport Advisory Committee 2017" href="javascript:changeYear(2017, 3,'anchYearDD5')">2017</a></li>
+						
+									<li><a id="anchYearDD63" aria-label="Airport Advisory Committee 2016" href="javascript:changeYear(2016, 3,'anchYearDD6')">2016</a></li>
+						
+									<li><a id="anchYearDD73" aria-label="Airport Advisory Committee 2015" href="javascript:changeYear(2015, 3,'anchYearDD7')">2015</a></li>
+						
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+		
+			</li>
+		</ul>
+	<!--The table needs a position-relative to avoid weird issues with IE where the controls would just dissapear. -->
+	<table id="table3" summary="List of Agendas" style="display:none; position:relative;">
+		<thead>
+			<tr>
+				<th scope="col">
+					Agenda
+				</th>
+					<th scope="col" class="minutes">
+						Minutes
+					</th>
+				
+				<th scope="col" class="downloads">
+					Download
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		<!-- Agendas for a category starts -->
+	
+
+<tr id="row4745b129999" class="catAgendaRow">
+	<td>
+		<h4 id="h407182022-474">
+			<a id="_07182022-474" name="_07182022-474"></a>
+			<strong aria-label="Agenda for July 18, 2022"><abbr title="July">Jul</abbr> 18, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="July">Jul</abbr> 12, 2022 5:34 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="07182022-474" name="474" href="/AgendaCenter/ViewFile/Agenda/_07182022-474" target="_blank" aria-describedby="h407182022-474">
+		Airport Advisory Committee Meeting Cancellation Notice
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer474" class="popoutContainer">
+			<a href="" id="btnAgendaDD474" onkeypress="this.onclick();" onclick="showDownloadMenu(474, 3, 'agendaDD474', event, false); return false;" class="button"><span id="spanDD474">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD474" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="July 18, 2022, Airport Advisory Committee Meeting Cancellation Notice. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_07182022-474" id="anch24745b129999" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row4562bea57bf" class="catAgendaRow">
+	<td>
+		<h4 id="h404182022-456">
+			<a id="_04182022-456" name="_04182022-456"></a>
+			<strong aria-label="Agenda for April 18, 2022"><abbr title="April">Apr</abbr> 18, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="April">Apr</abbr> 12, 2022 9:20 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="04182022-456" name="456" href="/AgendaCenter/ViewFile/Agenda/_04182022-456" target="_blank" aria-describedby="h404182022-456">
+		Airport Advisory Committee Meeting Cancellation Notice
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer456" class="popoutContainer">
+			<a href="" id="btnAgendaDD456" onkeypress="this.onclick();" onclick="showDownloadMenu(456, 3, 'agendaDD456', event, false); return false;" class="button"><span id="spanDD456">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD456" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="April 18, 2022, Airport Advisory Committee Meeting Cancellation Notice. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_04182022-456" id="anch24562bea57bf" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+		<!-- Agendas for a category ends -->					
+		</tbody>
+	</table>
+</span>
+				</div>
+		
+		<!-- Only render the section if there are agendas to display -->
+			
+		<!-- Only render the section if there are agendas to display -->
+			
+				<div class="listing listingCollapse noHeader" id="cat5">
+					<h2 tabindex="0" onkeypress="this.onclick();" onclick="expandCollaspseCategory(5)"><span id="span5">&#9658</span>Planning Commission</h2>
+					
+
+<span id="section5">
+	<script type="text/javascript">
+	    //Remove href attribute from the year clicked.
+	    $(document).ready(function () {
+	        $('.current').children().removeAttr('href');
+	    });
+	</script>	
+		<ul class="years">	
+			<li class=current><a id="a05" aria-label="Planning Commission 2022" href="javascript:changeYear(2022, 5,'a0')">2022</a></li>
+			
+				<li ><a id="a15" aria-label="Planning Commission 2021" href="javascript:changeYear(2021, 5, 'a1')">2021</a></li>
+		
+				<li ><a id="a25" aria-label="Planning Commission 2020" href="javascript:changeYear(2020, 5, 'a2')">2020</a></li>
+			
+			<li>
+		
+				<div class="popoutContainer popUpParent">
+					<a href="" id="btnViewMore5" aria-label="ViewMore5" onkeypress="this.onclick();" onclick="showMoreYears(5, 'yearDD5', event); return false;">View More</a>
+					<div id="yearDD5" class="popout popUp" style="display:none;">
+						<div class="popoutTop">
+							<div class="popoutBtm">
+								<ol>
+							
+									<li><a id="anchYearDD35" aria-label="Planning Commission 2019" href="javascript:changeYear(2019, 5,'anchYearDD3')">2019</a></li>
+						
+									<li><a id="anchYearDD45" aria-label="Planning Commission 2018" href="javascript:changeYear(2018, 5,'anchYearDD4')">2018</a></li>
+						
+									<li><a id="anchYearDD55" aria-label="Planning Commission 2017" href="javascript:changeYear(2017, 5,'anchYearDD5')">2017</a></li>
+						
+									<li><a id="anchYearDD65" aria-label="Planning Commission 2016" href="javascript:changeYear(2016, 5,'anchYearDD6')">2016</a></li>
+						
+									<li><a id="anchYearDD75" aria-label="Planning Commission 2015" href="javascript:changeYear(2015, 5,'anchYearDD7')">2015</a></li>
+						
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+		
+			</li>
+		</ul>
+	<!--The table needs a position-relative to avoid weird issues with IE where the controls would just dissapear. -->
+	<table id="table5" summary="List of Agendas" style="display:none; position:relative;">
+		<thead>
+			<tr>
+				<th scope="col">
+					Agenda
+				</th>
+					<th scope="col" class="minutes">
+						Minutes
+					</th>
+				
+				<th scope="col" class="downloads">
+					Download
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		<!-- Agendas for a category starts -->
+	
+
+<tr id="row481cfb427b1" class="catAgendaRow">
+	<td>
+		<h4 id="h408172022-481">
+			<a id="_08172022-481" name="_08172022-481"></a>
+			<strong aria-label="Agenda for August 17, 2022"><abbr title="August">Aug</abbr> 17, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="August">Aug</abbr> 11, 2022 4:00 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="08172022-481" name="481" href="/AgendaCenter/ViewFile/Agenda/_08172022-481" target="_blank" aria-describedby="h408172022-481">
+		Planning Commission Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer481" class="popoutContainer">
+			<a href="" id="btnAgendaDD481" onkeypress="this.onclick();" onclick="showDownloadMenu(481, 5, 'agendaDD481', event, false); return false;" class="button"><span id="spanDD481">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD481" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="August 17, 2022, Planning Commission Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_08172022-481" id="anch2481cfb427b1" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row475d385f553" class="catAgendaRow">
+	<td>
+		<h4 id="h407202022-475">
+			<a id="_07202022-475" name="_07202022-475"></a>
+			<strong aria-label="Agenda for July 20, 2022"><abbr title="July">Jul</abbr> 20, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="July">Jul</abbr> 19, 2022 5:04 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="07202022-475" name="475" href="/AgendaCenter/ViewFile/Agenda/_07202022-475" target="_blank" aria-describedby="h407202022-475">
+		Planning Commission Meeting Cancellation Notice
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer475" class="popoutContainer">
+			<a href="" id="btnAgendaDD475" onkeypress="this.onclick();" onclick="showDownloadMenu(475, 5, 'agendaDD475', event, false); return false;" class="button"><span id="spanDD475">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD475" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="July 20, 2022, Planning Commission Meeting Cancellation Notice. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_07202022-475" id="anch2475d385f553" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row4721a8ac07d" class="catAgendaRow">
+	<td>
+		<h4 id="h406282022-472">
+			<a id="_06282022-472" name="_06282022-472"></a>
+			<strong aria-label="Agenda for June 28, 2022"><abbr title="June">Jun</abbr> 28, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="June">Jun</abbr> 24, 2022 3:55 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="06282022-472" name="472" href="/AgendaCenter/ViewFile/Agenda/_06282022-472" target="_blank" aria-describedby="h406282022-472">
+		Special Planning Commission Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer472" class="popoutContainer">
+			<a href="" id="btnAgendaDD472" onkeypress="this.onclick();" onclick="showDownloadMenu(472, 5, 'agendaDD472', event, false); return false;" class="button"><span id="spanDD472">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD472" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="June 28, 2022, Special Planning Commission Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_06282022-472" id="anch24721a8ac07d" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="June 28, 2022, Special Planning Commission Meeting. Previous Version" id="anch44721a8ac07d" class="previous" href="/AgendaCenter/PreviousVersions/_06282022-472">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row466fd4004f5" class="catAgendaRow">
+	<td>
+		<h4 id="h406152022-466">
+			<a id="_06152022-466" name="_06152022-466"></a>
+			<strong aria-label="Agenda for June 15, 2022"><abbr title="June">Jun</abbr> 15, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="June">Jun</abbr> 9, 2022 11:05 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="06152022-466" name="466" href="/AgendaCenter/ViewFile/Agenda/_06152022-466" target="_blank" aria-describedby="h406152022-466">
+		Planning Commission Meeting Cancellation Notice
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer466" class="popoutContainer">
+			<a href="" id="btnAgendaDD466" onkeypress="this.onclick();" onclick="showDownloadMenu(466, 5, 'agendaDD466', event, false); return false;" class="button"><span id="spanDD466">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD466" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="June 15, 2022, Planning Commission Meeting Cancellation Notice. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_06152022-466" id="anch2466fd4004f5" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row4575dc4313c" class="catAgendaRow">
+	<td>
+		<h4 id="h404202022-457">
+			<a id="_04202022-457" name="_04202022-457"></a>
+			<strong aria-label="Agenda for April 20, 2022"><abbr title="April">Apr</abbr> 20, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="April">Apr</abbr> 12, 2022 9:33 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="04202022-457" name="457" href="/AgendaCenter/ViewFile/Agenda/_04202022-457" target="_blank" aria-describedby="h404202022-457">
+		Planning Commission Meeting Cancellation Notice
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer457" class="popoutContainer">
+			<a href="" id="btnAgendaDD457" onkeypress="this.onclick();" onclick="showDownloadMenu(457, 5, 'agendaDD457', event, false); return false;" class="button"><span id="spanDD457">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD457" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="April 20, 2022, Planning Commission Meeting Cancellation Notice. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_04202022-457" id="anch24575dc4313c" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row451edf5f165" class="catAgendaRow">
+	<td>
+		<h4 id="h403162022-451">
+			<a id="_03162022-451" name="_03162022-451"></a>
+			<strong aria-label="Agenda for March 16, 2022"><abbr title="March">Mar</abbr> 16, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="March">Mar</abbr> 11, 2022 5:04 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="03162022-451" name="451" href="/AgendaCenter/ViewFile/Agenda/_03162022-451" target="_blank" aria-describedby="h403162022-451">
+		Planning Commission Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer451" class="popoutContainer">
+			<a href="" id="btnAgendaDD451" onkeypress="this.onclick();" onclick="showDownloadMenu(451, 5, 'agendaDD451', event, false); return false;" class="button"><span id="spanDD451">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD451" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="March 16, 2022, Planning Commission Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_03162022-451" id="anch2451edf5f165" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row448d2d35a1c" class="catAgendaRow">
+	<td>
+		<h4 id="h402162022-448">
+			<a id="_02162022-448" name="_02162022-448"></a>
+			<strong aria-label="Agenda for February 16, 2022"><abbr title="February">Feb</abbr> 16, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="February">Feb</abbr> 10, 2022 2:09 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="02162022-448" name="448" href="/AgendaCenter/ViewFile/Agenda/_02162022-448" target="_blank" aria-describedby="h402162022-448">
+		Planning Commission Meeting Cancellation Notice
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer448" class="popoutContainer">
+			<a href="" id="btnAgendaDD448" onkeypress="this.onclick();" onclick="showDownloadMenu(448, 5, 'agendaDD448', event, false); return false;" class="button"><span id="spanDD448">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD448" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="February 16, 2022, Planning Commission Meeting Cancellation Notice. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_02162022-448" id="anch2448d2d35a1c" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row445aab9fe8f" class="catAgendaRow">
+	<td>
+		<h4 id="h401192022-445">
+			<a id="_01192022-445" name="_01192022-445"></a>
+			<strong aria-label="Agenda for January 19, 2022"><abbr title="January">Jan</abbr> 19, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="January">Jan</abbr> 13, 2022 8:34 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="01192022-445" name="445" href="/AgendaCenter/ViewFile/Agenda/_01192022-445" target="_blank" aria-describedby="h401192022-445">
+		Planning Commission Meeting Cancellation Notice
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer445" class="popoutContainer">
+			<a href="" id="btnAgendaDD445" onkeypress="this.onclick();" onclick="showDownloadMenu(445, 5, 'agendaDD445', event, false); return false;" class="button"><span id="spanDD445">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD445" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="January 19, 2022, Planning Commission Meeting Cancellation Notice. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_01192022-445" id="anch2445aab9fe8f" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+		<!-- Agendas for a category ends -->					
+		</tbody>
+	</table>
+</span>
+				</div>
+		
+		<!-- Only render the section if there are agendas to display -->
+			
+				<div class="listing listingCollapse noHeader" id="cat15">
+					<h2 tabindex="0" onkeypress="this.onclick();" onclick="expandCollaspseCategory(15)"><span id="span15">&#9658</span>Public Safety Sales Tax Oversight Committee</h2>
+					
+
+<span id="section15">
+	<script type="text/javascript">
+	    //Remove href attribute from the year clicked.
+	    $(document).ready(function () {
+	        $('.current').children().removeAttr('href');
+	    });
+	</script>	
+		<ul class="years">	
+			<li class=current><a id="a015" aria-label="Public Safety Sales Tax Oversight Committee 2022" href="javascript:changeYear(2022, 15,'a0')">2022</a></li>
+			
+				<li ><a id="a115" aria-label="Public Safety Sales Tax Oversight Committee 2021" href="javascript:changeYear(2021, 15, 'a1')">2021</a></li>
+		
+				<li ><a id="a215" aria-label="Public Safety Sales Tax Oversight Committee 2020" href="javascript:changeYear(2020, 15, 'a2')">2020</a></li>
+			
+			<li>
+		
+				<div class="popoutContainer popUpParent">
+					<a href="" id="btnViewMore15" aria-label="ViewMore15" onkeypress="this.onclick();" onclick="showMoreYears(15, 'yearDD15', event); return false;">View More</a>
+					<div id="yearDD15" class="popout popUp" style="display:none;">
+						<div class="popoutTop">
+							<div class="popoutBtm">
+								<ol>
+							
+									<li><a id="anchYearDD315" aria-label="Public Safety Sales Tax Oversight Committee 2019" href="javascript:changeYear(2019, 15,'anchYearDD3')">2019</a></li>
+						
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+		
+			</li>
+		</ul>
+	<!--The table needs a position-relative to avoid weird issues with IE where the controls would just dissapear. -->
+	<table id="table15" summary="List of Agendas" style="display:none; position:relative;">
+		<thead>
+			<tr>
+				<th scope="col">
+					Agenda
+				</th>
+					<th scope="col" class="minutes">
+						Minutes
+					</th>
+				
+				<th scope="col" class="downloads">
+					Download
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		<!-- Agendas for a category starts -->
+	
+
+<tr id="row4609a79817d" class="catAgendaRow">
+	<td>
+		<h4 id="h405022022-460">
+			<a id="_05022022-460" name="_05022022-460"></a>
+			<strong aria-label="Agenda for May 2, 2022"><abbr title="May">May</abbr> 2, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="April">Apr</abbr> 29, 2022 12:38 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="05022022-460" name="460" href="/AgendaCenter/ViewFile/Agenda/_05022022-460" target="_blank" aria-describedby="h405022022-460">
+		Public Safety Sales Transactions &amp; Use Tax Citizen&#39;s Oversight Committee Meeting
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer460" class="popoutContainer">
+			<a href="" id="btnAgendaDD460" onkeypress="this.onclick();" onclick="showDownloadMenu(460, 15, 'agendaDD460', event, false); return false;" class="button"><span id="spanDD460">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD460" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="May 02, 2022, Public Safety Sales Transactions & Use Tax Citizen's Oversight Committee Meeting. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_05022022-460" id="anch24609a79817d" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+		<!-- Agendas for a category ends -->					
+		</tbody>
+	</table>
+</span>
+				</div>
+		
+		<!-- Only render the section if there are agendas to display -->
+			
+				<div class="listing listingCollapse noHeader" id="cat7">
+					<h2 tabindex="0" onkeypress="this.onclick();" onclick="expandCollaspseCategory(7)"><span id="span7">&#9658</span>Redevelopment Successor Agency Oversight Board (Former)</h2>
+					
+
+<span id="section7">
+	<script type="text/javascript">
+	    //Remove href attribute from the year clicked.
+	    $(document).ready(function () {
+	        $('.current').children().removeAttr('href');
+	    });
+	</script>	
+		<ul class="years">	
+			<li class=current><a id="a07" aria-label="Redevelopment Successor Agency Oversight Board (Former) 2018" href="javascript:changeYear(2018, 7,'a0')">2018</a></li>
+			
+				<li ><a id="a17" aria-label="Redevelopment Successor Agency Oversight Board (Former) 2017" href="javascript:changeYear(2017, 7, 'a1')">2017</a></li>
+		
+				<li ><a id="a27" aria-label="Redevelopment Successor Agency Oversight Board (Former) 2016" href="javascript:changeYear(2016, 7, 'a2')">2016</a></li>
+			
+			<li>
+		
+				<div class="popoutContainer popUpParent">
+					<a href="" id="btnViewMore7" aria-label="ViewMore7" onkeypress="this.onclick();" onclick="showMoreYears(7, 'yearDD7', event); return false;">View More</a>
+					<div id="yearDD7" class="popout popUp" style="display:none;">
+						<div class="popoutTop">
+							<div class="popoutBtm">
+								<ol>
+							
+									<li><a id="anchYearDD37" aria-label="Redevelopment Successor Agency Oversight Board (Former) 2015" href="javascript:changeYear(2015, 7,'anchYearDD3')">2015</a></li>
+						
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+		
+			</li>
+		</ul>
+	<!--The table needs a position-relative to avoid weird issues with IE where the controls would just dissapear. -->
+	<table id="table7" summary="List of Agendas" style="display:none; position:relative;">
+		<thead>
+			<tr>
+				<th scope="col">
+					Agenda
+				</th>
+					<th scope="col" class="minutes">
+						Minutes
+					</th>
+				
+				<th scope="col" class="downloads">
+					Download
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		<!-- Agendas for a category starts -->
+	
+
+<tr id="row2326ee72973" class="catAgendaRow">
+	<td>
+		<h4 id="h404262018-232">
+			<a id="_04262018-232" name="_04262018-232"></a>
+			<strong aria-label="Agenda for April 26, 2018"><abbr title="April">Apr</abbr> 26, 2018</strong>
+			
+			</a></h4>
+    <p>
+    
+			<a id="04262018-232" name="232" href="/AgendaCenter/ViewFile/Agenda/_04262018-232" target="_blank" aria-describedby="h404262018-232">
+		Redevelopment Successor Agency Oversight Board Regular Meeting - Notice of Cancellation 
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer232" class="popoutContainer">
+			<a href="" id="btnAgendaDD232" onkeypress="this.onclick();" onclick="showDownloadMenu(232, 7, 'agendaDD232', event, false); return false;" class="button"><span id="spanDD232">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD232" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="April 26, 2018, Redevelopment Successor Agency Oversight Board Regular Meeting - Notice of Cancellation . Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_04262018-232" id="anch22326ee72973" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row2276fc128b5" class="catAgendaRow">
+	<td>
+		<h4 id="h403222018-227">
+			<a id="_03222018-227" name="_03222018-227"></a>
+			<strong aria-label="Agenda for March 22, 2018"><abbr title="March">Mar</abbr> 22, 2018</strong>
+			
+			</a></h4>
+    <p>
+    
+			<a id="03222018-227" name="227" href="/AgendaCenter/ViewFile/Agenda/_03222018-227" target="_blank" aria-describedby="h403222018-227">
+		
+
+Redevelopment Successor Agency Oversight Board Regular Meeting - Notice of Cancellation
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer227" class="popoutContainer">
+			<a href="" id="btnAgendaDD227" onkeypress="this.onclick();" onclick="showDownloadMenu(227, 7, 'agendaDD227', event, false); return false;" class="button"><span id="spanDD227">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD227" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="March 22, 2018, 
+
+Redevelopment Successor Agency Oversight Board Regular Meeting - Notice of Cancellation. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_03222018-227" id="anch22276fc128b5" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row228e0dd9b93" class="catAgendaRow">
+	<td>
+		<h4 id="h402222018-228">
+			<a id="_02222018-228" name="_02222018-228"></a>
+			<strong aria-label="Agenda for February 22, 2018"><abbr title="February">Feb</abbr> 22, 2018</strong>
+			
+			</a></h4>
+    <p>
+    
+			<a id="02222018-228" name="228" href="/AgendaCenter/ViewFile/Agenda/_02222018-228" target="_blank" aria-describedby="h402222018-228">
+		Redevelopment Successor Agency Oversight Board Regular Meeting - Notice of Cancellation
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer228" class="popoutContainer">
+			<a href="" id="btnAgendaDD228" onkeypress="this.onclick();" onclick="showDownloadMenu(228, 7, 'agendaDD228', event, false); return false;" class="button"><span id="spanDD228">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD228" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="February 22, 2018, Redevelopment Successor Agency Oversight Board Regular Meeting - Notice of Cancellation. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_02222018-228" id="anch2228e0dd9b93" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row216a569da3f" class="catAgendaRow">
+	<td>
+		<h4 id="h401252018-216">
+			<a id="_01252018-216" name="_01252018-216"></a>
+			<strong aria-label="Agenda for January 25, 2018"><abbr title="January">Jan</abbr> 25, 2018</strong>
+			
+			</a></h4>
+    <p>
+    
+			<a id="01252018-216" name="216" href="/AgendaCenter/ViewFile/Agenda/_01252018-216" target="_blank" aria-describedby="h401252018-216">
+		Redevelopment Successor Agency Oversight Board Regular Meeting Agenda
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer216" class="popoutContainer">
+			<a href="" id="btnAgendaDD216" onkeypress="this.onclick();" onclick="showDownloadMenu(216, 7, 'agendaDD216', event, false); return false;" class="button"><span id="spanDD216">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD216" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="January 25, 2018, Redevelopment Successor Agency Oversight Board Regular Meeting Agenda. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_01252018-216" id="anch2216a569da3f" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+		<!-- Agendas for a category ends -->					
+		</tbody>
+	</table>
+</span>
+				</div>
+		
+	<!-- Categorylist ends -->
+
+		</div>
+		
+	</div>
+	<script type="text/javascript" src="/asset.axd?id=dgAAAB-LCAAAAAAABAAdjTkOhTAQQ-_iGgaGrcg1KBEFCkEiBUsY0P9CuTsDnfX8LN8YYbobGwxaG-ZNDiSYPrYo8_vpwj9laqgi_3YrTB772CewooK4n2R-uIbjW6twKS1yZiqJmWslVj_KptYAI-F08QHSzjRqdgAAAA%3d%3d"></script>
+	
+		
+	
+<!-- END AgendaCenterContent.aspx ***** -->   
+
+	
+	<div class="newCP">
+
+	</div>
+</div>
+</div><aside data-cpRole="contentContainer" id="featureColumn" class="secondaryContent">	<div id="ccb20af2da-96d9-4f4c-9a98-2131c34afc6e" data-containerid="b20af2da-96d9-4f4c-9a98-2131c34afc6e" class="pageContent cpGrid cpGrid24 showInMobile">
+				                
+
+
+
+	</div>
+</aside>
+</div><div data-cpRole="structuralContainer" id="siteSidebarTS" class="siteSidebar">
+<aside data-cpRole="contentContainer" id="sidebarContainer1TS">	<div id="ccde2f3e84-f6d1-4ec4-b30f-d275c202d13e" data-containerid="de2f3e84-f6d1-4ec4-b30f-d275c202d13e" class="pageContent cpGrid cpGrid24 showInMobile">
+				                
+
+
+
+	</div>
+</aside><nav data-cpRole="nav" id="secondaryNav" class="siteNav secondaryNav">
+
+
+
+
+	<ol role="menu" id="secondaryMenusecondaryNav" data-parent="4" class="rootNavMenu accordionNav arrowIndicator">
+	<li role="menuitem" aria-haspopup="true" class="topMenuItem sideNavLi hasAccordionChildren" id="SideItem72" data-pageid="72">
+		<div class="accordionNavItem">
+			<a href="/72/Employee-CITYWebNET" target="_self" class="navMainItem secondaryNavItem cpComponent" data-type="SecondaryMainItem">Employee CITYWebNET</a>
+		</div>
+			</li>
+	<li role="menuitem" aria-haspopup="true" class="topMenuItem sideNavLi hasAccordionChildren" id="SideItem336" data-pageid="336">
+		<div class="accordionNavItem">
+			<a href="/336/News" target="_self" class="navMainItem secondaryNavItem cpComponent" data-type="SecondaryMainItem">News </a>
+		</div>
+			</li>
+
+	</ol>
+
+
+	<script type="text/javascript">
+        $(document).ready(function () {
+            //setup menu manager properties for secondary menu
+            menuManager.isSideMenuEditable = false;
+		    menuManager.sideMenuMaxSubMenuLevels = 4;
+            menuManager.sideMenuHasCustomLinks = true;
+        });
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('*[id^="SideItem"]').each(function () {
+				var ids = $('[id="' + this.id + '"]');
+				if (ids.length > 1)
+					$.each(ids, function (index, value) {
+						value.id = value.id + '_' + index;
+					});
+			});
+
+			$('.hasAccordionChildren .openAccordionNav').click(function (e) {
+				e.preventDefault();
+				showHideAccordionMenuForSecondaryNav($(this));
+			});
+
+			$("#secondaryNav .grippy").each(function () {
+				menuManager.setupDraggableElement($(this), SIDE_MENU, '#secondaryNav');
+			});
+
+			$("#secondaryNav li").each(function () {
+				menuManager.setupDroppableAccordionElement($(this), SIDE_MENU);
+			});
+		});
+	</script>
+
+
+
+</nav><aside data-cpRole="contentContainer" id="sidebarContainer2TS">	<div id="ccdfef5ff3-9a26-4cc8-8ff0-93a033830167" data-containerid="dfef5ff3-9a26-4cc8-8ff0-93a033830167" class="pageContent cpGrid cpGrid24 showInMobile">
+				                
+
+
+
+	</div>
+</aside>
+</div>
+</div></div>
+</div><!-- GBs --><div data-cpRole="structuralContainer" id="gbsContainerTS">
+<div class="siteWrap2"><div data-cpRole="contentContainer" id="gbsTS">	<div id="ccb12a8362-dee5-4c44-a782-7eb413c7e9bb" data-containerid="b12a8362-dee5-4c44-a782-7eb413c7e9bb" class="pageContent cpGrid cpGrid24 isLockedContainer showInMobile" data-contentcontainerbreakpoint="35">
+				                
+
+		<div class="row outer wide"><!--
+--><div class="outer col col8 first" style="" data-widgetcontainerid="ac6ead69-1316-4d80-8e86-70722458205a">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col8 first last id23c8baf1-1339-425c-8ac5-44971941cb39" style="" data-widgetcontainerid="23c8baf1-1339-425c-8ac5-44971941cb39">	
+<div data-widget-id="d9cd7e58-3838-435b-ba4d-96647c450ce5" data-widget-controller-path="/GraphicLinks/Widget">
+
+
+
+
+<div id="graphicLinkWidgetd9cd7e58-3838-435b-ba4d-96647c450ce5" class="widget widgetGraphicLinks skin65 widgetOptionSet4 wide" data-elementqueryclasses='{"wide-narrow":"min-width:23em"}' data-elementquerymatch='matchMultiColumn' data-elementqueryunmatch='unmatchMultiColumn' data-modulewidgettype="graphicLinks">
+	<div class="widgetHeader">
+		<div class="">
+				</div>
+	</div>
+	<div class="widgetBody cpGrid cpGrid2 ">	
+			<div class="row   wide"><!--
+--><div class="col col1 first "><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks">
+
+<div>
+	<a href="/AgendaCenter" target="_self" class="fancyButton fancyButton198 " >
+		<span>
+			<span><span class="text">Council Meetings<br></span></span>
+		</span>
+	</a>
+</div>
+		<style scoped="scoped">.fancyButton198.fancyButton:link,.fancyButton198.fancyButton:visited, .fancyButton198div.fancyButton{
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.fancyButton198.fancyButton:hover,.fancyButton198.fancyButton:focus,.fancyButton198.fancyButton:active,.fancyButton198.fancyButton.hover{
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.fancyButton198.fancyButton:link > span,.fancyButton198.fancyButton:visited > span, .fancyButton198div.fancyButton > span{
+}
+.fancyButton198.fancyButton:hover > span,.fancyButton198.fancyButton:focus > span,.fancyButton198.fancyButton:active > span,.fancyButton198.fancyButton.hover > span{
+}
+.fancyButton198.fancyButton .text{
+	color: #3e3e3e;
+	font-size: 1.15em;
+	font-family: "Montserrat";
+	padding-top: 180px;
+	font-weight: 600;
+	text-decoration: none;
+	padding-top: 180px;
+	background-image: url('/ImageRepository/Document?documentID=2611');
+	background-repeat: no-repeat;
+	background-position: center 10px ;
+transition: all .3s ease-in-out;
+line-height: 1.2;
+}
+.fancyButton198.fancyButton:hover .text,.fancyButton198.fancyButton:focus .text,.fancyButton198.fancyButton:active .text,.fancyButton198.fancyButton.hover .text{
+	text-decoration: underline;
+	background-image: url('/ImageRepository/Document?documentID=2612');
+	background-repeat: no-repeat;
+	background-position: center top;
+
+
+}
+</style>
+
+ </div><!--
+--></div></div><!----><div class="col col1  last"><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks">
+
+<div>
+	<a href="/324/City-Council-Procedures-Webex-Instructio" target="_self" class="fancyButton fancyButton196 " >
+		<span>
+			<span><span class="text">Meeting Procedures<br>&amp; Zoom</span></span>
+		</span>
+	</a>
+</div>
+		<style scoped="scoped">.fancyButton196.fancyButton:link,.fancyButton196.fancyButton:visited, .fancyButton196div.fancyButton{
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.fancyButton196.fancyButton:hover,.fancyButton196.fancyButton:focus,.fancyButton196.fancyButton:active,.fancyButton196.fancyButton.hover{
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.fancyButton196.fancyButton:link > span,.fancyButton196.fancyButton:visited > span, .fancyButton196div.fancyButton > span{
+}
+.fancyButton196.fancyButton:hover > span,.fancyButton196.fancyButton:focus > span,.fancyButton196.fancyButton:active > span,.fancyButton196.fancyButton.hover > span{
+}
+.fancyButton196.fancyButton .text{
+	color: #3e3e3e;
+	font-size: 1.15em;
+	font-family: "Montserrat";
+	padding-top: 180px;
+	font-weight: 600;
+	text-decoration: none;
+	padding-top: 180px;
+	background-image: url(/ImageRepository/Document?documentID=2620);
+	background-repeat: no-repeat;
+	background-position: center 10px ;
+transition: all .3s ease-in-out;
+line-height: 1.2;
+}
+.fancyButton196.fancyButton:hover .text,.fancyButton196.fancyButton:focus .text,.fancyButton196.fancyButton:active .text,.fancyButton196.fancyButton.hover .text{
+	text-decoration: underline;
+	background-image: url(/ImageRepository/Document?documentID=2621);
+	background-repeat: no-repeat;
+	background-position: center top;
+
+
+}
+</style>
+
+ </div><!--
+--></div></div><!--			--></div>
+	</div>
+	<div class="widgetFooter">
+			</div>
+</div>
+
+</div>
+	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!----><div class="outer col col8" style="" data-widgetcontainerid="d8ca6d17-6c84-46c0-9e68-64b09791d086">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col8 first last id570b241a-c1c2-4840-ad9d-5a3239adb4be" style="" data-widgetcontainerid="570b241a-c1c2-4840-ad9d-5a3239adb4be">	
+<div data-widget-id="825d6b79-3fbc-4698-a562-7deba7f94412" data-widget-controller-path="/GraphicLinks/Widget">
+
+
+
+
+<div id="graphicLinkWidget825d6b79-3fbc-4698-a562-7deba7f94412" class="widget widgetGraphicLinks skin65 widgetOptionSet4 wide" data-elementqueryclasses='{"wide-narrow":"min-width:23em"}' data-elementquerymatch='matchMultiColumn' data-elementqueryunmatch='unmatchMultiColumn' data-modulewidgettype="graphicLinks">
+	<div class="widgetHeader">
+		<div class="">
+				</div>
+	</div>
+	<div class="widgetBody cpGrid cpGrid2 ">	
+			<div class="row   wide"><!--
+--><div class="col col1 first "><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks">
+
+<div>
+	<a href="https://www.municipalonlinepayments.com/chowchillaca" target="_self" class="fancyButton fancyButton156 " >
+		<span>
+			<span><span class="text">Online Payment<br>Opportunities</span></span>
+		</span>
+	</a>
+</div>
+		<style scoped="scoped">.fancyButton156.fancyButton:link,.fancyButton156.fancyButton:visited, .fancyButton156div.fancyButton{
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.fancyButton156.fancyButton:hover,.fancyButton156.fancyButton:focus,.fancyButton156.fancyButton:active,.fancyButton156.fancyButton.hover{
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.fancyButton156.fancyButton:link > span,.fancyButton156.fancyButton:visited > span, .fancyButton156div.fancyButton > span{
+}
+.fancyButton156.fancyButton:hover > span,.fancyButton156.fancyButton:focus > span,.fancyButton156.fancyButton:active > span,.fancyButton156.fancyButton.hover > span{
+}
+.fancyButton156.fancyButton .text{
+	color: #3e3e3e;
+	font-size: 1.15em;
+	font-family: "Montserrat";
+	padding-top: 180px;
+	font-weight: 600;
+	text-decoration: none;
+	padding-top: 180px;
+	background-image: url('/ImageRepository/Document?documentID=2615');
+	background-repeat: no-repeat;
+	background-position: center 10px ;
+transition: all .3s ease-in-out;
+line-height: 1.2;
+}
+.fancyButton156.fancyButton:hover .text,.fancyButton156.fancyButton:focus .text,.fancyButton156.fancyButton:active .text,.fancyButton156.fancyButton.hover .text{
+	text-decoration: underline;
+	background-image: url('/ImageRepository/Document?documentID=2616');
+	background-repeat: no-repeat;
+	background-position: center top;
+
+
+}
+</style>
+
+ </div><!--
+--></div></div><!----><div class="col col1  last"><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks">
+
+<div>
+	<a href="/DocumentCenter/View/2721/2022-Welcome-Packet" target="_blank" class="fancyButton fancyButton199 "  aria-label="Welcome Packet<br>Start Your Services opens in new window">
+		<span>
+			<span><span class="text">Welcome Packet<br>Start Your Services</span></span>
+		</span>
+	</a>
+</div>
+		<style scoped="scoped">.fancyButton199.fancyButton:link,.fancyButton199.fancyButton:visited, .fancyButton199div.fancyButton{
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.fancyButton199.fancyButton:hover,.fancyButton199.fancyButton:focus,.fancyButton199.fancyButton:active,.fancyButton199.fancyButton.hover{
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.fancyButton199.fancyButton:link > span,.fancyButton199.fancyButton:visited > span, .fancyButton199div.fancyButton > span{
+}
+.fancyButton199.fancyButton:hover > span,.fancyButton199.fancyButton:focus > span,.fancyButton199.fancyButton:active > span,.fancyButton199.fancyButton.hover > span{
+}
+.fancyButton199.fancyButton .text{
+	color: #3e3e3e;
+	font-size: 1.15em;
+	font-family: "Montserrat";
+	padding-top: 180px;
+	font-weight: 600;
+	text-decoration: none;
+	padding-top: 180px;
+	background-image: url('/ImageRepository/Document?documentID=2617');
+	background-repeat: no-repeat;
+	background-position: center 10px ;
+transition: all .3s ease-in-out;
+line-height: 1.2;
+}
+.fancyButton199.fancyButton:hover .text,.fancyButton199.fancyButton:focus .text,.fancyButton199.fancyButton:active .text,.fancyButton199.fancyButton.hover .text{
+	text-decoration: underline;
+	background-image: url('/ImageRepository/Document?documentID=2618');
+	background-repeat: no-repeat;
+	background-position: center top;
+
+
+}
+</style>
+
+ </div><!--
+--></div></div><!--			--></div>
+	</div>
+	<div class="widgetFooter">
+			</div>
+</div>
+
+</div>
+	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!----><div class="outer col col8 last" style="" data-widgetcontainerid="6c803b1a-3e4b-4154-aabf-5226d24ba745">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col8 first last idf88ac14c-6a73-4934-925a-3135469c5531" style="" data-widgetcontainerid="f88ac14c-6a73-4934-925a-3135469c5531">	
+<div data-widget-id="ba63c683-a210-4b0b-8983-d417f3b8e79b" data-widget-controller-path="/GraphicLinks/Widget">
+
+
+
+
+<div id="graphicLinkWidgetba63c683-a210-4b0b-8983-d417f3b8e79b" class="widget widgetGraphicLinks skin65 widgetOptionSet4 wide" data-elementqueryclasses='{"wide-narrow":"min-width:23em"}' data-elementquerymatch='matchMultiColumn' data-elementqueryunmatch='unmatchMultiColumn' data-modulewidgettype="graphicLinks">
+	<div class="widgetHeader">
+		<div class="">
+				</div>
+	</div>
+	<div class="widgetBody cpGrid cpGrid2 ">	
+			<div class="row   wide"><!--
+--><div class="col col1 first "><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks">
+
+<div>
+	<a href="/150/Human-Resources-Employment" target="_self" class="fancyButton fancyButton197 " >
+		<span>
+			<span><span class="text">Job Openings</span></span>
+		</span>
+	</a>
+</div>
+		<style scoped="scoped">.fancyButton197.fancyButton:link,.fancyButton197.fancyButton:visited, .fancyButton197div.fancyButton{
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.fancyButton197.fancyButton:hover,.fancyButton197.fancyButton:focus,.fancyButton197.fancyButton:active,.fancyButton197.fancyButton.hover{
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.fancyButton197.fancyButton:link > span,.fancyButton197.fancyButton:visited > span, .fancyButton197div.fancyButton > span{
+}
+.fancyButton197.fancyButton:hover > span,.fancyButton197.fancyButton:focus > span,.fancyButton197.fancyButton:active > span,.fancyButton197.fancyButton.hover > span{
+}
+.fancyButton197.fancyButton .text{
+	color: #3e3e3e;
+	font-size: 1.15em;
+	font-family: "Montserrat";
+	padding-top: 180px;
+	font-weight: 600;
+	text-decoration: none;
+	padding-top: 180px;
+	background-image: url('/ImageRepository/Document?documentID=2613');
+	background-repeat: no-repeat;
+	background-position: center 10px ;
+transition: all .3s ease-in-out;
+line-height: 1.2;
+}
+.fancyButton197.fancyButton:hover .text,.fancyButton197.fancyButton:focus .text,.fancyButton197.fancyButton:active .text,.fancyButton197.fancyButton.hover .text{
+	text-decoration: underline;
+	background-image: url('/ImageRepository/Document?documentID=2614');
+	background-repeat: no-repeat;
+	background-position: center top;
+
+
+}
+</style>
+
+ </div><!--
+--></div></div><!----><div class="col col1  last"><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks">
+
+<div>
+	<a href="https://secure.rec1.com/CA/city-of-chowchilla-ca/catalog" target="_self" class="fancyButton fancyButton159 " >
+		<span>
+			<span><span class="text">Park Reservations<br>&amp; Events</span></span>
+		</span>
+	</a>
+</div>
+		<style scoped="scoped">.fancyButton159.fancyButton:link,.fancyButton159.fancyButton:visited, .fancyButton159div.fancyButton{
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.fancyButton159.fancyButton:hover,.fancyButton159.fancyButton:focus,.fancyButton159.fancyButton:active,.fancyButton159.fancyButton.hover{
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.fancyButton159.fancyButton:link > span,.fancyButton159.fancyButton:visited > span, .fancyButton159div.fancyButton > span{
+}
+.fancyButton159.fancyButton:hover > span,.fancyButton159.fancyButton:focus > span,.fancyButton159.fancyButton:active > span,.fancyButton159.fancyButton.hover > span{
+}
+.fancyButton159.fancyButton .text{
+	color: #3e3e3e;
+	font-size: 1.15em;
+	font-family: "Montserrat";
+	padding-top: 180px;
+	font-weight: 600;
+	text-decoration: none;
+	padding-top: 180px;
+	background-image: url('/ImageRepository/Document?documentID=2622');
+	background-repeat: no-repeat;
+	background-position: center 10px ;
+transition: all .3s ease-in-out;
+line-height: 1.2;
+}
+.fancyButton159.fancyButton:hover .text,.fancyButton159.fancyButton:focus .text,.fancyButton159.fancyButton:active .text,.fancyButton159.fancyButton.hover .text{
+	text-decoration: underline;
+	background-image: url('/ImageRepository/Document?documentID=2619');
+	background-repeat: no-repeat;
+	background-position: center top;
+
+
+}
+</style>
+
+ </div><!--
+--></div></div><!--			--></div>
+	</div>
+	<div class="widgetFooter">
+			</div>
+</div>
+
+</div>
+	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!--		--></div> <!-- outer row -->
+
+
+	</div>
+</div></div>
+</div><!-- Calendar/Carousel --><!-- <div data-cpRole="structuralContainer" id="homeContainer1">
+    <div class="siteWrap2">
+      <div data-cpRole="contentContainer" id="homeContent1a"></div>
+    </div>
+  </div> --><!-- Footer --><footer data-cpRole="structuralContainer" id="footerContainerTS">
+<div class="siteWrap2"><div data-cpRole="contentContainer" id="footerTS">	<div id="cc3f8c2f77-1be2-46b0-a491-614cf7efef27" data-containerid="3f8c2f77-1be2-46b0-a491-614cf7efef27" class="pageContent cpGrid cpGrid24 isLockedContainer showInMobile" data-contentcontainerbreakpoint="62">
+				                
+
+		<div class="row outer wide"><!--
+--><div class="outer col col7 first" style="" data-widgetcontainerid="b00361b3-773c-434f-b818-31342bc74c33">				
+	<div class="row nest first wide">
+	
+	<div class="inner col col7 first last id2e0b76be-73e4-41e6-8e89-3c31f4eabfbb" style="" data-widgetcontainerid="2e0b76be-73e4-41e6-8e89-3c31f4eabfbb">	
+    <div data-widget-id="8929ca84-ae5a-4cda-8b49-1969c48a312d" data-widget-controller-path="/InfoAdvanced/Widget">
+
+
+
+
+
+	<section id="divInfoAdv8929ca84-ae5a-4cda-8b49-1969c48a312d" class="widget widgetInfoAdvanced skin68 widgetOptionSet5 wide" data-modulewidgettype="infoAdv" data-elementqueryclasses='{"wide-narrow":"min-width:25em"}' data-elementquerymatch='matchMultiColumn' data-elementqueryunmatch='unmatchMultiColumn' aria-label="Info Advanced">
+			<header class="widgetHeader" id="header8929ca84-ae5a-4cda-8b49-1969c48a312d">
+		<div class="">
+								</div>
+	</header>
+	<div class="widgetBody  cpGrid cpGrid1 ">
+		<div class="row  wide">
+					<div class="col col1 first last">
+						<ol class="pageStyles semanticList">
+
+<li class="InfoAdvanced widgetItem fr-view">
+	<p><img src="/ImageRepository/Document?documentId=2627" class="fr-dib" alt="Chowchilla Logo"></p>
+</li>						</ol>
+					</div>
+		</div>
+	</div>
+	<div class="widgetFooter">
+
+	</div>
+
+	</section>
+
+
+
+<script type="text/javascript">
+	//Render slideshow if info advacned items contain one.
+	$(document).ready(function (e) {
+		$('#divInfoAdv8929ca84-ae5a-4cda-8b49-1969c48a312d .InfoAdvanced.widgetItem').each(function () {
+			renderSlideshowIfApplicable($(this));		
+		});
+	});
+</script></div>	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+	<div class="row nest last wide">
+	
+	<div class="inner col col7 first last idf0cd10f3-6982-4796-8b56-23f2fa7306c6" style="" data-widgetcontainerid="f0cd10f3-6982-4796-8b56-23f2fa7306c6">	
+<div data-widget-id="c1cfda3d-685e-4ae4-9023-1db7eaec15ba" data-widget-controller-path="/GraphicLinks/Widget">
+
+
+
+
+<div id="graphicLinkWidgetc1cfda3d-685e-4ae4-9023-1db7eaec15ba" class="widget widgetGraphicLinks skin68 widgetOptionSet34 wide" data-elementqueryclasses='{"wide-narrow":"min-width:25em"}' data-elementquerymatch='matchMultiColumn' data-elementqueryunmatch='unmatchMultiColumn' data-modulewidgettype="graphicLinks">
+	<div class="widgetHeader">
+		<div class="">
+				</div>
+	</div>
+	<div class="widgetBody cpGrid cpGrid1 ">	
+			<div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks">
+
+<div>
+	<a href="/myaccount" target="_self" class="fancyButton fancyButton182 " >
+		<span>
+			<span><span class="text">Employee Login</span></span>
+		</span>
+	</a>
+</div>
+		<style scoped="scoped">.fancyButton182.fancyButton:link,.fancyButton182.fancyButton:visited, .fancyButton182div.fancyButton{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-image: url('/ImageRepository/Document?documentID=2629');
+	background-repeat: no-repeat;
+	background-position: left center;
+max-width: 180px;
+margin: 0 auto;
+}
+.fancyButton182.fancyButton:hover,.fancyButton182.fancyButton:focus,.fancyButton182.fancyButton:active,.fancyButton182.fancyButton.hover{
+	background-image: url('/ImageRepository/Document?documentID=2628');
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+.fancyButton182.fancyButton:link > span,.fancyButton182.fancyButton:visited > span, .fancyButton182div.fancyButton > span{
+}
+.fancyButton182.fancyButton:hover > span,.fancyButton182.fancyButton:focus > span,.fancyButton182.fancyButton:active > span,.fancyButton182.fancyButton.hover > span{
+}
+.fancyButton182.fancyButton .text{
+	color: #ffffff;
+	font-size: 1.1em;
+	font-family: "Montserrat";
+	text-align: right;
+	font-weight: 600;
+	font-style: italic;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+
+
+}
+.fancyButton182.fancyButton:hover .text,.fancyButton182.fancyButton:focus .text,.fancyButton182.fancyButton:active .text,.fancyButton182.fancyButton.hover .text{
+	text-decoration: underline;
+	background-repeat: no-repeat;
+	background-position: left top;
+
+
+}
+</style>
+
+ </div><!--
+			--></div>
+	</div>
+	<div class="widgetFooter">
+			</div>
+</div>
+
+</div>
+	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!----><div class="outer col col5" style="" data-widgetcontainerid="4328e27f-5f76-4c43-bec5-83ec3bd75055">				
+	<div class="row nest first wide">
+	
+	<div class="inner col col5 first last idca8b3034-5efc-4f78-a9e7-0d55d24dce8e" style="" data-widgetcontainerid="ca8b3034-5efc-4f78-a9e7-0d55d24dce8e">	
+    <div data-widget-id="4477b24c-adf5-417c-8f70-cd759bad99ee" data-widget-controller-path="/InfoAdvanced/Widget">
+
+
+
+
+
+	<section id="divInfoAdv4477b24c-adf5-417c-8f70-cd759bad99ee" class="widget widgetInfoAdvanced skin64 widgetOptionSet5 wide" data-modulewidgettype="infoAdv" data-elementqueryclasses='{"wide-narrow":"min-width:25em"}' data-elementquerymatch='matchMultiColumn' data-elementqueryunmatch='unmatchMultiColumn' aria-labelledby="header4477b24c-adf5-417c-8f70-cd759bad99ee">
+			<header class="widgetHeader" id="header4477b24c-adf5-417c-8f70-cd759bad99ee">
+		<div class="">
+					<h3 >Contact Us</h3>
+								</div>
+	</header>
+	<div class="widgetBody  cpGrid cpGrid1 ">
+		<div class="row  wide">
+					<div class="col col1 first last">
+						<ol class="pageStyles semanticList">
+
+<li class="InfoAdvanced widgetItem fr-view">
+	<p>130 S 2nd Street</p>
+</li>
+<li class="InfoAdvanced widgetItem fr-view">
+	<p>Chowchilla, CA 93610</p>
+</li>
+<li class="InfoAdvanced widgetItem fr-view">
+	<p>Phone: <a href="tel:5596658615">559-665-8615</a></p><p><br></p>
+</li>
+<li class="InfoAdvanced widgetItem fr-view">
+	<p><a href="/directory">Send Us an Email</a></p>
+</li>
+<li class="InfoAdvanced widgetItem fr-view">
+	<p><a href="/directory">Staff Directory</a></p><p><br></p>
+</li>						</ol>
+					</div>
+		</div>
+	</div>
+	<div class="widgetFooter">
+
+	</div>
+
+	</section>
+
+
+
+<script type="text/javascript">
+	//Render slideshow if info advacned items contain one.
+	$(document).ready(function (e) {
+		$('#divInfoAdv4477b24c-adf5-417c-8f70-cd759bad99ee .InfoAdvanced.widgetItem').each(function () {
+			renderSlideshowIfApplicable($(this));		
+		});
+	});
+</script></div>	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+	<div class="row nest last wide">
+	
+	<div class="inner col col5 first last idee547c5b-3cce-493e-93e0-d14f8efbfb93" style="" data-widgetcontainerid="ee547c5b-3cce-493e-93e0-d14f8efbfb93">	
+ 
+	<div data-widget-id='6440ec93-e879-4d2a-8f0d-c8a3b75e05a0' data-moduleName="customHtml" id='widgetCustomHtml6440ec93-e879-4d2a-8f0d-c8a3b75e05a0' class="widget widgetCustomHtml skin64 narrow" >
+	<div class="widgetBody pageStyles" id="widgetBody6440ec93-e879-4d2a-8f0d-c8a3b75e05a0">
+		<div id="customHtml6440ec93-e879-4d2a-8f0d-c8a3b75e05a0"><div><style>
+  /* CP icon */
+  .cpBylineIconTS {
+    color: #fff;
+  }
+  /* CP Text */
+  .cpBylineTextTS,
+  .cpBylineTextTS a:link {
+    color: #fff;
+  }
+
+  .cpBylineTS {
+    margin-top: 5em;
+  }
+  
+  .cpBylineIconTS {
+    fill: currentColor;
+    width: 39px;
+    height: 26px;
+    display: inline;
+    vertical-align: middle;
+  }
+</style>
+
+<div class="widgetItem cpBylineTS">
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100" class="cpBylineIconTS">
+    <path class="c" d="M73.4,23.2h-19v16.7h19c2.8,0,5,2.2,5,5c0,2.8-2.2,5-5,5h-19v28.4h5.5l11.3-11.7h2.2c11.9,0,21.6-9.7,21.6-21.6C95,33,85.3,23.2,73.4,23.2"></path>
+    <path class="p" d="M45.8,66.5H26.6C14.7,66.5,5,56.8,5,44.9C5,33,14.7,23.2,26.6,23.2h19.1v16.7H26.6c-2.8,0-5,2.2-5,5c0,2.8,2.2,5,5,5h19.1V66.5z"></path>
+  </svg>
+  <span class="cpBylineTextTS">Government Websites by <a href="https://connect.civicplus.com/referral">CivicPlus&reg;</a></span>
+</div>
+</div></div>
+	</div>
+	</div>
+	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!----><div class="outer col col7" style="" data-widgetcontainerid="d42956df-691c-4395-8afe-8ef7f2b9dd4d">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col7 first last idbd801460-998e-4c52-a9d7-518912c68a7c" style="" data-widgetcontainerid="bd801460-998e-4c52-a9d7-518912c68a7c">	
+	<div data-widget-id="9e077929-dd3d-45cc-aafb-b58307994e78" data-widget-controller-path="/QuickLinks/Widget">
+
+
+
+
+
+ 
+
+
+	<section id="widgetQuicklink9e077929-dd3d-45cc-aafb-b58307994e78" class="widget widgetQuickLinks skin64 widgetOptionSet35 narrow" data-modulewidgettype="quickLinks" data-elementqueryclasses='{"wide-narrow":"min-width:25em"}' data-elementquerymatch='matchMultiColumn' data-elementqueryunmatch='unmatchMultiColumn' aria-labelledby="quickLinksHeader9e077929-dd3d-45cc-aafb-b58307994e78">
+			<header class="widgetHeader" id="quickLinksHeader9e077929-dd3d-45cc-aafb-b58307994e78">
+		<div class="">
+					<h3><a  style="" href="/QuickLinks.aspx?CID=48" >Quick Links</a></h3>
+						</div>
+	</header>
+	<div class="widgetBody cpGrid cpGrid1 ">
+        <div class="row  narrow">
+				<div class="col col1 first last">
+					<ol class="semanticList">
+
+    <li style="position:relative" class="widgetItem QuickLinks">
+        <a class="widgetDesc widgetQuickLinksLink" href="/documentcenter/view/2533" target="_blank"  aria-label="Mid Valley - State Senate Bill 1383 (PDF) opens in new window">Mid Valley - State Senate Bill 1383 (PDF)</a>
+    </li>
+
+    <li style="position:relative" class="widgetItem QuickLinks">
+        <a class="widgetDesc widgetQuickLinksLink" href="https://www.cityofchowchilla.org/DocumentCenter/View/2555/Recycling-Guide---3-Services" target="_blank"  aria-label="Recycling Guide (PDF) opens in new window">Recycling Guide (PDF)</a>
+    </li>
+
+    <li style="position:relative" class="widgetItem QuickLinks">
+        <a class="widgetDesc widgetQuickLinksLink" href="/DocumentCenter/View/1532/Summer-Watering-Schedule-PDF" target="_self" >Summer Outdoor Watering Schedule (PDF)</a>
+    </li>
+
+    <li style="position:relative" class="widgetItem QuickLinks">
+        <a class="widgetDesc widgetQuickLinksLink" href="/DocumentCenter/View/2026/Street-Sweeping-Routes-2020-fal" target="_blank"  aria-label="Street Sweeping Schedule (PDF) opens in new window">Street Sweeping Schedule (PDF)</a>
+    </li>
+
+    <li style="position:relative" class="widgetItem QuickLinks">
+        <a class="widgetDesc widgetQuickLinksLink" href="/334/sandbag-information" target="_self" >Sandbag Information</a>
+    </li>
+					</ol>
+				</div>
+		</div>
+        
+	</div>
+	<div class="widgetFooter">
+	</div>
+	<div class="addItemModal hidden">
+		<div class="url hidden">/QuickLinks.aspx</div>
+	</div>
+
+	</section>
+</div>
+	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!----><div class="outer col col5 last" style="" data-widgetcontainerid="754879b6-77e4-4a98-91db-9904582087c5">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col5 first last id87b397de-f609-4abd-9fb9-95e0c4c3eb68" style="" data-widgetcontainerid="87b397de-f609-4abd-9fb9-95e0c4c3eb68">	
+	<div data-widget-id="7ab1acdf-e8ac-4c76-8d2c-32c709e191b1" data-widget-controller-path="/QuickLinks/Widget">
+
+
+
+
+
+ 
+
+
+	<section id="widgetQuicklink7ab1acdf-e8ac-4c76-8d2c-32c709e191b1" class="widget widgetQuickLinks skin64 widgetOptionSet35 narrow" data-modulewidgettype="quickLinks" data-elementqueryclasses='{"wide-narrow":"min-width:25em"}' data-elementquerymatch='matchMultiColumn' data-elementqueryunmatch='unmatchMultiColumn' aria-labelledby="quickLinksHeader7ab1acdf-e8ac-4c76-8d2c-32c709e191b1">
+			<header class="widgetHeader" id="quickLinksHeader7ab1acdf-e8ac-4c76-8d2c-32c709e191b1">
+		<div class="">
+					<h3><a  style="" href="/QuickLinks.aspx?CID=49" >Site Links</a></h3>
+						</div>
+	</header>
+	<div class="widgetBody cpGrid cpGrid1 ">
+        <div class="row  narrow">
+				<div class="col col1 first last">
+					<ol class="semanticList">
+
+    <li style="position:relative" class="widgetItem QuickLinks">
+        <a class="widgetDesc widgetQuickLinksLink" href="/sitemap" target="_self" >Site Map</a>
+    </li>
+
+    <li style="position:relative" class="widgetItem QuickLinks">
+        <a class="widgetDesc widgetQuickLinksLink" href="https://cityofchowchilla.org/72/Employee-CITYWebNET" target="_self" >CITYWebNET</a>
+    </li>
+
+    <li style="position:relative" class="widgetItem QuickLinks">
+        <a class="widgetDesc widgetQuickLinksLink" href="/" target="_self" >Mission</a>
+    </li>
+
+    <li style="position:relative" class="widgetItem QuickLinks">
+        <a class="widgetDesc widgetQuickLinksLink" href="/accessibility" target="_self" >Accessibility</a>
+    </li>
+
+    <li style="position:relative" class="widgetItem QuickLinks">
+        <a class="widgetDesc widgetQuickLinksLink" href="/privacy" target="_self" >Privacy</a>
+    </li>
+					</ol>
+				</div>
+		</div>
+        
+	</div>
+	<div class="widgetFooter">
+	</div>
+	<div class="addItemModal hidden">
+		<div class="url hidden">/QuickLinks.aspx</div>
+	</div>
+
+	</section>
+</div>
+	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!--		--></div> <!-- outer row -->
+
+
+	</div>
+</div></div>
+</footer><!-- Powered By --><!-- <div data-cpRole="structuralContainer" id="poweredByContainerTS">
+    <div class="siteWrap2">
+      <div data-cpRole="contentContainer" id="poweredByTS"></div>
+    </div>
+  </div> -->
+
+
+
+
+			<div id="bannerImagesJSON56" class="hidden"></div>
+				<div id="bannerSlideshowControls_banner69" class="bannerSlideshowControlsNew none " style="display:none">
+					<button id="arrowPrev_banner69" class="arrowNew prev cp-Btn--nonStyled" aria-label="Banner Arrow Previous"><svg class=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#iconSlideshowArrowLeft"></use></svg></button>
+					<button id="arrowNext_banner69" class="arrowNew next cp-Btn--nonStyled" aria-label="Banner Arrow Next"><svg class=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#iconSlideshowArrowRight"></use></svg></button>
+				</div>
+			<script type="text/javascript">
+				onOrLive($(window), function () {
+					$.when(window.Pages.rwdSetupComplete)
+						.done(function () {
+							renderExternalBannerSlideshow('banner69',
+									{"BannerOptionID":56,"ThemeID":18,"SlotName":"banner69","Name":"Default","IsDefault":true,"BannerMode":2,"SlideShowSlideTiming":"5","SlideshowTransition":0,"SlideShowTransitionTiming":"1","ImageScale":true,"ImageAlignment":1,"ImageScroll":false,"MuteSound":true,"VideoType":0,"Status":40,"SlideshowControlsPosition":0,"SlideshowControlsAlignment":0,"SlideshowBannerControlsColorScheme":0,"BannerImages":[{"BannerImageID":86,"BannerOptionID":56,"FileName":"/ImageRepository/Document?documentID=2606","Height":1000,"Width":2200,"StartingOn":null,"StoppingOn":null,"IsLink":false,"LinkAddress":null,"Sequence":0,"RecordStatus":0,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/","AltText":""},{"BannerImageID":87,"BannerOptionID":56,"FileName":"/ImageRepository/Document?documentID=2607","Height":1000,"Width":2200,"StartingOn":null,"StoppingOn":null,"IsLink":false,"LinkAddress":null,"Sequence":1,"RecordStatus":0,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/","AltText":""},{"BannerImageID":121,"BannerOptionID":56,"FileName":"/ImageRepository/Document?documentID=29","Height":306,"Width":1800,"StartingOn":null,"StoppingOn":null,"IsLink":false,"LinkAddress":null,"Sequence":2,"RecordStatus":0,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/","AltText":""},{"BannerImageID":122,"BannerOptionID":56,"FileName":"/ImageRepository/Document?documentID=880","Height":550,"Width":1800,"StartingOn":null,"StoppingOn":null,"IsLink":false,"LinkAddress":null,"Sequence":3,"RecordStatus":0,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/","AltText":""}],"BannerVideos":[{"BannerVideoID":3,"BannerOptionID":56,"VideoFileName":"","ImageFileName":"EmptyBannerBkg202204180725192024.png","IsLink":false,"LinkAddress":null,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/","VideoFileID":"00000000-0000-0000-0000-000000000000","ImageFileID":"00000000-0000-0000-0000-000000000000","VideoWidth":0,"VideoHeight":0,"ImageWidth":0,"ImageHeight":0,"LinkedVideoUrl":"","RecordStatus":0,"AltText":null}],"RecordStatus":0,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/"},
+								'/App_Themes/2022 - Interior/Images/',
+								'Rotating',
+								'3');
+						});
+				}, "load");				
+			</script>
+
+
+</div>
+</div>
+
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+
+	
+
+
+
+
+
+
+	<script src="/651582127.js" type="text/javascript"></script>
+	<!-- Fixed Nav Adjustment -->
+
+<script>
+
+    $(window).load(function () {
+    
+        setTimeout(function() {
+           
+        fixedNavAdjustment();
+        }, 250);
+        
+        $(window).resize(function() {
+            fixedNavAdjustment();
+        });
+        
+        $.when(window.Pages.angularToolbarComplete).done(function () {
+            
+            fixedNavAdjustment();
+        });
+        function fixedNavAdjustment() {        
+           if($('#doneEditing').length === 0) {
+                var divToolbarsHeight = $('#divToolbars').outerHeight();
+                var fixedNavHeight = $('body.wide .fixedTop_ts').height();
+                var contentOffset = divToolbarsHeight + fixedNavHeight;
+                if ($('body.wide #angularToolbarInLegacy').length === 1)
+                {
+                    contentOffset -= $('body.wide #angularToolbarInLegacy').outerHeight();    
+               }
+                if (!window.matchMedia('screen and (max-width: 63em)').matches) {
+                    $('body.wide .fixedTop_ts').css('padding-top', divToolbarsHeight + 'px');
+                    $('#bodyWrapper').css('padding-top', contentOffset + 'px');
+                }else{
+                    $('.fixedTop_ts').css('margin-top', 'auto');
+                    //$('#bodyWrapper').css('margin-top', 'auto');
+                }
+            }
+            else
+            {
+                $('.fixedTop_ts').css('position', 'relative');
+            }
+        };
+    });
+    </script>
+    <!-- End Fixed Nav Adjustment -->
+
+<!-- Fixed Nav Adjustment -->
+<script>
+  function getValueTS(elem, attr) {
+    const val = elem.css(attr);
+    if (val === undefined) return undefined;
+    const num = parseInt(val, 10);
+    if (num === NaN) return undefined;
+    return num;
+  }
+
+  function clampTS(number, min, max) {
+    return Math.min(Math.max(number, min), max);
+  }
+
+  function isPageEditingTS() {
+    return (
+      $("#doneEditing").length > 0 || // In live edit
+      typeof DesignCenter !== "undefined" // In theme manager
+    );
+  }
+
+  const bgColorRegexTS = /rgba\((\d+), (\d+), (\d+), (\d*\.?\d*)\)/;
+  function isTransparentTS(elem) {
+    const bg = elem.css('background-color');
+    if (typeof bg !== "string" || !bg.startsWith('rgba(')) return false;
+    const matchState = bg.match(bgColorRegexTS);
+    if (!matchState || matchState.length !== 5) return false;
+    const alpha = parseFloat(matchState[4], 10);
+    if (!(alpha >= 0 && alpha < 1)) return false;
+    return true;
+  }
+
+  function iterateLeftpads(cb) {
+    const containersTS = $("[class^='siteWrap'],[class*=' siteWrap']");
+    for (let i = 0; i < containersTS.length; i++) {
+      const containerTS = containersTS[i];
+      // Skip the body container and anything with data-skip-leftpad
+      if (
+        containerTS.id !== "bodyContainerTS" &&
+        containerTS.getAttribute('data-skip-leftpad') === null
+      ) {
+        cb(containerTS);
+      }
+    }
+  }
+
+  const anchor = $("#divToolbars");
+  const anchor2 = $("#headerContainerTS")
+
+  // Outer banner padding (push banner down)
+  const outerSizingTS = $("#bannerContainerTS");
+  // Inner banner padding (push banner content down) - Transparent header OR on attaching headers
+  const innerSizingTS = $("#bannerSizingTS");
+  const bodyContainerTS = $("#bodyContainerTS");
+
+  const forceUnfixClassTS = "forceUnfixTS";
+
+  const fixedTopTS = $(".fixedTopTS");
+  const fixedBottomTS = $(".fixedBottomTS");
+  const fixedLeftTS = $(".fixedLeftTS");
+
+  var initialTopTS;
+  var topAttachTS;
+  if (fixedTopTS && fixedTopTS.length === 1) {
+    initialTopTS = getValueTS(fixedTopTS, 'top');
+    const attachment = fixedTopTS.attr('data-attach');
+    if (attachment) topAttachTS = $("#" + attachment);
+    if (!topAttachTS || topAttachTS.length !== 1) topAttachTS = undefined;
+  }
+
+  function resizeAdjustmentTS() {
+    const editing = isPageEditingTS();
+
+    // Fixed top script
+    (function () {
+      if (!fixedTopTS || fixedTopTS.length !== 1 || initialTopTS === undefined) return;
+
+      if (editing) {
+        fixedTopTS[0].classList.add(forceUnfixClassTS);
+      } else {
+        fixedTopTS[0].classList.remove(forceUnfixClassTS);
+      }
+
+      const topPosition = fixedTopTS.css('position');
+      if (topPosition === 'fixed') {
+        if (topAttachTS) {
+          scrollAdjustmentTS();
+        } else {
+          const anchorHeight = anchor.outerHeight() - 1;
+          fixedTopTS.css('top', anchorHeight + initialTopTS);
+        }
+      } else {
+        fixedTopTS.css('top', initialTopTS);
+      }
+
+      if (topPosition === 'fixed' || topPosition === 'absolute') {
+        // Bump the banner content down
+        if (isTransparentTS(fixedTopTS)) {
+          innerSizingTS.css('padding-top', initialTopTS + fixedTopTS.outerHeight() - 1);
+          outerSizingTS.css('padding-top', '');
+
+          try {
+            window.Pages.onResizeHandlersExecute();
+          } catch (e) { }
+        } else {
+          outerSizingTS.css('padding-top', fixedTopTS.outerHeight() - 1);
+          innerSizingTS.css('padding-top', '');
+        }
+      } else {
+        innerSizingTS.css('padding-top', '');
+        outerSizingTS.css('padding-top', '');
+      }
+    })();
+
+    // Fixed bottom script
+    (function () {
+      if (!fixedBottomTS || fixedBottomTS.length === 0) return;
+
+      // If the widget has gone narrow, force unfix
+      if (editing || fixedBottomTS.outerHeight() > 200) {
+        fixedBottomTS[0].classList.add(forceUnfixClassTS);
+      } else {
+        fixedBottomTS[0].classList.remove(forceUnfixClassTS);
+      }
+
+      if (fixedBottomTS.css('position') === 'fixed') {
+        bodyContainerTS.css('padding-bottom', fixedBottomTS.outerHeight());
+      } else {
+        bodyContainerTS.css('padding-bottom', '');
+      }
+    })();
+
+    // Fixed left script
+    (function () {
+      if (!fixedLeftTS || fixedLeftTS.length === 0) return;
+
+      if (editing) {
+        fixedLeftTS[0].classList.add(forceUnfixClassTS);
+      } else {
+        fixedLeftTS[0].classList.remove(forceUnfixClassTS);
+      }
+
+      if (fixedLeftTS.css('position') === 'fixed') {
+        const anchorHeight = anchor.outerHeight() - 1;
+        const headerHeight = anchor2.outerHeight() - 1;
+        fixedLeftTS.css('top', anchorHeight + headerHeight + 25);
+        const leftBoundingTS = fixedLeftTS[0].getBoundingClientRect();
+        iterateLeftpads(function (containerTS) {
+          const containerBoundingTS = containerTS.getBoundingClientRect();
+          if (containerBoundingTS.left <= leftBoundingTS.right) {
+            $(containerTS).css('padding-left', leftBoundingTS.width + 16);
+          }
+        });
+      } else {
+        fixedLeftTS.css('top', '');
+        iterateLeftpads(function (containerTS) {
+          $(containerTS).css('padding-left', '');
+        });
+      }
+    })();
+  }
+
+  function scrollAdjustmentTS() {
+    if (!fixedTopTS || fixedTopTS.length !== 1 || !topAttachTS || topAttachTS.length !== 1) return;
+    const topPosition = fixedTopTS.css('position');
+    if (topPosition === 'fixed' || topPosition === 'absolute') {
+      const anchorBounding = anchor[0].getBoundingClientRect();
+      const attachBounding = topAttachTS[0].getBoundingClientRect();
+      const scrollTop = $(window).scrollTop();
+
+      fixedTopTS.css('top', Math.max(anchorBounding.bottom - 1, attachBounding.bottom));
+    } else {
+      fixedTopTS.css('top', initialTopTS);
+    }
+  }
+
+  $(window).load(function () {
+    setTimeout(function () {
+      resizeAdjustmentTS();
+    }, 350);
+
+    $(window).scroll(function () {
+      scrollAdjustmentTS();
+    });
+
+    var adjustTimeoutTS;
+    $(window).resize(function () {
+      clearTimeout(adjustTimeoutTS);
+      adjustTimeoutTS = setTimeout(function () {
+        resizeAdjustmentTS();
+      }, 350);
+    });
+
+    $.when(window.Pages.angularToolbarComplete).done(function () {
+      resizeAdjustmentTS();
+    });
+  });
+</script>
+<!-- End Fixed Nav Adjustment -->
+
+<!-- Move banner to outer wrap --> 
+<script> 
+function moveBannerToOuterWrap() { 
+    if ($(".fixedBannerTS").length) { 
+		if ($("#bannerDivbanner69").length) { 
+			$("#bannerDivbanner69").appendTo("#outer-wrap"); 
+		} else { 
+			setTimeout(function() { 
+				moveBannerToOuterWrap(); 
+			}, 500); 
+		} 
+	}
+} 
+moveBannerToOuterWrap(); 
+</script> 
+<style> 
+#structuralContainer1 { 
+    background-color: transparent !important; 
+} 
+</style> 
+<!-- end move banner to outer wrap -->
+
+
+
+<!----------Google Translate (Mobile Friendly)--------->
+
+<style>
+  #google-translate-container {
+    float: right;
+    padding: 3px 5px 0px 0px;
+    position: fixed; 
+    bottom: 16px; 
+    right: 10px; 
+    z-index: 5;
+  }
+  
+  .goog-te-combo, .goog-te-banner *, .goog-te-ftab *, .goog-te-menu *, .goog-te-menu2 *, .goog-te-balloon * {
+    font-family: arial;
+    font-size: 10pt;
+    background-image: url("https://www.gstatic.com/images/branding/product/2x/translate_24dp.png");
+    background-position: 5px 5px;
+    background-size: 18px;
+    background-repeat: no-repeat;
+    text-indent: 16px;
+    background-color: #fff;
+    color: #000 !important;
+  }
+  
+  .goog-logo-link {
+    display: none !important;
+  }
+  
+  .goog-te-gadget {
+    color: transparent !important;
+  }
+  
+  .goog-te-gadget .goog-te-combo {
+    margin: 2px 0 !important;
+    border-radius: 15px !important;
+    }
+  
+  .goog-te-combo{
+    border: 1px solid !important;
+    border-color: #bcc9d7 #96a3b1 #96a3b1 #bcc9d7 !important;
+    border-radius: 50px !important;
+    height:31px !important;
+    padding: 0 1px 0 .25rem !important;
+                width: 156px;
+  }
+
+  #launcher-wrapper {
+    bottom: 50px !important;
+  }
+
+</style>
+
+<div id="google-translate-container">
+  <div id="google_translate_element">
+  </div>
+</div>
+
+<script>
+
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: "en" }, "google_translate_element");
+    // begin accessibility compliance
+    $('img.goog-te-gadget-icon').attr('alt','Google Translate');
+    $('div#goog-gt-tt div.logo img').attr('alt','translate');
+    $('div#goog-gt-tt .original-text').css('text-align','left');
+    $('.goog-te-gadget-simple .goog-te-menu-value span').css('color','#000000');
+    $('.goog-te-combo').attr('aria-label','google translate languages');
+    $('svg.goog-te-spinner').attr('title','Google Translate Spinner');
+    $('.goog-te-gadget-simple .goog-te-menu-value span').css('color','#000000');
+  }
+
+  $(function() {
+    $.getScript("//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit");
+  });
+
+</script>
+
+<!--------------End Google Translate----------------->
+
+
+<!-- Move banner to outer wrap --> 
+<script> 
+function moveBannerToOuterWrap() { 
+    if ($(".fixedBannerTS").length) { 
+		if ($("#bannerDivbanner1").length) { 
+			$("#bannerDivbanner1").appendTo("#outer-wrap"); 
+		} else { 
+			setTimeout(function() { 
+				moveBannerToOuterWrap(); 
+			}, 500); 
+		} 
+	}
+} 
+moveBannerToOuterWrap(); 
+</script> 
+<!-- end move banner to outer wrap --><!-- AudioEye --> <script type="text/javascript">!function(){var b=function(){window.__AudioEyeSiteHash="2e31afbcc8d0d0f5239450ec7cd7a9ab";var a=document.createElement("script");a.src="https://wsmcdn.audioeye.com/aem.js";a.type="text/javascript";a.setAttribute("async","");document.getElementsByTagName("body")[0].appendChild(a)};"complete"!==document.readyState?window.addEventListener?window.addEventListener("load",b):window.attachEvent&&window.attachEvent("onload",b):b()}();</script> <!-- End AudioEye -->
+
+
+	<script type="text/javascript">
+		$(function () {
+			document.cookie = "responsiveGhost=0; path=/";
+		});
+		onOrLive($(window), function () {
+			$('body').addClass('doneLoading').removeClass('hideContent');
+
+			if ($('#404Content').length > 0)
+				$('div#bodyWrapper').css('padding', '0px');
+		}, 'load');
+	</script>
+
+	<noscript>
+		<style>
+			body.hideContent {
+				opacity: 1 !important;
+			}
+		</style>
+	</noscript>
+
+		
+<div style="display: none;">
+	<svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+
+		<symbol id="iconArrow--left" viewbox="0 0 25 25">
+			<title>Arrow Left</title>
+			<polygon style="fill:currentcolor" points="18.044,25 19.498,23.545 8.409,12.454 19.408,1.455 17.954,0 5.502,12.452"></polygon>
+		</symbol>
+
+		<symbol id="iconArrow--right" viewbox="0 0 25 25">
+			<title>Arrow Right</title>
+			<polygon style="fill:currentcolor" points="6.957,0 5.502,1.455 16.591,12.546 5.592,23.545 7.047,25 19.498,12.548"></polygon>
+		</symbol>
+
+	</svg>
+</div>
+	<script type="text/javascript">loadCSS('//fonts.googleapis.com/css?family=Fjalla+One:regular|Montserrat:100,100italic,200,200italic,300,300italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic,italic,regular|Mulish:600,700,regular|Open+Sans:600,700,regular|');</script>
+	
+
+	<div class="hidden activeWidgetSkinComponentsOnPageJson">[]</div>
+		<div style="display: none;">
+			<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+				<symbol id="iconSlideshowArrowLeft" viewBox="0 0 22.68 40">
+					<title>Slideshow Left Arrow</title>
+					<g>
+						<path style="fill:currentcolor;" d="M20,40a2.67,2.67,0,0,1-1.9-.79L.79,21.9a2.68,2.68,0,0,1,0-3.79L18.1.79a2.68,2.68,0,1,1,3.79,3.79L6.47,20,21.89,35.42A2.68,2.68,0,0,1,20,40Z"></path>
+					</g>
+				</symbol>
+				<symbol id="iconSlideshowArrowRight" viewBox="0 0 22.68 40">
+					<title>Slideshow Right Arrow</title>
+					<g>
+						<path style="fill:currentcolor;" d="M2.68,0a2.67,2.67,0,0,1,1.9.79L21.89,18.1a2.68,2.68,0,0,1,0,3.79L4.58,39.21A2.68,2.68,0,0,1,.79,35.42L16.21,20,.79,4.58A2.68,2.68,0,0,1,2.68,0Z"></path>
+					</g>
+				</symbol>
+			</svg>
+		</div>
+	
+	
+
+	</body>
+</html>
