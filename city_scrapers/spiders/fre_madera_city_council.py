@@ -17,7 +17,7 @@ class FreMaderaCityCouncilSpider(CityScrapersSpider):
     agency = "Madera City Council"
     timezone = "America/Chicago"
     start_urls = [
-        "https://www.madera.gov/home/departments/city-clerk/city-council-agendas-meetings/#tr-2022-meetings-4850011" # noqa
+        "https://www.madera.gov/home/departments/city-clerk/city-council-agendas-meetings/#tr-2022-meetings-4850011"  # noqa
     ]
 
     def parse(self, response):
