@@ -36,18 +36,12 @@ def test_start():
     assert parsed_items[0]["start"] == datetime(2022, 1, 25, 13, 0)
 
 
-def test_end():
-    assert parsed_items[0]["end"] == datetime(2022, 1, 25, 15, 0)
-
-
 def test_time_notes():
     assert parsed_items[0]["time_notes"] == ""
 
 
 def test_id():
-    assert (
-        parsed_items[0]["id"] == "fresno_housing/202201251300/x/regular_board_meeting"
-    )
+    assert parsed_items[0]["id"] == "fre_housing/202201251300/x/regular_board_meeting"
 
 
 def test_status():

@@ -58,7 +58,7 @@ def test_time_notes():
 def test_id():
     assert (
         parsed_items[0]["id"]
-        == "san_joaquin_valley_air_pollution/202208180900/x/san_joaquin_valley_unified_air_pollution_control_district_governing_board"  # noqa
+        == "fre_san_joaquin_valley_air_pollution/202208180900/x/san_joaquin_valley_unified_air_pollution_control_district_governing_board"  # noqa
     )
 
 
