@@ -10,7 +10,7 @@ from city_scrapers.spiders.fre_madera_city_council import FreMaderaCityCouncilSp
 
 test_response = file_response(
     join(dirname(__file__), "files", "fre_madera_city_council.html"),
-    url="http://www.madera.gov/home/departments/city-clerk/city-council-agendas-meetings/#tr-2022-meetings-4850011", # noqa
+    url="http://www.madera.gov/home/departments/city-clerk/city-council-agendas-meetings/",  # noqa
 )
 spider = FreMaderaCityCouncilSpider()
 
@@ -54,7 +54,7 @@ def test_time_notes():
 def test_id():
     assert (
         parsed_items[0]["id"]
-        == "fre_madera_city_council/202208241800/x/special_meeting_of_the_madera_city_council" # noqa
+        == "fre_madera_city_council/202208241800/x/special_meeting_of_the_madera_city_council"  # noqa
     )
 
 
@@ -72,15 +72,15 @@ def test_location():
 def test_source():
     assert (
         parsed_items[0]["source"]
-        == "https://www.madera.gov/home/departments/city-clerk/city-council-agendas-meetings/" # noqa
+        == "http://www.madera.gov/home/departments/city-clerk/city-council-agendas-meetings/"  # noqa
     )
 
 
 def test_links():
     assert parsed_items[0]["links"] == [
         {
-            "hrefAgenda": "https://www.madera.gov/wp-content/uploads/2022/08/08.24.22s-Final-Agenda.pdf", # noqa
-            "hrefReport": "https://www.madera.gov/wp-content/uploads/2022/08/08.24.22s-Final-Links.pdf", # noqa
+            "hrefAgenda": "https://www.madera.gov/wp-content/uploads/2022/08/08.24.22s-Final-Agenda.pdf",  # noqa
+            "hrefReport": "https://www.madera.gov/wp-content/uploads/2022/08/08.24.22s-Final-Links.pdf",  # noqa
             "hrefVideo": None,
             "titleAgenda": "Agenda",
             "titleReport": "Report",
