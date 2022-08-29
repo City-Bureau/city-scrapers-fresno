@@ -49,7 +49,7 @@ class FreChowchillaCityCouncilSpider(CityScrapersSpider):
     def _parse_title(self, item):
         """Parse or generate meeting title."""
         title = item.css("td:nth-child(1) p a::text").get()
-        return title
+        return title.strip()
 
     def _parse_description(self, item):
         """Parse or generate meeting description."""
