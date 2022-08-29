@@ -66,7 +66,7 @@ def test_status():
 
 def test_location():
     assert parsed_items[0]["location"] == {
-        "name": "EXPECTED NAME",
+        "name": "Council Chambers",
         "address": "Chowchilla City Hall 130 S. Second Street, Chowchilla, CA 93610",
     }
 
