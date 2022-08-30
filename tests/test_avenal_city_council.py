@@ -59,7 +59,7 @@ def test_time_notes():
 def test_id():
     assert (
         parsed_items[0]["id"]
-        == "avenal_city_council/202208111715/x/regular_joint_meeting_of_the_avenal_city_council_successor_agency_pfa"  # noqa
+        == "fre_avenal_city_council/202208111715/x/regular_joint_meeting_of_the_avenal_city_council_successor_agency_pfa"  # noqa
     )
 
 

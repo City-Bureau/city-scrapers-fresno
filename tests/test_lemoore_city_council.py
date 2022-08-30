@@ -53,7 +53,7 @@ def test_time_notes():
 def test_id():
     assert (
         parsed_items[0]["id"]
-        == "lemoore_city_council/202201041730/x/lemoore_city_council"
+        == "fre_lemoore_city_council/202201041730/x/lemoore_city_council"
     )
 
 

@@ -10,7 +10,7 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 
 class LemooreCityCouncilSpider(CityScrapersSpider):
-    name = "lemoore_city_council"
+    name = "fre_lemoore_city_council"
     agency = "Lemoore City Council"
     timezone = "America/Chicago"
     start_urls = ["https://lemoore.com/councilagendas"]
