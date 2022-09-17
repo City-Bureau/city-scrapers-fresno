@@ -15,6 +15,8 @@ test_response = file_response(
     url="https://firebaugh.org/meetingsagendas/",
 )
 spider = FreFirebaughCityCouncilSpider()
+# use a stub here to avoid urlretrieve that can be flaky
+spider._parse_start = lambda self: datetime(2022, 8, 15, 18, 0)
 
 freezer = freeze_time("2022-08-28")
 freezer.start()
@@ -22,14 +24,6 @@ freezer.start()
 parsed_items = [item for item in spider.parse(test_response)]
 
 freezer.stop()
-
-"""
-def test_tests():
-    print("Please write some tests for this spider or at least disable this one.")
-    assert False
-
-Uncomment below
-"""
 
 
 def test_title():
