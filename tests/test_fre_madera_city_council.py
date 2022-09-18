@@ -79,13 +79,17 @@ def test_source():
 def test_links():
     assert parsed_items[0]["links"] == [
         {
-            "hrefAgenda": "https://www.madera.gov/wp-content/uploads/2022/08/08.24.22s-Final-Agenda.pdf",  # noqa
-            "hrefReport": "https://www.madera.gov/wp-content/uploads/2022/08/08.24.22s-Final-Links.pdf",  # noqa
-            "hrefVideo": None,
-            "titleAgenda": "Agenda",
-            "titleReport": "Report",
-            "titleVideo": "Video",
-        }
+            "href": "https://www.madera.gov/wp-content/uploads/2022/08/08.24.22s-Final-Agenda.pdf",  # noqa
+            "title": "Agenda",
+        },
+        {
+            "href": "https://www.madera.gov/wp-content/uploads/2022/08/08.24.22s-Final-Links.pdf",  # noqa
+            "title": "Report",
+        },
+        {
+            "href": None,
+            "title": "Video",
+        },
     ]
 
 

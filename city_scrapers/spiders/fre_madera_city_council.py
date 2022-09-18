@@ -124,13 +124,17 @@ class FreMaderaCityCouncilSpider(CityScrapersSpider):
         """Parse or generate links."""
         return [
             {
-                "hrefAgenda": item.css("td:nth-child(2) a::attr(href)").get(),
-                "titleAgenda": "Agenda",
-                "hrefReport": item.css("td:nth-child(3) a::attr(href)").get(),
-                "titleReport": "Report",
-                "hrefVideo": item.css("td:nth-child(6) a::attr(href)").get(),
-                "titleVideo": "Video",
-            }
+                "href": item.css("td:nth-child(2) a::attr(href)").get(),
+                "title": "Agenda",
+            },
+            {
+                "href": item.css("td:nth-child(3) a::attr(href)").get(),
+                "title": "Report",
+            },
+            {
+                "href": item.css("td:nth-child(6) a::attr(href)").get(),
+                "title": "Video",
+            },
         ]
 
     def _parse_source(self, response):
