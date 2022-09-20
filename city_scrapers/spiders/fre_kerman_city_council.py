@@ -46,12 +46,7 @@ class FreKermanCityCouncilSpider(CityScrapersSpider):
 
     def _parse_title(self, item):
         """Parse or generate meeting title."""
-        if item.css("td:nth-child(2)::text").get():
-            title = item.css("td:nth-child(2)::text").get()
-        else:
-            title = item.css("td:nth-child(2) a::text").get()
-
-        return title
+        return item.css("td:nth-child(1)::text").get()
 
     def _parse_description(self, item):
         """Parse or generate meeting description."""
@@ -63,6 +58,8 @@ class FreKermanCityCouncilSpider(CityScrapersSpider):
 
     def _parse_start(self, item):
         """Parse start datetime as a naive datetime object."""
+
+        startTime = "00:00"
 
         # meeting time noted on Agenda PDF
         # download Agenda PDF, extract start time, delete Agenda PDF
@@ -95,14 +92,14 @@ class FreKermanCityCouncilSpider(CityScrapersSpider):
             ):
                 interpreter.process_page(page)
             text = out_text.getvalue()
-            time = re.findall(r"\d{1,2}:\d{1,2} ....", text)[0]
-            print(time)
+            time = re.findall(r"\d{1,2}:\d{1,2} [AP]M", text)
+            if time:
+                startTime = time[0]
             fp.close()
             text_converter.close()
             out_text.close()
 
         startDate = item.css("td:nth-child(1)::text").get()
-        startTime = "00:00:00"
 
         dt_obj = startDate + " " + startTime
         return parser().parse(dt_obj)
@@ -127,8 +124,19 @@ class FreKermanCityCouncilSpider(CityScrapersSpider):
         }
 
     def _parse_links(self, item):
-        """Parse or generate links."""
-        return [{"href": "", "title": ""}]
+        links = []
+
+        name = item.css("td:nth-child(2) a::text").get()
+        link = item.css("td:nth-child(2) a::attr(href)").get()
+        if link:
+            links.append({"name": name, "href": link})
+
+        name = item.css("td:nth-child(3) a::text").get()
+        link = item.css("td:nth-child(3) a::attr(href)").get()
+        if link:
+            links.append({"name": name, "href": link})
+
+        return links
 
     def _parse_source(self, response):
         """Parse or generate source."""
