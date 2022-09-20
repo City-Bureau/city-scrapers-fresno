@@ -1,6 +1,6 @@
 import re
 from io import StringIO
-from urllib import request
+import requests
 
 from city_scrapers_core.constants import CITY_COUNCIL
 from city_scrapers_core.items import Meeting
@@ -10,6 +10,7 @@ from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 from pdfminer.pdfinterp import PDFPageInterpreter, PDFResourceManager
 from pdfminer.pdfpage import PDFPage
+
 
 class FreKermanCityCouncilSpider(CityScrapersSpider):
     name = "fre_kerman_city_council"
@@ -62,16 +63,26 @@ class FreKermanCityCouncilSpider(CityScrapersSpider):
 
     def _parse_start(self, item):
         """Parse start datetime as a naive datetime object."""
-        
+
         # meeting time noted on Agenda PDF
         # download Agenda PDF, extract start time, delete Agenda PDF
         agendaPDF = item.css("td:nth-child(2) a::attr(href)").get()
         if agendaPDF:
-            request.urlretrieve(agendaPDF, "pdf")
+            with open("pdf", "wb") as fp:
+                resp = requests.get(
+                    agendaPDF,
+                    headers={
+                        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3)"
+                    },
+                )
+                resp.raise_for_status()
+                fp.write(resp.content)
             resource_manager = PDFResourceManager(caching=True)
             out_text = StringIO()
             laParams = LAParams()
-            text_converter = TextConverter(resource_manager, out_text, laparams=laParams)
+            text_converter = TextConverter(
+                resource_manager, out_text, laparams=laParams
+            )
             fp = open("pdf", "rb")
             interpreter = PDFPageInterpreter(resource_manager, text_converter)
             for page in PDFPage.get_pages(
@@ -95,7 +106,6 @@ class FreKermanCityCouncilSpider(CityScrapersSpider):
 
         dt_obj = startDate + " " + startTime
         return parser().parse(dt_obj)
-
 
     def _parse_end(self, item):
         """Parse end datetime as a naive datetime object. Added by pipeline if None"""
