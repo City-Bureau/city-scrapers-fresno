@@ -1,7 +1,7 @@
 import re
 from io import StringIO
-import requests
 
+import requests
 from city_scrapers_core.constants import CITY_COUNCIL
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
