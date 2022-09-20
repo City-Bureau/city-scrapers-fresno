@@ -13,10 +13,8 @@ class SanJoaquinRiverConservancySpider(CityScrapersSpider):
 
     def parse(self, response):
         """
-        `parse` should always `yield` Meeting items.
-
-        Change the `_parse_title`, `_parse_start`, etc methods to fit your scraping
-        needs.
+        Main parse method for the San Joaquin River Conservancy
+        Yields Meeting objects
         """
         td_sel_str = 'td[style="text-align: center;"][align="left"]'
         td_response = response.css(td_sel_str)
