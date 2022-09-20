@@ -57,7 +57,7 @@ def test_links():
     assert parsed_items[2]["links"] == [
         {
             "name": "Regular Meeting Agenda Packet",
-            "href": "https://cityofkerman.net/wp-content/uploads/2022/09/Agenda-Packet-22-09-14.pdf", # noqa
+            "href": "https://cityofkerman.net/wp-content/uploads/2022/09/Agenda-Packet-22-09-14.pdf",  # noqa
         }
     ]
 
