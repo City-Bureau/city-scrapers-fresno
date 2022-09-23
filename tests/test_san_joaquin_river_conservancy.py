@@ -60,11 +60,11 @@ def test_time_notes(item):
 def test_id():
     assert (
         parsed_items[0]["id"]
-        == "san_joaquin_river_conservancy/202202021030/x/february_2_board_meeting"
+        == "fre_san_joaquin_river_conservancy/202202021030/x/february_2_board_meeting"
     )
     assert (
         parsed_items[5]["id"]
-        == "san_joaquin_river_conservancy/202211021030/x/november_2_board_meeting"
+        == "fre_san_joaquin_river_conservancy/202211021030/x/november_2_board_meeting"
     )
 
 
