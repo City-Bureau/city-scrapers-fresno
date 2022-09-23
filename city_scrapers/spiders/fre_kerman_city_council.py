@@ -15,7 +15,7 @@ from pdfminer.pdfpage import PDFPage
 class FreKermanCityCouncilSpider(CityScrapersSpider):
     name = "fre_kerman_city_council"
     agency = "Kermin City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://cityofkerman.net/city-council-meeting-agendas-minutes/"]
 
     def parse(self, response):

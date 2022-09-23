@@ -15,7 +15,7 @@ from pdfminer.pdfpage import PDFPage
 class FreFirebaughCityCouncilSpider(CityScrapersSpider):
     name = "fre_firebaugh_city_council"
     agency = "Firebaugh City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://firebaugh.org/meetingsagendas/"]
 
     def parse(self, response):

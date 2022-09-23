@@ -7,7 +7,7 @@ from dateutil.parser import parser
 class FreKingsBosSpider(CityScrapersSpider):
     name = "fre_kings_bos"
     agency = "Kings County Board of Supervisors"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://www.countyofkings.com/community/calendar-of-events"]
 
     def parse(self, response):

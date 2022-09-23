@@ -9,7 +9,7 @@ from dateutil.parser import parser
 class FreSelmaCityCouncilSpider(CityScrapersSpider):
     name = "fre_selma_city_council"
     agency = "Selma City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = [
         "https://www.cityofselma.com/government/city_council/council_meetings___agendas.php"  # noqa
     ]

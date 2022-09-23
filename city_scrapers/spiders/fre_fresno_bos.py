@@ -6,7 +6,7 @@ from city_scrapers_core.spiders import LegistarSpider
 class FreFresnoBosSpider(LegistarSpider):
     name = "fre_fresno_bos"
     agency = "Fresno County Board of Supervisors"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://fresnocounty.legistar.com/Calendar.aspx"]
     # Add the titles of any links not included in the scraped results
     link_types = []

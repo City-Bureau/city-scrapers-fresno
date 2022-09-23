@@ -9,7 +9,7 @@ from dateutil.parser import parser
 class FreOrangeCoveCityCouncilSpider(CityScrapersSpider):
     name = "fre_orange_cove_city_council"
     agency = "Orange Cove City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://cityoforangecove.com/agendas/"]
 
     def parse(self, response):

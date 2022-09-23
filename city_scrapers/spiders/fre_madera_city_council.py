@@ -15,7 +15,7 @@ from pdfminer.pdfpage import PDFPage
 class FreMaderaCityCouncilSpider(CityScrapersSpider):
     name = "fre_madera_city_council"
     agency = "Madera City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = [
         "https://www.madera.gov/home/departments/city-clerk/city-council-agendas-meetings/#tr-2022-meetings-4850011"  # noqa
     ]

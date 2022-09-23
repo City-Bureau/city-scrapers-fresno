@@ -7,7 +7,7 @@ from dateutil.parser import parser
 class ClovisCityCouncilSpider(CityScrapersSpider):
     name = "fre_clovis_city_council"
     agency = "Clovis City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
 
     start_urls = [
         "https://meetings.municode.com/PublishPage?cid=CLOVIS&ppid=5157d66d-a361-43e8-87a4-3d5eca4821de&p=1"  # noqa

@@ -6,7 +6,7 @@ from city_scrapers_core.spiders import LegistarSpider
 class FreVisaliaCityCouncilSpider(LegistarSpider):
     name = "fre_visalia_city_council"
     agency = "Visalia City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://visalia.legistar.com/Calendar.aspx"]
     # Add the titles of any links not included in the scraped results
     link_types = []

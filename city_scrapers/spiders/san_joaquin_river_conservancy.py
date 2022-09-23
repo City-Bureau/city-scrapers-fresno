@@ -6,9 +6,9 @@ from city_scrapers_core.spiders import CityScrapersSpider
 
 
 class SanJoaquinRiverConservancySpider(CityScrapersSpider):
-    name = "san_joaquin_river_conservancy"
+    name = "fre_san_joaquin_river_conservancy"
     agency = "San Joaquin River Conservancy"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["http://sjrc.ca.gov/Board/"]
 
     def parse(self, response):
