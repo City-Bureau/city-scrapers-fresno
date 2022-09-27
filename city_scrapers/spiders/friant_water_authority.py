@@ -13,7 +13,7 @@ class FriantWaterAuthoritySpider(CityScrapersSpider):
 
     def parse(self, response):
         """
-        Parses the Meeting Events of the Friant Water Authority site
+        Parse the Meeting Events of the Friant Water Authority site
         """
         for item in response.css(".eventlist-column-info"):
             meeting = Meeting(
@@ -31,12 +31,11 @@ class FriantWaterAuthoritySpider(CityScrapersSpider):
 
             meeting["status"] = self._get_status(meeting)
             meeting["id"] = self._get_id(meeting)
-
             yield meeting
 
     def _parse_title(self, item):
         """Parse or generate meeting title."""
-        title = item.css(".eventlist-title-link::text").get()
+        title = item.css(".eventlist-title-link::text").get().strip()
         return title if title else ""
 
     def _parse_description(self, item):
@@ -83,45 +82,43 @@ class FriantWaterAuthoritySpider(CityScrapersSpider):
         """Parse or generate location."""
         location_dict = {}
         google_maps_prefix = "http://maps.google.com?q="
-        map_sel_str = (".eventlist-meta-item"
-                       ".eventlist-meta-address"
-                       ".event-meta-item")
+        map_sel_str = (
+            ".eventlist-meta-item" ".eventlist-meta-address" ".event-meta-item"
+        )
 
         for map_sel in item.css(map_sel_str):
             map_title = map_sel.css("::text").get().strip("\n ")
             map_link_sel = ".eventlist-meta-address-maplink::attr(href)"
             map_link = map_sel.css(map_link_sel).get()
             address = map_link.removeprefix(google_maps_prefix)
-            location_dict["address"] = address
-            location_dict["name"] = map_title
-
+            location_dict["address"] = address.strip()
+            location_dict["name"] = map_title.strip()
 
         return location_dict
 
     def _parse_links(self, item):
         """Parse or generate links."""
-        link_dict = {}
+        link_list = []
         link_sel_str = ".sqs-block-button-element::attr(href)"
 
         # Parsing for attachments
         for link in item.css(link_sel_str).getall():
             title = link.split("/")[len(link.split("/")) - 1].split(".")[0]
-            link_dict[link] = title
+            link_list.append({"href": link, "title": title})
 
         # Parsing for Google Maps links
-        map_sel_str = (".eventlist-meta-item"
-                       ".eventlist-meta-address"
-                       ".event-meta-item")
+        map_sel_str = (
+            ".eventlist-meta-item" ".eventlist-meta-address" ".event-meta-item"
+        )
 
         for map_sel in item.css(map_sel_str):
             map_title = map_sel.css("::text").get().strip("\n ") + " Map Link"
             map_link_sel = ".eventlist-meta-address-maplink::attr(href)"
             map_link = map_sel.css(map_link_sel).get()
-            link_dict[map_link] = map_title
+            link_list.append({"href": map_link, "title": map_title})
 
-        return link_dict
+        return link_list
 
     def _parse_source(self, response):
         """Parse or generate source."""
         return response.url
-
