@@ -1,0 +1,3476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<!-- Google Tag Manager -->
+				<script>(function(w,d,s,l,i){w.GATrackingId='UA-204534094-49';w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+				})(window,document,'script','cpDataLayer','GTM-WKGQMK5');</script>
+				<!-- End Google Tag Manager --><!-- Google Tag Manager for GA4 -->
+				<script>(function(w,d,s,l,i){w.GAMeasurementID='G-SVGHLGL5DQ';w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+				})(window,document,'script','cpDataLayerGA4','GTM-K73C5PS');</script>
+				<!-- End Google Tag Manager for GA4 -->
+				<script type='text/javascript'>
+					var enableTelemetry = 'false'
+					var aiConfig = {
+					instrumentationKey: '1cde048e-3185-4906-aa46-c92a7312b60f'						
+					}
+					var appInsights = window.appInsights || function (a) { function b(a) { c[a] = function () { var b = arguments; c.queue.push(function () { c[a].apply(c, b) }) } } var c = { config: a }, d = document, e = window; setTimeout(function () { var b = d.createElement('script'); b.src = a.url || 'https://az416426.vo.msecnd.net/scripts/a/ai.0.js', d.getElementsByTagName('script')[0].parentNode.appendChild(b) }); try { c.cookie = d.cookie } catch (a) { } c.queue = []; for (var f = ['Event', 'Exception', 'Metric', 'PageView', 'Trace', 'Dependency']; f.length;)b('track' + f.pop()); if (b('setAuthenticatedUserContext'), b('clearAuthenticatedUserContext'), b('startTrackEvent'), b('stopTrackEvent'), b('startTrackPage'), b('stopTrackPage'), b('flush'), !a.disableExceptionTracking) { f = 'onerror', b('_' + f); var g = e[f]; e[f] = function (a, b, d, e, h) { var i = g && g(a, b, d, e, h); return !0 !== i && c['_' + f](a, b, d, e, h), i } } return c }(aiConfig);
+					window.appInsights = appInsights, appInsights.queue && 0 === appInsights.queue.length;
+					// Add telemetry initializer
+					appInsights.queue.push(function() {
+						appInsights.context.addTelemetryInitializer(function(envelope) {
+							var telemetryItem = envelope.data.baseData;
+							// To check the telemetry item’s type:
+							if (!false)
+							{
+								//If the telemetry is not enabled, we still want to capture Google map custom event, so only allow that
+								if (envelope.name.indexOf('.Event') == -1)
+									return false;
+							}
+						});
+					});						
+					appInsights.trackPageView();
+				</script>
+	<script>
+		function populateAntiForgery(token) {
+			var input = document.createElement("input");
+			input.name = "__RequestVerificationToken";
+			input.type = "hidden";
+			input.value = token;
+			var absPat = /^https?:\/\/|^\/\//i;
+			var forms = document.getElementsByTagName("form");
+			for (var i = 0; i < forms.length; i++) {
+				if (forms[i].method == "post" &&
+					!forms[i].querySelector('[name="__RequestVerificationToken"]') &&
+					!absPat.test(forms[i].getAttribute("action"))) {
+					forms[i].appendChild(input.cloneNode());
+				}
+			}
+		}
+
+		function getAntiForgeryToken(callback, error) {
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "/antiforgery");
+			xhr.addEventListener("load", function() {
+				try {
+					if (this.status !== 200) {
+						throw Error("Invalid status. Could not retrieve antiforgery token.");
+		}
+					var obj = JSON.parse(this.responseText);
+					callback(obj.token);
+				} catch (e) {
+					typeof error === "function" && error(e);
+				}
+			});
+			xhr.send();
+		}
+
+		getAntiForgeryToken(function(token) {
+			if (document.readyState === "complete"
+				|| document.readyState === "loaded" 
+				|| document.readyState === "interactive") {
+				populateAntiForgery(token);
+				return;
+			}
+			document.addEventListener("DOMContentLoaded", function() {
+				populateAntiForgery(token);
+			}, false);
+		}, console.error);
+			</script>
+			
+	
+<script type="text/javascript">
+		window.departmentHeader = {};
+        window.isResponsiveEnabled = true;
+		window.isRemoveSetHeights= false;
+		if (window.isRemoveSetHeights) {
+			document.documentElement.className += ' removeSetHeights';
+		}
+		window.mainMenuMediaQuery = 'screen and (max-width: 40em)';
+		window.isMobileBrowserIncludingTablets = false;
+		window.fixedResponsiveMenu = false;
+		window.fullWidthResponsiveMenu = false;
+		window.responsiveMenuHeight = '';
+		window.responsiveMenuFontSize = '';
+		(function () {
+			window.setSizeCookie = function () {
+				document.cookie = "dpi=" + window.devicePixelRatio + "; path=/";
+				document.cookie = "viewportWidth=" + window.innerWidth + "; path=/";
+				document.cookie = "viewportHeight=" + window.innerHeight + "; path=/";
+				if (screen && screen.width && screen.height) {
+					document.cookie = "screenWidth=" + screen.width + "; path=/";
+					document.cookie = "screenHeight=" + screen.height + "; path=/";
+				}
+				document.cookie = "responsiveGhost=1; path=/";
+			};
+
+			setSizeCookie();
+		}());
+</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	
+	<meta name="theme-color" content="#5a822e">
+	<link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+		<title>Agenda Center • Farmersville, CA • CivicEngage</title>
+	
+				
+	<!--[if IE 6]><script language="JavaScript" type="text/javascript"> var isie6 = true; </script><![endif]-->
+	<!--[if IE 7]><script language="JavaScript" type="text/javascript"> var isie7 = true; </script><![endif]-->
+	<!--[if IE 8]><script language="JavaScript" type="text/javascript"> var isie8 = true; </script><![endif]-->
+	<!--[if IE 9]><script language="JavaScript" type="text/javascript"> var isie8 = true; </script><![endif]-->
+	<script type="text/javascript"><!--
+	var intCountryCode = 840;
+	var externalSiteDialogHeight = '390px';
+	var order = '';
+//--></script>
+	
+	<link href="/-1226394731.css" rel="stylesheet" type="text/css" />	<link href="/1074133057.css" rel="stylesheet" type="text/css" />
+
+	<link rel="stylesheet" type="text/css" href="/Assets/Styles/Print.css" media="print">
+<script type="text/javascript" src="/asset.axd?id=dgAAAB-LCAAAAAAABAAdjTkOhTAQQ-_iGgaGrcg1KBEFCkEiBUsY0P9CuTsDnfX8LN8YYbobGwxaG-ZNDiSYPrYo8_vpwj9laqgi_3YrTB772CewooK4n2R-uIbjW6twKS1yZiqJmWslVj_KptYAI-F08QHSzjRqdgAAAA%3d%3d"></script>
+	<script type="text/javascript">
+		window.Pages = window.Pages || {};
+		// FrontEnd RWD initialization
+		window.Pages.rwdReady = $.Deferred();
+		window.Pages.toolBarDeferred = $.Deferred();
+		window.Pages.rwdSetupComplete = $.Deferred();
+		window.Pages.megaMenuLoaded = $.Deferred();
+		window.Pages.angularToolbarComplete = $.Deferred();
+		window.Pages.frontEndToolbarComplete = $.Deferred();
+	</script>
+	<!--CPHeadContent-->
+	<script src="/-781690472.js" type="text/javascript"></script>
+	
+	
+	
+<script type="text/javascript" src="/Scripts/HtmlExtensionSupport.js"></script>
+
+<link type="text/css" href="/asset.axd?id=kgAAAB-LCAAAAAAABABVjTEKhDAURO8ydYj5K1qk9RiLxRIjiCZZzF8RJHf34xZiN_PewBwYYN8HvrDoUmQfGQrjxaIw9otfp1m7FEKK2uUsOsGaop6Dbcr8uT2VvvQKjq_JztXfbFJfhkjXmogaIU7-67aRAMvrz5cTeII6tJIAAAA%3d" rel="stylesheet"/>
+
+	<link href="/718583105.css" rel="stylesheet" type="text/css" />
+    <script src="/14692419.js" type="text/javascript"></script>    
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	        $('body').append('<div id="cpDatePickerWrapperAgenda" class="bottom leftEdge" style="position:absolute; width: 300px"></div>');
+		    cp.datetimepicker.createDatePicker('#StartDatePicker', {format:'mm/dd/yyyy'});
+		    cp.datetimepicker.createDatePicker('#EndDatePicker', { format: 'mm/dd/yyyy' });		    
+			$('.popoutContainer > a').click(function (e) {
+				e.preventDefault();
+			});
+			todayDate = new Date();
+
+			$('#searchButton').click(function () {
+				doSearch();
+				return false;
+			});
+
+			$('#searchField').keypress(function (e) {
+			    if (e.which == 13 || e.keyCode == 13) {			     
+			        $('#searchButton').trigger('click');
+			    }			    
+			});
+
+			$('#selectCategoryButton').click(function () {
+	           	//Hide all popups already open if nesessary.
+	           	$('.popUp').fadeOut(200).removeClass('popped');
+	           	$('.popUpParent').removeClass('popped'); 
+
+				$elem = $('#categoryList');
+	        	if ($elem.is(':visible')) {
+	        		$('div.header').css('z-index', '1');
+				} else {
+	        		$('.listingCollapse').css('z-index', '1');
+	        		$('div.header').css('z-index', '3');
+				}
+				displayHideCategories();
+				return false;
+			});
+
+			checkUncheckAllCategoriesCB();
+
+			$('#submittedIn').change(function () {
+				updateSubmittedRangeDates();
+				return false;
+			});
+
+			var match = RegExp('[?&]' + 'dateSelector' + '=([^&]*)')
+                    .exec(window.location.search);
+
+			var dateRangeVal = null;
+			if (match != null)
+				dateRangeVal = decodeURIComponent(match[1].replace(/\+/g, ' '));
+			if (dateRangeVal != null) {
+				switch (dateRangeVal) {
+					case "":
+						$('#timePeriod').html('<span>Time Period</span>');
+						break;
+					case "1":
+						$('#timePeriod').html('<span>Last Week</span>');
+						break;
+					case "2":
+						$('#timePeriod').html('<span>Last Month</span>');
+						break;
+					case "3":
+						$('#timePeriod').html('<span>Last 6 Months</span>');
+						break;
+					case "4":
+						$('#timePeriod').html('<span>Last Year</span>');
+						break;
+				}
+			}
+		});
+
+		function showTimePeriodDropdown(event) {
+		    $('#dateRangePopup').removeClass('popped');
+	    	openPopUp('dateRangePopup', event);
+	        var $elem = $('#dateRangePopup');
+	        $('.popoutContainer').css('z-index', '1');
+	        $('.listingCollapse').css('z-index', '1');
+
+	        if ($elem.is(':visible')) {
+	            $elem.parent().css('z-index', '101');
+	            $('div.header').css('z-index', '3');
+	        }
+	    }
+
+		function checkUncheckAllCategoriesCB() {
+			if ($('input:not(:checked)[name=chkCategoryID]').length == 0)
+				attrOrProps($('#allCategories'), "checked", true);
+			else
+				removeAttrOrProps($('#allCategories'), "checked");
+		}
+
+		function checkUncheckAll(checked) {
+			var $cbs = $('input[name=chkCategoryID]');
+			if (checked) {
+				$cbs.each(function () {
+					$(this).attr('checked', true);
+				});
+			}
+			else {
+				$cbs.each(function () {
+					$(this).removeAttr('checked');
+				});
+			}
+		}
+
+		function displayHideCategories() {
+			$('#categoryList').toggle();
+		}
+
+		function doSearch() {		    
+			var term = $('#searchField').val();
+
+			var startDate = $('#StartDatePicker').val();
+			var endDate = $('#EndDatePicker').val();
+			var dt = $('input[name=dateRange]').val();
+			var dateSelector = $('#submittedIn').val();
+
+			if (startDate!='' && endDate!='' && dt == '')
+				dateSelector = '';
+
+			var $cbs = $('input:checked[name=chkCategoryID]');
+			var cids = '';
+			$cbs.each(function () {
+				cids += $(this).val() + ',';
+			});
+
+			if ($('#allCategories').is(':checked'))
+				cids = 'all';
+
+			document.location = '/AgendaCenter/Search/?term=' + escape(term.trim()) + '&CIDs=' + cids.trim() + '&startDate=' + startDate + '&endDate=' + endDate + '&dateRange=' + dt + '&dateSelector=' + dateSelector;
+
+		}
+
+		function validSearchTerm(term) {
+			return (term && term != null && term.trim() != '' && term.trim() != $('#searchField').attr('placeholder'));
+		}
+
+		function getDatePicker(id) {		    
+		    var datePicker = $('#' + id);
+			return datePicker;
+		}
+
+		function updateSubmittedRangeDates() {
+			var value = $('#submittedIn').val();
+			var myDate = new Date();
+			myDate.setFullYear(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate());
+
+			if (value != '') {
+				$(".submittedEnd").each(function () {
+				    getDatePicker($(this).attr('id')).val(
+    					myDate.getMonth()+1+"/"+myDate.getDate()+"/"+myDate.getFullYear());
+				});
+			}
+			else
+				$('input[name=EndDatePicker]').val('');
+
+			switch (value) {
+				case "1":
+					$('input[name=dateRange]').val('1 week');
+					myDate.setDate(myDate.getDate() - 7);
+					break;
+				case "2":
+					$('input[name=dateRange]').val('1 month');
+					myDate.setMonth(myDate.getMonth() - 1);
+					break;
+				case "3":
+					$('input[name=dateRange]').val('6 months');
+					myDate.setMonth(myDate.getMonth() - 6);
+					break;
+				case "4":
+					$('input[name=dateRange]').val('1 year');
+					myDate.setMonth(myDate.getMonth() - 12);
+					break;
+				default:
+					$('input[name=StartDatePicker]').val('');
+			}
+			if (value != '') {
+				$(".submittedStart").each(function () {
+				    getDatePicker($(this).attr('id')).val(
+                      myDate.getMonth()+1 + "/" + myDate.getDate() + "/" + myDate.getFullYear());
+				});
+			}
+		}
+
+		function changeDateRange(rangeVal, displayText) {
+			$('#timePeriod').html('<span>' + displayText + '</span>');
+			$('#liTimePeriod').show();
+			$('#submittedIn').val(rangeVal);
+			$('#dateRangePopup').hide();
+			$('#timePeriod').toggleClass('open');
+			updateSubmittedRangeDates();
+
+		}
+
+		function displayDateRangePopup() {
+			$('#dateRangePopup').toggle();
+			$('#dateRangePopup').toggleClass('open');
+			return false;
+		}
+
+		function resetDateDefaults() {
+			$('#liTimePeriod').hide();
+			$('#timePeriod').html('<span>Time Period</span>');
+			$('input[name=StartDatePicker]').val('');
+			$('input[name=EndDatePicker]').val('');
+			$('#dateRangePopup').hide();
+			$('#timePeriod').toggleClass('open');
+		}
+
+		
+	</script>
+	
+	<script src="/2068681422.js" type="text/javascript"></script>
+<script type="text/javascript">
+	window.onload = function () {
+		document.onclick = function () {
+			$('.popUp').fadeOut(200).removeClass('popped');
+			$('.popUpParent').removeClass('popped');
+		};
+	};
+
+	$(document).ready(function (e) {
+		//Trying to go to a particular agenda.
+		if (window.location.href.indexOf('/?#') != -1) {
+			var dateYearInfo = findCatIDAgendaIDAndYearFromUrl();
+			var year = dateYearInfo.year;
+			var catID = dateYearInfo.catID;
+			var agendaID = dateYearInfo.agendaID;
+			var rowAgendaID = "tr[id^=row" + agendaID + "]";
+
+			$.ajax({
+				type: 'POST',
+				url: '/AgendaCenter/UpdateCategoryList',
+				data: { year: year, catID: catID },
+				success: function (response) {
+					//Changing the arrow display.
+					var $elem1 = $('#span' + catID);
+					$elem1.html('&#9660');
+					$('#section' + catID).replaceWith(response);
+					$('ul.years li').removeClass('current');
+					$('ul.years li').each(function (e) {
+						if ($(this).text() == year.toString())
+							$(this).addClass('current');
+					});
+					//$('ul.years').html($('<li class="current"><a>' + year + '</a></li>'));
+					$('.catAgendaRow').hide();
+					var row = $(rowAgendaID);
+					row.show();
+					row.length && row[0].scrollIntoView(true);
+				}
+			});
+		}
+	});
+
+	function findCatIDAgendaIDAndYearFromUrl() {
+		var url = window.location.href;
+		var urlBreakpoint = url.indexOf('/?#');
+		var hashIndex = urlBreakpoint + 3;
+		var indexOfHyphenBeforeAgendaID = url.lastIndexOf('-');
+		var indexOfHyphenBeforeCatID = url.substring(0, urlBreakpoint).lastIndexOf('-');
+		var agendaID = parseInt(url.substring(indexOfHyphenBeforeAgendaID + 1));
+		var catID = parseInt(url.substring(indexOfHyphenBeforeCatID + 1, urlBreakpoint));
+		var dateString = url.substring(hashIndex, indexOfHyphenBeforeAgendaID);
+		var year = dateString.substring(dateString.length - 4);
+		return { year: year, catID: catID, agendaID: agendaID };
+	}
+</script>
+<meta property="og:title" content="Agenda Center" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.cityoffarmersville-ca.gov/agendacenter" />
+<meta property="og:description" content="Agenda Center " />
+
+
+
+
+	<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="/App_Themes/ie8.css"><![endif]-->
+	<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/App_Themes/ie7.css"><![endif]-->
+	<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="/App_Themes/ie6.css"><![endif]-->
+	<!--[if lt IE 9]><script type="text/javascript" src="/Scripts/html5.js"></script><![endif]-->
+
+	<script type="text/javascript">
+		setEditorVariables(false, 840);
+		function getPrintPreviewType() { return 0; } function printPreview() {pPreview(getPrintPreviewType()); }
+	</script>
+	
+</head>
+<body class="wide " >
+
+	<script>jQuery(document).click(function (event) {
+	var target = jQuery(event.target);
+	if (target.attr('src') && target.parents('.image').length && target.parents('.widget').length) {
+		var text = target.attr('title');
+		
+		if (!text.length) {
+			text = "N/A";
+		}
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Image',
+				eventAction: 'Image - ' + text,
+				eventLabel: window.location.href
+			});
+	}
+	if (target.is('button') || target.hasClass('button') || target.parents().hasClass('button')) {
+		var text = "";
+		if (target.parents('.button')[0]) {
+			text = target.parents('.button')[0].text;
+		} else if (target.text().length) {
+			text = target.text();
+		} else if (target.attr('title').length) {
+			text = target.attr('title');
+		}
+		if (!text.length) {
+			text = "N/A";
+		}
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Button',
+				eventAction: 'Button - ' + text,
+				eventLabel: window.location.href
+			});
+	}
+	if (target.parents('.widgetCustomHtml').length) {
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Custom Html',
+				eventAction: 'Custom Html Clicked',
+				eventLabel: window.location.href
+			});
+	}
+	if (target.parents('.editor').length) {
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Editor',
+				eventAction: 'Editor Link Clicked',
+				eventLabel: window.location.href
+			});
+	}
+	if (target.parents('.GraphicLinks').length) {
+		var text = "";
+		var targetGraphicLink = target;
+		if (target.hasClass('widgetGraphicLinksLink')) {
+			targetGraphicLink = jQuery(target.children()[0]);
+		}
+		if (targetGraphicLink.hasClass('text')) {
+			text = targetGraphicLink.text();
+		} else if (targetGraphicLink.attr('src').length) {
+			if (targetGraphicLink.attr('alt').length) {
+				text = targetGraphicLink.attr('alt');
+			} else {
+				text = targetGraphicLink.attr('src');
+			}
+		} else {
+			text = "N/A";
+		}
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Graphic Links',
+				eventAction: 'Graphic Link - ' + text,
+				eventLabel: window.location.href
+			});
+	}
+	if (target.parents('.InfoAdvanced').length) {
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Info Advanced',
+				eventAction: 'Info Advanced Clicked',
+				eventLabel: window.location.href
+			});
+	}
+	if (target.parents('.list').length) {
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'List',
+				eventAction: 'List Clicked',
+				eventLabel: window.location.href
+			});
+	}
+	if (target.parents('.megaMenuItem').length || target.parents('.topMenuItem').length) {
+		var megaMenuText = jQuery('.topMenuItem.mouseover').find('span').text();
+		var breadCrumbs = [];
+		jQuery('.breadCrumbs > li').each(function () {
+			 breadCrumbs.push(this.textContent);
+		});
+		var pageTitle = breadCrumbs.join('>');
+		var subTitleText = target.parents('.megaMenuItem').children('.widgetTitle').children().text();
+		var text = "";
+		if (pageTitle) {
+			text += pageTitle + " | ";
+		} else {
+			text += document.title + ' - ';
+		}
+		if (target.text() == "" && megaMenuText == "") {
+			text += "N/A";
+		} else if (target.text().length && megaMenuText.length) {
+			if (megaMenuText == target.text()) {
+				text += megaMenuText;
+			} else {
+				text += megaMenuText + " - " + subTitleText + " - " + target.text();
+			}
+		} else if (target.text() == "") {
+			text += megaMenuText;
+		} else {
+			text += target.text();
+		}
+		if (!text.length) {
+			text = "N/A";
+		}
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Mega Menu',
+				eventAction: 'Mega Menu : ' + text,
+				eventLabel: window.location.href
+			});
+	}
+	if (target.parents('.widgetNewsFlash').length && target.parents('.widgetItem').length) {
+		var text = jQuery(target.parents('.widgetItem')[0]).find('.widgetTitle').children().text();
+		if (!text.length) {
+			text = "N/A";
+		}
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'News Flash',
+				eventAction: 'News Flash - ' + text,
+				eventLabel: window.location.href
+			});
+	}
+	if (target.hasClass('widgetQuickLinksLink') || target.find('.widgetQuickLinksLink').length) {
+		var text = target.text();
+		if (!text.length) {
+			text = "N/A";
+		}
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Quick Links',
+				eventAction: 'Quick Links - ' + text,
+				eventLabel: window.location.href
+			});
+	}
+	if (target.attr('src') && target.parents('.cpSlideshow').length) {
+		var text = target.attr('title');
+		if (!text.length) {
+			text = "N/A";
+		}
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Slideshow',
+				eventAction: 'Slideshow - ' + text,
+				eventLabel: window.location.href
+			});
+	}
+	if (target.parents('.widgetText').length) {
+		ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'Text',
+				eventAction: 'Text Link Clicked',
+				eventLabel: window.location.href
+			});
+	}
+});</script>
+
+	<div id="fb-root"></div>
+<div id=skipToContentLinks>
+<a href="#contentarea" target="_self" class="skipToContentLink">Skip to Main Content</a>
+</div>
+	<form id="frmReferenceFormForTelerikEditorDialogs"></form>
+
+		<input type="hidden" id="GoogleMapsKey" value="AIzaSyDWUuE-ifkbhxblF920N8MjpBdTg1Wt784" />
+	
+	
+
+<link href="/745732998.css" rel="stylesheet" type="text/css" />
+
+<div tabindex="0"></div>
+<div id="SplashMessageWrapper" class="cp-Splash-wrapper">
+    <div role="dialog" aria-labelledby="cp-Splash-title" aria-describedby="editorContentDesc" aria-modal="true" tabindex="-1" id="SplashMessage" class="hidden cp-Splash cp-Splash--modal is-open">
+        <div class="cp-Splash-header">
+            <h3 class="cp-Splash-title" id="cp-Splash-title">Loading</h3>
+            <button class="cp-Splash-Btn cp-Splash-close" aria-label="Close">
+                <svg id="iconClose" viewBox="0 0 25 25">
+                    <title>Close</title>
+                    <polygon style="fill:currentcolor"
+                             points="18.806,6.98 18.075,6.248 12.532,11.792 6.989,6.248 6.257,6.98 11.786,12.508 6.212,18.084 6.943,18.815 12.532,13.224 18.12,18.815 18.851,18.084 13.277,12.508"></polygon>
+                </svg>
+            </button>
+        </div>
+        <div class="cp-Splash-body">
+            <div class="cp-Splash-Prose editorContent fr-view fr-element" id="editorContentDesc">
+                <!-- Content from the Froala Editor will go here. -->
+                Loading
+            </div>
+        </div>
+        <div class="cp-Splash-footer">
+            <button class="cp-Splash-Btn cp-Splash-Btn--NoShow">Do Not Show Again</button>
+            <button class="cp-Splash-Btn cp-Splash-Btn--Close">Close</button>
+        </div>
+    </div>
+</div>
+<div tabindex="0"></div>
+
+<script src="/Assets/Scripts/APIClient.js"></script>
+<script src="/Assets/Scripts/MomentJs/2.29.1/moment.min.js"></script>
+<script src="/Assets/Scripts/SplashModal/SplashModalRender.js"></script>
+<script>
+
+		$(document).ready(function () {
+			var filter = {
+				targetId: '',
+				targetType: 0
+			}
+
+            new SplashModalRender().triggerRender(filter);
+		});
+</script>
+	
+<input type="hidden" id="cpcDomain" value="https://cp-civicplusuniversity2.civicplus.com">
+	<input type="hidden" id="hdnStructureID" value="1" />
+	<input type="hidden" id="hdnContentCollectionID" value="b39bb79f-f67f-4b36-8261-7f8e724fc7ad" />
+	<input type="hidden" id="hdnWorkingCopyID" value="00000000-0000-0000-0000-000000000000" />
+	<input type="hidden" id="hdnThemeID" value="1" />
+	<input type="hidden" id="pageIsFrontEnd" value="true" />
+	<input type="hidden" id="pageModuleID" value="65" />
+	<input type="hidden" id="pagePageID" />
+	<input type="hidden" id="hdnModuleEligibleForJquery224Upgrade" value="true" />
+
+		<input type="hidden" id="hdnModuleID" value="65" />
+		<div id="stickyPlaceholder"></div>
+	<div id="outer-wrap" class="outer-wrap">
+		<div id="inner-wrap" class="inner-wrap">
+				<div id="divToolbars" class="cpToolbars newCP" style="">
+					
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/App_Themes/CP/ie7.css"><![endif]-->
+<!-- Allow Dashboard, Favorites Enabled -->
+
+<!-- Begin Signed Out Bar -->
+<div class="cpToolbar user public">
+    <div class="inner selfClear">
+        <p class="dropdown"><a href="/MyAccount/ProfileCreate" role="button" class="myConnections" id="signedOutToolbarCreateProfileButton">Create an Account</a> <span class="welcomeMessage">- Increase your productivity, customize your experience, and engage in information you care about. &nbsp;&nbsp;</span></p>
+        <ul class="nav secondary">
+	        <li><a href="/MyAccount" role="button" class="button" id="loggedOutToolbarSignInButton"><span>Sign In</span></a></li>
+        </ul>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#signedOutToolbarCreateProfileButton').keypress(function (e) { if (e.which === 0) return; $(this).click(); });
+        $('#signedOutToolbarCreateProfileButton').click(function (event) {
+        	event.preventDefault();
+        	window.location.href = '/MyAccount/ProfileCreate?from=url&url=/&dn=' + window.location.origin;
+        });
+
+			
+				$('#loggedOutToolbarSignInButton').click(function (event) {
+					event.preventDefault();
+					window.location.href = '/MyAccount/?from=url&url=' + encodeURIComponent(window.location.href.replace(window.location.origin, '')) + '&dn=' + window.location.host;
+				});
+			
+
+		if ('False' == 'True') {
+            $('#loggedOutToolbarSignInButton').hide();
+		}
+    })
+</script>
+<!-- End Signed Out Bar -->
+
+				</div>
+			<div id="bodyWrapper">
+				<div id="mainNavHolderMobile" class="mainNavHolderMobile"></div>
+				
+<div data-cpRole="structuralContainer" id="structuralContainer5">
+<div data-cpRole="structuralContainer" id="structuralContainer8">
+<div data-cpRole="banner" id="banner1"><div data-cpRole="structuralContainer" id="structuralContainer11">
+<header class="siteHeader"><div class="siteWrap"><h1 data-cpRole="banner" id="banner2" class="logo empty">
+
+
+
+
+				<a style="			display: block; text-align: left;
+" class="bannerObject" href="/" target="_self"><img alt="Click to Home" class="bannerObject" src="/ImageRepository/Document?documentID=44" /></a>
+
+</h1><div data-cpRole="structuralContainer" id="structuralContainer9" class="mainNavWrap">
+<aside data-cpRole="contentContainer" id="contentContainer7">	<div id="ccc9a493f6-844e-41b2-a7fa-7c037ece6bed" data-containerid="c9a493f6-844e-41b2-a7fa-7c037ece6bed" class="pageContent cpGrid cpGrid24 isLockedContainer showInMobile" data-contentcontainerbreakpoint="25">
+				                
+
+		<div class="row outer wide"><!--
+--><div class="outer col col4 first" style="" data-widgetcontainerid="19350c8e-388b-45e2-9ac5-0b720242c867">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col4 first last id1df5cb4a-98e2-41b1-82a7-db9ae080ddb1" style="" data-widgetcontainerid="1df5cb4a-98e2-41b1-82a7-db9ae080ddb1">	
+
+<div class="widget widgetSpacer" id="da66aa9e-bc98-4f04-848b-8257acbc6bc4"></div>	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!----><div class="outer col col8" style="" data-widgetcontainerid="31c9cfb9-ad7f-4a0d-9b9f-ef928a91b645">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col4 first idbc1f1bb3-7e9d-4b82-90fd-f9e429566b03" style="" data-widgetcontainerid="bc1f1bb3-7e9d-4b82-90fd-f9e429566b03">	
+<div data-widget-id="2e51ad94-3d31-4f53-9a98-9e8fc13e24f1" data-widget-controller-path="/Layout/WidgetShare">
+
+		<script type="text/javascript">
+			$(document).ready(function () {
+				setWidgetServiceClicking($("#widgetShareHeader2e51ad94-3d31-4f53-9a98-9e8fc13e24f1"), true, function () {
+					var $widgetBody = $('#widgetShareBody2e51ad94-3d31-4f53-9a98-9e8fc13e24f1');
+
+					if ($widgetBody.is(':visible')) {
+						var menuItems = $('.widgetItem a', $widgetBody);
+
+						$(menuItems[0]).focus();
+
+						$('.widgetItem', $widgetBody).unbind("keydown").bind("keydown", function (e) {
+
+							if (e.which === 9) {
+								var index = menuItems.index(e.target);
+
+								if ((index === 0 && e.shiftKey) || (index === (menuItems.length - 1) && !e.shiftKey)) {
+									$("#widgetShareHeader2e51ad94-3d31-4f53-9a98-9e8fc13e24f1").trigger('click').focus();
+								}
+							}
+			});
+					} else {
+						$('.widgetItem', $widgetBody).unbind("keydown");
+					}
+				});
+			});
+		</script>
+
+	<section id="widgetShare2e51ad94-3d31-4f53-9a98-9e8fc13e24f1" class="widget widgetShare skin41 widgetOptionSet14 flyOutParent wide"  aria-label="Share">
+			<header id="widgetShareHeader2e51ad94-3d31-4f53-9a98-9e8fc13e24f1" class="widgetHeader" tabindex="0" role="button" aria-haspopup="true">
+				<h3><img alt="Share" class="imageHover" data-hover="/ImageRepository/Document?documentID=51" data-image="/ImageRepository/Document?documentID=53" src="/ImageRepository/Document?documentID=53" /></h3>
+	</header>
+    <div id="widgetShareBody2e51ad94-3d31-4f53-9a98-9e8fc13e24f1" class="widgetBody flyOut bottom leftEdge widget widgetShare skin41 cpGrid cpGrid1" style="display:none;">
+        <div class="row                   
+ wide">
+	<div class="col col1 first last">
+		<ol class="semanticList">
+                <li class="widgetItem" ><a tabindex="0" role="button" class="widgetShareFacebook shareService" onkeypress="if(event.which == 13) { this.onclick(); }" href="/Layout/WidgetShare/ShareLink/Facebook" target="_blank" aria-label="Share on Facebook opens in new window">Facebook</a></li>
+                <li class="widgetItem" ><a tabindex="0" role="button" class="widgetShareTwitter shareService" onkeypress="if(event.which == 13) { this.onclick(); }" href="/Layout/WidgetShare/ShareLink/Twitter" target="_blank" aria-label="Share on Twitter opens in new window">Twitter</a></li>
+                <li class="widgetItem" ><a tabindex="0" role="button" class="widgetSharePinterest shareService" onkeypress="if(event.which == 13) { this.onclick(); }" href="/Layout/WidgetShare/ShareLink/Pinterest" target="_blank" aria-label="Share on Pinterest opens in new window">Pinterest</a></li>
+                <li class="widgetItem" ><a tabindex="0" role="button" class="widgetShareDelicious shareService" onkeypress="if(event.which == 13) { this.onclick(); }" href="/Layout/WidgetShare/ShareLink/Delicious" target="_blank" aria-label="Share on Delicious opens in new window">Delicious</a></li>
+                <li class="widgetItem" ><a tabindex="0" role="button" class="widgetShareBlogger shareService" onkeypress="if(event.which == 13) { this.onclick(); }" href="/Layout/WidgetShare/ShareLink/Blogger" target="_blank" aria-label="Share on Blogger opens in new window">Blogger</a></li>
+                <li class="widgetItem" ><a tabindex="0" role="button" class="widgetShareLinkedIn shareService" onkeypress="if(event.which == 13) { this.onclick(); }" href="/Layout/WidgetShare/ShareLink/LinkedIn" target="_blank" aria-label="Share on LinkedIn opens in new window">LinkedIn</a></li>
+		</ol>
+	</div>
+
+        </div>
+    </div>
+
+	</section>
+
+</div>
+	</div> <!-- inner column -->
+	<div class="inner col col4 last id346ce965-b7b6-4102-885d-23f2c1364e45" style="" data-widgetcontainerid="346ce965-b7b6-4102-885d-23f2c1364e45">	
+<div data-widget-id="ae0eb74d-355c-4296-86b9-966c80b0ebba" data-widget-controller-path="/Layout/WidgetSiteTools">
+
+		<script type="text/javascript">
+			$(document).ready(function () {
+				setWidgetServiceClicking($("#widgetSiteToolsHeaderae0eb74d-355c-4296-86b9-966c80b0ebba"), true, function () {
+					var $widgetBody = $('#widgetSiteToolsBodyae0eb74d-355c-4296-86b9-966c80b0ebba');
+
+					if ($widgetBody.is(':visible')) {
+						var menuItems = $('.widgetItem a', $widgetBody);
+
+						$(menuItems[0]).focus();
+
+						$('.widgetItem', $widgetBody).unbind("keydown").bind("keydown", function (e) {
+
+							if (e.which === 9) {
+								var index = menuItems.index(e.target);
+
+								if ((index === 0 && e.shiftKey) || (index === (menuItems.length - 1) && !e.shiftKey)) {
+									$("#widgetSiteToolsHeaderae0eb74d-355c-4296-86b9-966c80b0ebba").trigger('click').focus();
+								}
+							}
+						});
+					} else {
+						$('.widgetItem', $widgetBody).unbind("keydown");
+					}
+				});
+			});
+		</script>
+
+	<section id="widgetSiteToolsae0eb74d-355c-4296-86b9-966c80b0ebba" class="widget widgetSiteTools skin41 widgetOptionSet7 flyOutParent wide"  aria-label="Site Tools">
+				<header id="widgetSiteToolsHeaderae0eb74d-355c-4296-86b9-966c80b0ebba" class="widgetHeader" tabindex="0" role="button" aria-haspopup="true">
+			<h3><img alt="Site Tools" class="imageHover" data-hover="/ImageRepository/Document?documentID=52" data-image="/ImageRepository/Document?documentID=54" src="/ImageRepository/Document?documentID=54" /></h3>
+		</header>
+	<div id="widgetSiteToolsBodyae0eb74d-355c-4296-86b9-966c80b0ebba" class="widgetBody whiteIcons flyOut bottom leftEdge widget widgetSiteTools skin41 cpGrid cpGrid1" style="display:none;">
+         <div class="row                   
+ wide">
+	<div class="col col1 first last">
+		<ol class="semanticList">
+					<li class="widgetItem"><a tabindex="0" role="button" aria-label="Site Tools Home" class="widgetSiteToolsHome siteToolsService" href="/">Home</a></li>
+					<li class="widgetItem"><a tabindex="0" role="button" aria-label="Site Tools My Account" class="widgetSiteToolsMyAccount siteToolsService" href="/MyAccount">My Account</a></li>
+					<li id="PrinterFriendlyae0eb74d-355c-4296-86b9-966c80b0ebba" class="widgetItem"><a tabindex="0" aria-label="Site Tools Printer Friendly opens in new window" role="button" class="widgetSiteToolsPrinterFriendly siteToolsService" onkeypress="if (event.which == 13) { this.onclick(); }" onclick="Core.Layout.dynamicJavascript('printPreview();'); return false;" href="#PrinterFriendlyae0eb74d-355c-4296-86b9-966c80b0ebba">Printer Friendly</a></li>
+					<li class="widgetItem"><a tabindex="0" role="button" aria-label="Site Tools Email Page" class="widgetSiteToolsEmailPage siteToolsService" href="/EmailPage">Email Page</a></li>
+					<li class="widgetItem"><a tabindex="0" role="button" aria-label="Site Tools Contact Us" class="widgetSiteToolsContactUs siteToolsService" href="/directory.aspx">Contact Us</a></li>
+					<li class="widgetItem"><a tabindex="0" role="button" aria-label="Site Tools RSS" class="widgetSiteToolsRSS siteToolsService" href="/rss.aspx">RSS</a></li>
+					<li class="widgetItem"><a tabindex="0" role="button" aria-label="Site Tools Site Map" class="widgetSiteToolsSiteMap siteToolsService" href="/SiteMap">Site Map</a></li>
+					<li id="TranslatePageae0eb74d-355c-4296-86b9-966c80b0ebba" class="widgetItem"><a tabindex="0" aria-label="Site Tools Translate Page opens in new window" role="button" class="widgetSiteToolsTranslatePage siteToolsService" onkeypress="if (event.which == 13) { this.onclick(); }" onclick="Core.Layout.dynamicJavascript('window.open(\&#39;https://translate.google.com/translate?js=n&amp;sl=auto&amp;tl=es&amp;u=\&#39; + document.location.href, \&quot;TranslateWindow\&quot;);'); return false;" href="#TranslatePageae0eb74d-355c-4296-86b9-966c80b0ebba">Translate Page</a></li>
+					<li class="widgetItem"><a tabindex="0" role="button" aria-label="Site Tools Notifications" class="widgetSiteToolsNotifications siteToolsService" href="/list.aspx">Notifications</a></li>
+					<li class="widgetItem"><a tabindex="0" role="button" aria-label="Site Tools Documents" class="widgetSiteToolsDocuments siteToolsService" href="/DocumentCenter">Documents</a></li>
+		</ol>
+	</div>
+
+		 </div>
+	</div>
+
+	</section>
+
+
+
+</div>
+	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!----><div class="outer col col1" style="" data-widgetcontainerid="f721922a-5f11-4bb1-b8bb-c64b5a2794c1">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col1 first last id97a2e79e-3d85-48c3-a192-57935dad51e0" style="" data-widgetcontainerid="97a2e79e-3d85-48c3-a192-57935dad51e0">	
+
+<div class="widget widgetSpacer" id="7890ee1a-505a-49c9-8cdf-6c1f05c298cf"></div>	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!----><div class="outer col col11 last" style="" data-widgetcontainerid="265f3855-6904-483e-9721-dfdd6d0c0bb5">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col11 first last idb55b1648-162e-40c2-8d95-140732772906" style="" data-widgetcontainerid="b55b1648-162e-40c2-8d95-140732772906">	
+<div data-widget-id="db97fdc0-ee10-4ae4-b7ca-3d8bd317aea3" data-widget-controller-path="/Layout/WidgetSearch">
+	
+		<script defer type="text/javascript" src="/Common/Controls/jquery-ui/js/jquery.ui.autocomplete.min.js"></script>
+	<script defer src="/Areas/Layout/Assets/Scripts/Search.js" type="text/javascript"></script>
+	<script defer type="text/javascript">
+
+		$(document).ready(function () {
+			try {
+				$(".widgetSearchButton.widgetSearchButtondb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3").click(function (e) {
+				e.preventDefault();
+					if ($("#ysnSearchOnlyDeptdb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3").is(':checked')) {
+						doWidgetSearch($(this).siblings(".widgetSearchBox").val(), Number(0));
+					} else {
+						doWidgetSearch($(this).siblings(".widgetSearchBox").val(), 0);
+					}
+			});
+			$("#searchFielddb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3").keypress(function (e) {
+				if (window.clipboardData) {
+					if (e.keyCode == 13) {
+							if ($("#ysnSearchOnlyDeptdb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3").is(':checked')) {
+								doWidgetSearch($(this).val(), Number(0));
+							} else {
+								doWidgetSearch($(this).val(), 0);
+							}
+						return false;
+					}
+				} else {
+					if (e.which == 13) {
+							if ($("#ysnSearchOnlyDeptdb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3").is(':checked')) {
+								doWidgetSearch($(this).val(), Number(0));
+							} else {
+								doWidgetSearch($(this).val(), 0);
+							}
+						return false;
+					}
+				}
+				return true;
+			});
+
+				if (true) {
+					var currentRequest = null;
+
+					var $searchField = $("#searchFielddb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3").autocomplete({
+						source: function (request, response) {
+							currentRequest = $.ajax({
+								url: '/Search/AutoComplete',
+								dataType: "json",
+								timeout: 10000,
+								beforeSend: function () {
+									if (currentRequest != null) {
+										currentRequest.abort();
+									}
+								},
+								data:
+								{
+									term: request.term,
+								},
+								success: function (data) {
+									response(data);
+									$('.autoCompleteError').remove();
+								},
+								error: function (xmlhttprequest, textstatus, message) {
+									if (textstatus === "timeout") {
+										if ($("#searchFielddb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3").siblings('.autoCompleteError').length == 0)
+											$('<span class="autoCompleteError"><p class="alert error">Search autocomplete is currently not responding. Please try again later.</p></span>').insertAfter($("#searchFielddb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3"));
+									}
+								}
+							});
+						},
+						html: true,
+						delay: 500,
+						select: function (event, ui) {
+							$(this).val(ui.item.value);
+							$(this).next().click();
+						}
+					});
+
+					if (false && true) {
+						$searchField.data("ui-autocomplete")._renderItem = function (ul, item) {
+							return $("<li class=\"itemList\"></li>")
+								.data("ui-autocomplete-item", item)
+								.append("<a>" + item.label + "</a>")
+								.appendTo(ul);
+						};
+					}
+					else {
+						$searchField.data("autocomplete")._renderItem = function (ul, item) {
+							return $("<li></li>")
+								.data("item.autocomplete", item)
+								.append("<a>" + item.label + "</a>")
+								.appendTo(ul);
+						};
+					}
+}
+}
+			catch(e) {} //we're going to eat this error. Autocomplete won't work but we dont wan't to break anything else on the page.
+		});
+	</script>
+
+	<section id="widgetPreviewSearch" class="widget widgetSearch skin17 widgetOptionSet15" style="display: block;" aria-label="Search">
+				<!-- For the button right and inside -->
+		<div class="widgetBody buttonRightInside">
+			<input class="widgetSearchBox widgetSearchBoxdb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3" cp5ph="true" id="searchFielddb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3" name="searchField" onchange="searchBtnApplyQuery();" placeholder="Search" title="Search" type="text" value="" />
+							<a href="/Search/Results" id="btnSearchIcon" class="widgetSearchButton widgetSearchButtondb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3" role="button"><img alt="Go to Site Search" class="imageHover" data-hover="/ImageRepository/Document?documentID=50" data-image="/ImageRepository/Document?documentID=49" src="/ImageRepository/Document?documentID=49" /></a>
+
+			<label class="searchLabel" for="searchFielddb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3">Search</label>
+		</div>
+
+	</section>
+
+
+<style scoped>
+    
+        .widgetSearch ::-webkit-input-placeholder {
+        color: #372514;
+      }
+        .widgetSearch :-moz-placeholder { /* Firefox 18- */
+       color: #372514;
+    }
+        .widgetSearch ::-moz-placeholder {  /* Firefox 19+ */
+       color: #372514;
+    }
+    .widgetSearch :-ms-input-placeholder {
+       color: #372514;
+    }
+    
+
+	.widgetSearch .widgetBody .widgetSearchBoxdb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3
+	{
+        color: #372514;
+		background: #e6dec9; background: rgba(230,222,201,.85); padding: 12px 50px 12px 20px;  border: 0; border-radius: 20px;
+	}
+	.widgetSearch .widgetBody .widgetSearchButtondb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3
+	{
+		margin: 9px 20px 0 0;
+	}
+	.widgetSearch .widgetSearch-onlyDeptdb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3
+	{
+		display: inline-block;
+		color: #333;
+		
+		
+		 padding-top: 10px;
+	}
+	#ysnSearchOnlyDeptdb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3
+	{
+		position: relative;
+		top: .125em;
+	}
+
+</style>
+
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
+
+	<script type="text/javascript">
+	//Updates search icons href to have the correct queryString
+	function searchBtnApplyQuery() {
+		document.getElementById("btnSearchIcon").href = "/Search?searchPhrase=" + document.getElementById("searchFielddb97fdc0-ee10-4ae4-b7ca-3d8bd317aea3").value;
+    }
+	</script>
+
+</div>
+	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!--		--></div> <!-- outer row -->
+
+
+	</div>
+</aside><nav data-cpRole="nav" id="mainNav" class="siteNav mainNav" role="navigation">
+<ol id="mainNavMenu" data-parent="1" class="rootNavMenu" role="menu"><!--
+--><li id="MainItem27" class="topMenuItem" aria-haspopup="true" role="menuitem" data-pageid="27" data-displaymegamenu="True"><!--
+			--><!--
+			--><a id="mainNavGovernment" class="navMainItem mainNavItem mainNavItem1" href="/27/Government" target="_self">Government</a><!--
+			--><!--
+			--></li><!----><li id="MainItem101" class="topMenuItem" aria-haspopup="true" role="menuitem" data-pageid="101" data-displaymegamenu="True"><!--
+			--><!--
+			--><a id="mainNavServices" class="navMainItem mainNavItem mainNavItem2" href="/101/Services" target="_self">Services</a><!--
+			--><!--
+			--></li><!----><li id="MainItem35" class="topMenuItem" aria-haspopup="true" role="menuitem" data-pageid="35" data-displaymegamenu="True"><!--
+			--><!--
+			--><a id="mainNavBusiness" class="navMainItem mainNavItem mainNavItem3" href="/35/Business" target="_self">Business</a><!--
+			--><!--
+			--></li><!----><li id="MainItem31" class="topMenuItem" aria-haspopup="true" role="menuitem" data-pageid="31" data-displaymegamenu="True"><!--
+			--><!--
+			--><a id="mainNavCommunity" class="navMainItem mainNavItem mainNavItem4" href="/31/Community" target="_self">Community</a><!--
+			--><!--
+			--></li><!----><li id="MainItem9" class="topMenuItem" aria-haspopup="true" role="menuitem" data-pageid="9" data-displaymegamenu="True"><!--
+			--><!--
+			--><a id="mainNavIWantTo" class="navMainItem mainNavItem mainNavItem5" href="/9/I-Want-To" target="_self">I Want To...</a><!--
+			--><!--
+			--></li><!---->
+</ol>
+
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var menuID = 'mainNavMenu';
+			var menuType = MAIN_MENU;
+
+			//setup menu manager properties for main menu
+			if (!menuManager.mobileMainNav && true)
+				menuManager.adjustMainItemsWidth('#' + menuID);
+			menuManager.isMainMenuEditable = false;
+			menuManager.mainMenuMaxSubMenuLevels = 4;
+			menuManager.setMOMMode(2, menuType);
+
+			//Init main menu
+			var setupDraggable = menuManager.isMainMenuEditable;
+			var urlToGetHiddenMenus = '/Pages/MenuMain/HiddenMainSubMenus?pageID=1&moduleID=65&themeID=1&menuContainerID=mainNav';
+
+			menuManager.setupMenu(menuID, 'mainNav', menuType, setupDraggable, urlToGetHiddenMenus);
+			menuManager.mainMenuInit = true;
+			menuManager.mainMenuTextResizer = true;
+			if (1.00 > 0)
+				menuManager.mainMenuTextResizerRatio = 1.00;
+			if (window.isResponsiveEnabled)
+				menuManager.mainMenuReady.resolve();
+
+		});
+	</script>
+
+
+<aside data-cpRole="megaMenu" id="megaMenu" class="megaMenu" style="display: none;"><input type="hidden" id="megaMenuPopupDirection" value="0"><input type="hidden" id="megaMenuWidthReference" value="1"><aside data-cpRole="contentContainer" id="mainNavMegaMenu27" class="contentTop mainNavMegaMenu megaMenuContainer pageID_27 hidden" data-orientation="horizontal">	<div id="cc4f950fd3-9565-4f69-bf82-391d9c9180db" data-containerid="4f950fd3-9565-4f69-bf82-391d9c9180db" class="pageContent cpGrid cpGrid24 showInMobile">
+				                
+
+
+
+	</div>
+</aside><aside data-cpRole="contentContainer" id="mainNavMegaMenu101" class="contentTop mainNavMegaMenu megaMenuContainer pageID_101 hidden" data-orientation="horizontal">	<div id="cc2d538429-324e-4c1f-8a8d-d66fec174708" data-containerid="2d538429-324e-4c1f-8a8d-d66fec174708" class="pageContent cpGrid cpGrid24 showInMobile">
+				                
+
+
+
+	</div>
+</aside><aside data-cpRole="contentContainer" id="mainNavMegaMenu35" class="contentTop mainNavMegaMenu megaMenuContainer pageID_35 hidden" data-orientation="horizontal">	<div id="ccf1fde964-9022-4699-aa4c-c992f8d51fc5" data-containerid="f1fde964-9022-4699-aa4c-c992f8d51fc5" class="pageContent cpGrid cpGrid24 showInMobile">
+				                
+
+
+
+	</div>
+</aside><aside data-cpRole="contentContainer" id="mainNavMegaMenu31" class="contentTop mainNavMegaMenu megaMenuContainer pageID_31 hidden" data-orientation="horizontal">	<div id="cc69109973-0016-4227-8d90-4e0ab21c1397" data-containerid="69109973-0016-4227-8d90-4e0ab21c1397" class="pageContent cpGrid cpGrid24 showInMobile">
+				                
+
+
+
+	</div>
+</aside><aside data-cpRole="contentContainer" id="mainNavMegaMenu9" class="contentTop mainNavMegaMenu megaMenuContainer pageID_9 hidden" data-orientation="horizontal">	<div id="cc9236fe20-9341-4f31-a7c3-58b40d4c5533" data-containerid="9236fe20-9341-4f31-a7c3-58b40d4c5533" class="pageContent cpGrid cpGrid24 showInMobile">
+				                
+
+
+
+	</div>
+</aside></aside></nav>
+</div></div></header>
+</div><div data-cpRole="structuralContainer" id="structuralContainer4">
+<div class="siteWrap"><div data-cpRole="structuralContainer" id="structuralContainer1" class="mainWrap" role="main">
+<div data-cpRole="structuralContainer" id="structuralContainer12" class="outerContentWrap">
+<div data-cpRole="structuralContainer" id="structuralContainer2" class="contentWrap">
+<div data-cpRole="breadCrumbs" class="breadCrumbContainer" id="breadCrumbs">		<ol class="semanticList breadCrumbs">
+			<li><a class="breadCrumb" href="/">Home</a></li><li>Agenda Center</li>
+		</ol>
+
+	   
+    
+</div><div data-cpRole="mainContentContainer" id="moduleContent">
+	<a id="contentarea"></a>
+	
+<!-- BEGIN AgendaCenterContent.aspx ***** -->
+     
+<input type="hidden" name="dateRange" />
+	<div id="AgendaCenterContent" class="newCP moduleContentNew ">
+		<div class="contentMain selfClear">
+			<div class="header selfClear">
+				<div class="graphic">
+					<a href="/AgendaCenter">
+						<img src="/Areas/AgendaCenter/Assets/Images/HomeModuleIconLarge.png" alt="Agendas module icon" width="74" height="74" />
+					</a>
+				</div>
+				
+				<div class="text">
+                    
+					    <h1>Agenda Center</h1>
+				    View current agendas and minutes for all boards and commissions. Previous years' agendas and minutes can be found in the <a class=Hyperlink target=_self title="Document Center" href=/DocumentCenter>Document Center</a>. <a href="http://www.adobe.com/products/acrobat/readstep2.html" target=_self>Adobe Reader</a> may be required to view some documents.<a href="http://www.adobe.com/products/acrobat/readstep2.html" target=_self></a> <img src="/common/images/getacro.gif" alt="Get Adobe Acrobat"></a>
+				</div>
+			
+				
+				<div class="tools">
+					<h3>Tools</h3>
+					<ul>
+						
+								<li><a href="/rss.aspx#agendaCenter" aria-label="AgendaCenterRSS" class="RSS">RSS</a></li>
+						<li><a href="/list.aspx#agendaCenter" class="notifyMe">Notify Me®</a></li>
+						
+					</ul>
+				</div>
+				
+				<div class="search selfClear">
+					<h3>Search Agendas by:</h3>
+					<div class="noWrap">
+						<div class="popoutContainer">
+							<label class="screenRead" for="timePeriod">Time Period</label> 
+							<a id="timePeriod" onkeypress="return this.onclick();" onclick="showTimePeriodDropdown(event); return false;" href="" class="button"><span>Time Period</span></a>
+							<div class="popout popUp" style="display:none;" id="dateRangePopup">
+								<div class="popoutTop">
+									<div class="popoutBtm">									
+										<ol name="quickDateRange" id="submittedIn">
+											<li id="liTimePeriod" style="display:none;"><a href=""onkeypress="this.onclick();" onclick="resetDateDefaults(); return false;">Time Period</a></li>
+											<li><a href=""onkeypress="this.onclick();" onclick="changeDateRange('1', 'Last Week'); return false;">Last Week</a></li>
+											<li><a href="" onkeypress="this.onclick();" onclick="changeDateRange('2', 'Last Month'); return false;">Last Month</a></li>
+											<li><a href="" onkeypress="this.onclick();" onclick="changeDateRange('3', 'Last 6 Months'); return false;">Last 6 Months</a></li>
+											<li><a href="" onkeypress="this.onclick();" onclick="changeDateRange('4', 'Last Year'); return false;">Last Year</a></li>
+										</ol>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="date">						
+                            <div class="t-widget t-datepicker">
+                                <div class="t-picker-wrap">                                    
+									<label class="screenRead" for="StartDatePicker">Start Date</label>                                  
+                                    <input class="submittedStart" cp5ph="true" id="StartDatePicker" name="StartDate" placeholder="Start Date" title="Start Date" type="text" value="" />
+                                </div>                                
+                            </div>
+						</div>                         
+						<div class="date">						
+                            <div class="t-widget t-datepicker">
+                                <div class="t-picker-wrap">                                
+									<label class="screenRead" for="EndDatePicker">End Date</label>                                 
+                                  <input class="submittedEnd" cp5ph="true" id="EndDatePicker" name="EndDate" placeholder="End Date" title="End Date" type="text" value="" />
+                               </div>
+                             </div>
+						</div>
+					</div>
+					<div class="noWrap">
+						<label class="screenRead" for="searchField">Word or Phrase</label>
+						<input cp5ph="true" id="searchField" name="searchField" placeholder="Word or Phrase" title="Word or Phrase" type="text" value="" />
+					</div>
+					<!--[if lte IE 7]><span style="display:none;">&nbsp;</span><![endif]-->
+					<a href="#categoryList" id="selectCategoryButton" class="button mega"><span>Select a Category</span></a>
+					<label class="screenRead" for="searchButton">Search</label>
+					<input type="image" id="searchButton"  src="/Common/images/SearchButton.png" title="Agenda Center Search" alt="Agenda Center Search">
+					<div id="categoryList" style="display:none; " class="categoryList">
+						<div>
+							
+									 <ol>
+									 									 
+										 <li>
+										 <input type="checkbox" onkeypress="this.onclick();" onclick="checkUncheckAll(this.checked);" id="allCategories" checked>
+										 <label for="allCategories">All Categories</label>
+										 </li>
+								
+									 </ol>
+					
+									 <ol>
+									 
+										<li>
+										 <input type="checkbox" id="2" onkeypress="this.onclick();" onclick="checkUncheckAllCategoriesCB()" name="chkCategoryID" value="2"
+										 
+											 checked="checked"											 
+									 
+										 >
+										 <label for="2">
+								City Council
+								
+										 </label>
+										 </li>
+								
+									 </ol>
+					
+									 <ol>
+									 
+										<li>
+										 <input type="checkbox" id="4" onkeypress="this.onclick();" onclick="checkUncheckAllCategoriesCB()" name="chkCategoryID" value="4"
+										 
+											 checked="checked"											 
+									 
+										 >
+										 <label for="4">
+								Planning Commission
+								
+										 </label>
+										 </li>
+								
+									 </ol>
+					
+						</div>
+					</div>
+				</div>
+						</div>
+			
+
+	<!-- Category list starts(when headers are off) -->
+	
+		<!-- Only render the section if there are agendas to display -->
+			
+				<div class="listing listingCollapse noHeader" id="cat2">
+					<h2 tabindex="0" onkeypress="this.onclick();" onclick="expandCollaspseCategory(2)"><span id="span2">&#9660;</span>City Council</h2>
+					
+
+<span id="section2">
+	<script type="text/javascript">
+	    //Remove href attribute from the year clicked.
+	    $(document).ready(function () {
+	        $('.current').children().removeAttr('href');
+	    });
+	</script>	
+		<ul class="years">	
+			<li class=current><a id="a02" aria-label="City Council 2022" href="javascript:changeYear(2022, 2,'a0')">2022</a></li>
+			
+				<li ><a id="a12" aria-label="City Council 2021" href="javascript:changeYear(2021, 2, 'a1')">2021</a></li>
+		
+				<li ><a id="a22" aria-label="City Council 2020" href="javascript:changeYear(2020, 2, 'a2')">2020</a></li>
+			
+			<li>
+		
+				<div class="popoutContainer popUpParent">
+					<a href="" id="btnViewMore2" aria-label="ViewMore2" onkeypress="this.onclick();" onclick="showMoreYears(2, 'yearDD2', event); return false;">View More</a>
+					<div id="yearDD2" class="popout popUp" style="display:none;">
+						<div class="popoutTop">
+							<div class="popoutBtm">
+								<ol>
+							
+									<li><a id="anchYearDD32" aria-label="City Council 2019" href="javascript:changeYear(2019, 2,'anchYearDD3')">2019</a></li>
+						
+									<li><a id="anchYearDD42" aria-label="City Council 2018" href="javascript:changeYear(2018, 2,'anchYearDD4')">2018</a></li>
+						
+									<li><a id="anchYearDD52" aria-label="City Council 2017" href="javascript:changeYear(2017, 2,'anchYearDD5')">2017</a></li>
+						
+									<li><a id="anchYearDD62" aria-label="City Council 2016" href="javascript:changeYear(2016, 2,'anchYearDD6')">2016</a></li>
+						
+									<li><a id="anchYearDD72" aria-label="City Council 2015" href="javascript:changeYear(2015, 2,'anchYearDD7')">2015</a></li>
+						
+									<li><a id="anchYearDD82" aria-label="City Council 2014" href="javascript:changeYear(2014, 2,'anchYearDD8')">2014</a></li>
+						
+									<li><a id="anchYearDD92" aria-label="City Council 2013" href="javascript:changeYear(2013, 2,'anchYearDD9')">2013</a></li>
+						
+									<li><a id="anchYearDD102" aria-label="City Council 2012" href="javascript:changeYear(2012, 2,'anchYearDD10')">2012</a></li>
+						
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+		
+			</li>
+		</ul>
+	<!--The table needs a position-relative to avoid weird issues with IE where the controls would just dissapear. -->
+	<table id="table2" summary="List of Agendas" style="position:relative;">
+		<thead>
+			<tr>
+				<th scope="col">
+					Agenda
+				</th>
+					<th scope="col" class="minutes">
+						Minutes
+					</th>
+				
+				<th scope="col" class="downloads">
+					Download
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		<!-- Agendas for a category starts -->
+	
+
+<tr id="row38725a69779" class="catAgendaRow">
+	<td>
+		<h4 id="h409262022-387">
+			<a id="_09262022-387" name="_09262022-387"></a>
+			<strong aria-label="Agenda for September 26, 2022"><abbr title="September">Sep</abbr> 26, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="September">Sep</abbr> 23, 2022 8:19 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="09262022-387" name="387" href="/AgendaCenter/ViewFile/Agenda/_09262022-387" target="_blank" aria-describedby="h409262022-387">
+		
+Regular Meeting of the Farmersville City Council-Cancellation
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer387" class="popoutContainer">
+			<a href="" id="btnAgendaDD387" onkeypress="this.onclick();" onclick="showDownloadMenu(387, 2, 'agendaDD387', event, false); return false;" class="button"><span id="spanDD387">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD387" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="September 26, 2022, 
+Regular Meeting of the Farmersville City Council-Cancellation. Agenda" class="html" href="/AgendaCenter/ViewFile/Agenda/_09262022-387" id="anch238725a69779" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row38589261111" class="catAgendaRow">
+	<td>
+		<h4 id="h409122022-385">
+			<a id="_09122022-385" name="_09122022-385"></a>
+			<strong aria-label="Agenda for September 12, 2022"><abbr title="September">Sep</abbr> 12, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="September">Sep</abbr> 9, 2022 12:58 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="09122022-385" name="385" href="/AgendaCenter/ViewFile/Agenda/_09122022-385" target="_blank" aria-describedby="h409122022-385">
+		
+Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer385" class="popoutContainer">
+			<a href="" id="btnAgendaDD385" onkeypress="this.onclick();" onclick="showDownloadMenu(385, 2, 'agendaDD385', event, false); return false;" class="button"><span id="spanDD385">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD385" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="September 12, 2022, 
+Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_09122022-385" id="anch238589261111" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row38448d9f869" class="catAgendaRow">
+	<td>
+		<h4 id="h408292022-384">
+			<a id="_08292022-384" name="_08292022-384"></a>
+			<strong aria-label="Agenda for August 29, 2022"><abbr title="August">Aug</abbr> 29, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="August">Aug</abbr> 24, 2022 4:09 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="08292022-384" name="384" href="/AgendaCenter/ViewFile/Agenda/_08292022-384" target="_blank" aria-describedby="h408292022-384">
+		Special Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_08292022-384" aria-label="August 29, 2022, Special Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer384" class="popoutContainer">
+			<a href="" id="btnAgendaDD384" onkeypress="this.onclick();" onclick="showDownloadMenu(384, 2, 'agendaDD384', event, false); return false;" class="button"><span id="spanDD384">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD384" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="August 29, 2022, Special Meeting of the Farmersville City Council. Agenda" class="html" href="/AgendaCenter/ViewFile/Agenda/_08292022-384" id="anch238448d9f869" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row3834a93417a" class="catAgendaRow">
+	<td>
+		<h4 id="h408222022-383">
+			<a id="_08222022-383" name="_08222022-383"></a>
+			<strong aria-label="Agenda for August 22, 2022"><abbr title="August">Aug</abbr> 22, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="August">Aug</abbr> 19, 2022 9:20 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="08222022-383" name="383" href="/AgendaCenter/ViewFile/Agenda/_08222022-383" target="_blank" aria-describedby="h408222022-383">
+		
+Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_08222022-383" aria-label="August 22, 2022, 
+Regular Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer383" class="popoutContainer">
+			<a href="" id="btnAgendaDD383" onkeypress="this.onclick();" onclick="showDownloadMenu(383, 2, 'agendaDD383', event, false); return false;" class="button"><span id="spanDD383">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD383" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="August 22, 2022, 
+Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_08222022-383" id="anch23834a93417a" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row38139caf447" class="catAgendaRow">
+	<td>
+		<h4 id="h408082022-381">
+			<a id="_08082022-381" name="_08082022-381"></a>
+			<strong aria-label="Agenda for August 8, 2022"><abbr title="August">Aug</abbr> 8, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="August">Aug</abbr> 5, 2022 8:21 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="08082022-381" name="381" href="/AgendaCenter/ViewFile/Agenda/_08082022-381" target="_blank" aria-describedby="h408082022-381">
+		
+Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_08082022-381" aria-label="August 08, 2022, 
+Regular Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer381" class="popoutContainer">
+			<a href="" id="btnAgendaDD381" onkeypress="this.onclick();" onclick="showDownloadMenu(381, 2, 'agendaDD381', event, false); return false;" class="button"><span id="spanDD381">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD381" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="August 08, 2022, 
+Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_08082022-381" id="anch238139caf447" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row380d87a2f6d" class="catAgendaRow">
+	<td>
+		<h4 id="h407252022-380">
+			<a id="_07252022-380" name="_07252022-380"></a>
+			<strong aria-label="Agenda for July 25, 2022"><abbr title="July">Jul</abbr> 25, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="July">Jul</abbr> 22, 2022 10:53 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="07252022-380" name="380" href="/AgendaCenter/ViewFile/Agenda/_07252022-380" target="_blank" aria-describedby="h407252022-380">
+		Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_07252022-380" aria-label="July 25, 2022, Regular Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer380" class="popoutContainer">
+			<a href="" id="btnAgendaDD380" onkeypress="this.onclick();" onclick="showDownloadMenu(380, 2, 'agendaDD380', event, false); return false;" class="button"><span id="spanDD380">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD380" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="July 25, 2022, Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_07252022-380" id="anch2380d87a2f6d" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row3774e1cfaf7" class="catAgendaRow">
+	<td>
+		<h4 id="h407112022-377">
+			<a id="_07112022-377" name="_07112022-377"></a>
+			<strong aria-label="Agenda for July 11, 2022"><abbr title="July">Jul</abbr> 11, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="July">Jul</abbr> 8, 2022 11:42 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="07112022-377" name="377" href="/AgendaCenter/ViewFile/Agenda/_07112022-377" target="_blank" aria-describedby="h407112022-377">
+		
+Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_07112022-377" aria-label="July 11, 2022, 
+Regular Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer377" class="popoutContainer">
+			<a href="" id="btnAgendaDD377" onkeypress="this.onclick();" onclick="showDownloadMenu(377, 2, 'agendaDD377', event, false); return false;" class="button"><span id="spanDD377">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD377" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="July 11, 2022, 
+Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_07112022-377" id="anch23774e1cfaf7" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="July 11, 2022, 
+Regular Meeting of the Farmersville City Council. Previous Version" id="anch43774e1cfaf7" class="previous" href="/AgendaCenter/PreviousVersions/_07112022-377">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row375283a9145" class="catAgendaRow">
+	<td>
+		<h4 id="h406272022-375">
+			<a id="_06272022-375" name="_06272022-375"></a>
+			<strong aria-label="Agenda for June 27, 2022"><abbr title="June">Jun</abbr> 27, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="June">Jun</abbr> 24, 2022 1:29 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="06272022-375" name="375" href="/AgendaCenter/ViewFile/Agenda/_06272022-375" target="_blank" aria-describedby="h406272022-375">
+		
+Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_06272022-375" aria-label="June 27, 2022, 
+Regular Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer375" class="popoutContainer">
+			<a href="" id="btnAgendaDD375" onkeypress="this.onclick();" onclick="showDownloadMenu(375, 2, 'agendaDD375', event, false); return false;" class="button"><span id="spanDD375">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD375" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="June 27, 2022, 
+Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_06272022-375" id="anch2375283a9145" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="June 27, 2022, 
+Regular Meeting of the Farmersville City Council. Previous Version" id="anch4375283a9145" class="previous" href="/AgendaCenter/PreviousVersions/_06272022-375">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row373902012ab" class="catAgendaRow">
+	<td>
+		<h4 id="h406132022-373">
+			<a id="_06132022-373" name="_06132022-373"></a>
+			<strong aria-label="Agenda for June 13, 2022"><abbr title="June">Jun</abbr> 13, 2022</strong>
+			
+				&thinsp;&mdash;&thinsp;Amended <abbr title="June">Jun</abbr> 10, 2022 3:11 PM
+			
+			</a></h4>
+    <p>
+    
+			<a id="06132022-373" name="373" href="/AgendaCenter/ViewFile/Agenda/_06132022-373" target="_blank" aria-describedby="h406132022-373">
+		
+Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_06132022-373" aria-label="June 13, 2022, 
+Regular Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer373" class="popoutContainer">
+			<a href="" id="btnAgendaDD373" onkeypress="this.onclick();" onclick="showDownloadMenu(373, 2, 'agendaDD373', event, false); return false;" class="button"><span id="spanDD373">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD373" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="June 13, 2022, 
+Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_06132022-373" id="anch2373902012ab" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="June 13, 2022, 
+Regular Meeting of the Farmersville City Council. Previous Version" id="anch4373902012ab" class="previous" href="/AgendaCenter/PreviousVersions/_06132022-373">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row372288131de" class="catAgendaRow">
+	<td>
+		<h4 id="h405232022-372">
+			<a id="_05232022-372" name="_05232022-372"></a>
+			<strong aria-label="Agenda for May 23, 2022"><abbr title="May">May</abbr> 23, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="May">May</abbr> 20, 2022 1:08 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="05232022-372" name="372" href="/AgendaCenter/ViewFile/Agenda/_05232022-372" target="_blank" aria-describedby="h405232022-372">
+		
+Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_05232022-372" aria-label="May 23, 2022, 
+Regular Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer372" class="popoutContainer">
+			<a href="" id="btnAgendaDD372" onkeypress="this.onclick();" onclick="showDownloadMenu(372, 2, 'agendaDD372', event, false); return false;" class="button"><span id="spanDD372">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD372" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="May 23, 2022, 
+Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_05232022-372" id="anch2372288131de" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="May 23, 2022, 
+Regular Meeting of the Farmersville City Council. Previous Version" id="anch4372288131de" class="previous" href="/AgendaCenter/PreviousVersions/_05232022-372">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row37071d55995" class="catAgendaRow">
+	<td>
+		<h4 id="h405092022-370">
+			<a id="_05092022-370" name="_05092022-370"></a>
+			<strong aria-label="Agenda for May 9, 2022"><abbr title="May">May</abbr> 9, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="May">May</abbr> 6, 2022 9:22 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="05092022-370" name="370" href="/AgendaCenter/ViewFile/Agenda/_05092022-370" target="_blank" aria-describedby="h405092022-370">
+		
+Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_05092022-370" aria-label="May 09, 2022, 
+Regular Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer370" class="popoutContainer">
+			<a href="" id="btnAgendaDD370" onkeypress="this.onclick();" onclick="showDownloadMenu(370, 2, 'agendaDD370', event, false); return false;" class="button"><span id="spanDD370">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD370" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="May 09, 2022, 
+Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_05092022-370" id="anch237071d55995" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="May 09, 2022, 
+Regular Meeting of the Farmersville City Council. Previous Version" id="anch437071d55995" class="previous" href="/AgendaCenter/PreviousVersions/_05092022-370">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row3699a49b9b8" class="catAgendaRow">
+	<td>
+		<h4 id="h404252022-369">
+			<a id="_04252022-369" name="_04252022-369"></a>
+			<strong aria-label="Agenda for April 25, 2022"><abbr title="April">Apr</abbr> 25, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="April">Apr</abbr> 22, 2022 10:21 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="04252022-369" name="369" href="/AgendaCenter/ViewFile/Agenda/_04252022-369" target="_blank" aria-describedby="h404252022-369">
+		Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_04252022-369" aria-label="April 25, 2022, Regular Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer369" class="popoutContainer">
+			<a href="" id="btnAgendaDD369" onkeypress="this.onclick();" onclick="showDownloadMenu(369, 2, 'agendaDD369', event, false); return false;" class="button"><span id="spanDD369">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD369" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="April 25, 2022, Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_04252022-369" id="anch23699a49b9b8" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="April 25, 2022, Regular Meeting of the Farmersville City Council. Previous Version" id="anch43699a49b9b8" class="previous" href="/AgendaCenter/PreviousVersions/_04252022-369">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row3676ada564b" class="catAgendaRow">
+	<td>
+		<h4 id="h404112022-367">
+			<a id="_04112022-367" name="_04112022-367"></a>
+			<strong aria-label="Agenda for April 11, 2022"><abbr title="April">Apr</abbr> 11, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="April">Apr</abbr> 8, 2022 9:55 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="04112022-367" name="367" href="/AgendaCenter/ViewFile/Agenda/_04112022-367" target="_blank" aria-describedby="h404112022-367">
+		
+Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_04112022-367" aria-label="April 11, 2022, 
+Regular Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer367" class="popoutContainer">
+			<a href="" id="btnAgendaDD367" onkeypress="this.onclick();" onclick="showDownloadMenu(367, 2, 'agendaDD367', event, false); return false;" class="button"><span id="spanDD367">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD367" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="April 11, 2022, 
+Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_04112022-367" id="anch23676ada564b" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="April 11, 2022, 
+Regular Meeting of the Farmersville City Council. Previous Version" id="anch43676ada564b" class="previous" href="/AgendaCenter/PreviousVersions/_04112022-367">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row3665ce731f6" class="catAgendaRow">
+	<td>
+		<h4 id="h403282022-366">
+			<a id="_03282022-366" name="_03282022-366"></a>
+			<strong aria-label="Agenda for March 28, 2022"><abbr title="March">Mar</abbr> 28, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="March">Mar</abbr> 25, 2022 12:27 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="03282022-366" name="366" href="/AgendaCenter/ViewFile/Agenda/_03282022-366" target="_blank" aria-describedby="h403282022-366">
+		Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_03282022-366" aria-label="March 28, 2022, Regular Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer366" class="popoutContainer">
+			<a href="" id="btnAgendaDD366" onkeypress="this.onclick();" onclick="showDownloadMenu(366, 2, 'agendaDD366', event, false); return false;" class="button"><span id="spanDD366">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD366" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="March 28, 2022, Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_03282022-366" id="anch23665ce731f6" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="March 28, 2022, Regular Meeting of the Farmersville City Council. Previous Version" id="anch43665ce731f6" class="previous" href="/AgendaCenter/PreviousVersions/_03282022-366">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row364faf065f4" class="catAgendaRow">
+	<td>
+		<h4 id="h403142022-364">
+			<a id="_03142022-364" name="_03142022-364"></a>
+			<strong aria-label="Agenda for March 14, 2022"><abbr title="March">Mar</abbr> 14, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="March">Mar</abbr> 11, 2022 11:30 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="03142022-364" name="364" href="/AgendaCenter/ViewFile/Agenda/_03142022-364" target="_blank" aria-describedby="h403142022-364">
+		Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_03142022-364" aria-label="March 14, 2022, Regular Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer364" class="popoutContainer">
+			<a href="" id="btnAgendaDD364" onkeypress="this.onclick();" onclick="showDownloadMenu(364, 2, 'agendaDD364', event, false); return false;" class="button"><span id="spanDD364">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD364" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="March 14, 2022, Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_03142022-364" id="anch2364faf065f4" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="March 14, 2022, Regular Meeting of the Farmersville City Council. Previous Version" id="anch4364faf065f4" class="previous" href="/AgendaCenter/PreviousVersions/_03142022-364">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row363bd1cfdcd" class="catAgendaRow">
+	<td>
+		<h4 id="h402282022-363">
+			<a id="_02282022-363" name="_02282022-363"></a>
+			<strong aria-label="Agenda for February 28, 2022"><abbr title="February">Feb</abbr> 28, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="February">Feb</abbr> 25, 2022 11:43 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="02282022-363" name="363" href="/AgendaCenter/ViewFile/Agenda/_02282022-363" target="_blank" aria-describedby="h402282022-363">
+		Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_02282022-363" aria-label="February 28, 2022, Regular Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer363" class="popoutContainer">
+			<a href="" id="btnAgendaDD363" onkeypress="this.onclick();" onclick="showDownloadMenu(363, 2, 'agendaDD363', event, false); return false;" class="button"><span id="spanDD363">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD363" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="February 28, 2022, Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_02282022-363" id="anch2363bd1cfdcd" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="February 28, 2022, Regular Meeting of the Farmersville City Council. Previous Version" id="anch4363bd1cfdcd" class="previous" href="/AgendaCenter/PreviousVersions/_02282022-363">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row3627de52578" class="catAgendaRow">
+	<td>
+		<h4 id="h402142022-362">
+			<a id="_02142022-362" name="_02142022-362"></a>
+			<strong aria-label="Agenda for February 14, 2022"><abbr title="February">Feb</abbr> 14, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="February">Feb</abbr> 11, 2022 2:04 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="02142022-362" name="362" href="/AgendaCenter/ViewFile/Agenda/_02142022-362" target="_blank" aria-describedby="h402142022-362">
+		
+Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_02142022-362" aria-label="February 14, 2022, 
+Regular Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer362" class="popoutContainer">
+			<a href="" id="btnAgendaDD362" onkeypress="this.onclick();" onclick="showDownloadMenu(362, 2, 'agendaDD362', event, false); return false;" class="button"><span id="spanDD362">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD362" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="February 14, 2022, 
+Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_02142022-362" id="anch23627de52578" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="February 14, 2022, 
+Regular Meeting of the Farmersville City Council. Previous Version" id="anch43627de52578" class="previous" href="/AgendaCenter/PreviousVersions/_02142022-362">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row36044ec4f58" class="catAgendaRow">
+	<td>
+		<h4 id="h401242022-360">
+			<a id="_01242022-360" name="_01242022-360"></a>
+			<strong aria-label="Agenda for January 24, 2022"><abbr title="January">Jan</abbr> 24, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="January">Jan</abbr> 21, 2022 9:25 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="01242022-360" name="360" href="/AgendaCenter/ViewFile/Agenda/_01242022-360" target="_blank" aria-describedby="h401242022-360">
+		
+Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_01242022-360" aria-label="January 24, 2022, 
+Regular Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer360" class="popoutContainer">
+			<a href="" id="btnAgendaDD360" onkeypress="this.onclick();" onclick="showDownloadMenu(360, 2, 'agendaDD360', event, false); return false;" class="button"><span id="spanDD360">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD360" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="January 24, 2022, 
+Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_01242022-360" id="anch236044ec4f58" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="January 24, 2022, 
+Regular Meeting of the Farmersville City Council. Previous Version" id="anch436044ec4f58" class="previous" href="/AgendaCenter/PreviousVersions/_01242022-360">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row358f6f88eaf" class="catAgendaRow">
+	<td>
+		<h4 id="h401102022-358">
+			<a id="_01102022-358" name="_01102022-358"></a>
+			<strong aria-label="Agenda for January 10, 2022"><abbr title="January">Jan</abbr> 10, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="January">Jan</abbr> 7, 2022 10:19 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="01102022-358" name="358" href="/AgendaCenter/ViewFile/Agenda/_01102022-358" target="_blank" aria-describedby="h401102022-358">
+		
+Regular Meeting of the Farmersville City Council
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_01102022-358" aria-label="January 10, 2022, 
+Regular Meeting of the Farmersville City Council. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer358" class="popoutContainer">
+			<a href="" id="btnAgendaDD358" onkeypress="this.onclick();" onclick="showDownloadMenu(358, 2, 'agendaDD358', event, false); return false;" class="button"><span id="spanDD358">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD358" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="January 10, 2022, 
+Regular Meeting of the Farmersville City Council. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_01102022-358" id="anch2358f6f88eaf" target="_blank">Agenda</a></li>
+								
+									<li><a aria-label="January 10, 2022, 
+Regular Meeting of the Farmersville City Council. Previous Version" id="anch4358f6f88eaf" class="previous" href="/AgendaCenter/PreviousVersions/_01102022-358">Previous Versions</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+		<!-- Agendas for a category ends -->					
+		</tbody>
+	</table>
+</span>
+				</div>
+		
+		<!-- Only render the section if there are agendas to display -->
+			
+				<div class="listing listingCollapse noHeader" id="cat4">
+					<h2 tabindex="0" onkeypress="this.onclick();" onclick="expandCollaspseCategory(4)"><span id="span4">&#9660;</span>Planning Commission</h2>
+					
+
+<span id="section4">
+	<script type="text/javascript">
+	    //Remove href attribute from the year clicked.
+	    $(document).ready(function () {
+	        $('.current').children().removeAttr('href');
+	    });
+	</script>	
+		<ul class="years">	
+			<li class=current><a id="a04" aria-label="Planning Commission 2022" href="javascript:changeYear(2022, 4,'a0')">2022</a></li>
+			
+				<li ><a id="a14" aria-label="Planning Commission 2021" href="javascript:changeYear(2021, 4, 'a1')">2021</a></li>
+		
+				<li ><a id="a24" aria-label="Planning Commission 2020" href="javascript:changeYear(2020, 4, 'a2')">2020</a></li>
+			
+			<li>
+		
+				<div class="popoutContainer popUpParent">
+					<a href="" id="btnViewMore4" aria-label="ViewMore4" onkeypress="this.onclick();" onclick="showMoreYears(4, 'yearDD4', event); return false;">View More</a>
+					<div id="yearDD4" class="popout popUp" style="display:none;">
+						<div class="popoutTop">
+							<div class="popoutBtm">
+								<ol>
+							
+									<li><a id="anchYearDD34" aria-label="Planning Commission 2019" href="javascript:changeYear(2019, 4,'anchYearDD3')">2019</a></li>
+						
+									<li><a id="anchYearDD44" aria-label="Planning Commission 2018" href="javascript:changeYear(2018, 4,'anchYearDD4')">2018</a></li>
+						
+									<li><a id="anchYearDD54" aria-label="Planning Commission 2017" href="javascript:changeYear(2017, 4,'anchYearDD5')">2017</a></li>
+						
+									<li><a id="anchYearDD64" aria-label="Planning Commission 2016" href="javascript:changeYear(2016, 4,'anchYearDD6')">2016</a></li>
+						
+									<li><a id="anchYearDD74" aria-label="Planning Commission 2015" href="javascript:changeYear(2015, 4,'anchYearDD7')">2015</a></li>
+						
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+		
+			</li>
+		</ul>
+	<!--The table needs a position-relative to avoid weird issues with IE where the controls would just dissapear. -->
+	<table id="table4" summary="List of Agendas" style="position:relative;">
+		<thead>
+			<tr>
+				<th scope="col">
+					Agenda
+				</th>
+					<th scope="col" class="minutes">
+						Minutes
+					</th>
+				
+				<th scope="col" class="downloads">
+					Download
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		<!-- Agendas for a category starts -->
+	
+
+<tr id="row386a203ce5c" class="catAgendaRow">
+	<td>
+		<h4 id="h409212022-386">
+			<a id="_09212022-386" name="_09212022-386"></a>
+			<strong aria-label="Agenda for September 21, 2022"><abbr title="September">Sep</abbr> 21, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="September">Sep</abbr> 16, 2022 3:10 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="09212022-386" name="386" href="/AgendaCenter/ViewFile/Agenda/_09212022-386" target="_blank" aria-describedby="h409212022-386">
+		
+Regular Meeting of the Farmersville Planning Commission
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer386" class="popoutContainer">
+			<a href="" id="btnAgendaDD386" onkeypress="this.onclick();" onclick="showDownloadMenu(386, 4, 'agendaDD386', event, false); return false;" class="button"><span id="spanDD386">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD386" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="September 21, 2022, 
+Regular Meeting of the Farmersville Planning Commission. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_09212022-386" id="anch2386a203ce5c" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row382464d9dcc" class="catAgendaRow">
+	<td>
+		<h4 id="h408172022-382">
+			<a id="_08172022-382" name="_08172022-382"></a>
+			<strong aria-label="Agenda for August 17, 2022"><abbr title="August">Aug</abbr> 17, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="August">Aug</abbr> 16, 2022 9:55 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="08172022-382" name="382" href="/AgendaCenter/ViewFile/Agenda/_08172022-382" target="_blank" aria-describedby="h408172022-382">
+		Regular Meeting of the Farmersville Planning Commission-Cancelled
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer382" class="popoutContainer">
+			<a href="" id="btnAgendaDD382" onkeypress="this.onclick();" onclick="showDownloadMenu(382, 4, 'agendaDD382', event, false); return false;" class="button"><span id="spanDD382">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD382" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="August 17, 2022, Regular Meeting of the Farmersville Planning Commission-Cancelled. Agenda" class="html" href="/AgendaCenter/ViewFile/Agenda/_08172022-382" id="anch2382464d9dcc" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row3765739a263" class="catAgendaRow">
+	<td>
+		<h4 id="h407202022-376">
+			<a id="_07202022-376" name="_07202022-376"></a>
+			<strong aria-label="Agenda for July 20, 2022"><abbr title="July">Jul</abbr> 20, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="July">Jul</abbr> 6, 2022 3:06 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="07202022-376" name="376" href="/AgendaCenter/ViewFile/Agenda/_07202022-376" target="_blank" aria-describedby="h407202022-376">
+		
+Regular Meeting of the Farmersville Planning Commission-Cancelled
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer376" class="popoutContainer">
+			<a href="" id="btnAgendaDD376" onkeypress="this.onclick();" onclick="showDownloadMenu(376, 4, 'agendaDD376', event, false); return false;" class="button"><span id="spanDD376">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD376" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="July 20, 2022, 
+Regular Meeting of the Farmersville Planning Commission-Cancelled. Agenda" class="html" href="/AgendaCenter/ViewFile/Agenda/_07202022-376" id="anch23765739a263" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row374473ccbb2" class="catAgendaRow">
+	<td>
+		<h4 id="h406152022-374">
+			<a id="_06152022-374" name="_06152022-374"></a>
+			<strong aria-label="Agenda for June 15, 2022"><abbr title="June">Jun</abbr> 15, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="June">Jun</abbr> 24, 2022 9:31 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="06152022-374" name="374" href="/AgendaCenter/ViewFile/Agenda/_06152022-374" target="_blank" aria-describedby="h406152022-374">
+		
+Regular Meeting of the Farmersville Planning Commission-Cancelled
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer374" class="popoutContainer">
+			<a href="" id="btnAgendaDD374" onkeypress="this.onclick();" onclick="showDownloadMenu(374, 4, 'agendaDD374', event, false); return false;" class="button"><span id="spanDD374">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD374" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="June 15, 2022, 
+Regular Meeting of the Farmersville Planning Commission-Cancelled. Agenda" class="html" href="/AgendaCenter/ViewFile/Agenda/_06152022-374" id="anch2374473ccbb2" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row3719a03c938" class="catAgendaRow">
+	<td>
+		<h4 id="h405182022-371">
+			<a id="_05182022-371" name="_05182022-371"></a>
+			<strong aria-label="Agenda for May 18, 2022"><abbr title="May">May</abbr> 18, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="May">May</abbr> 19, 2022 9:15 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="05182022-371" name="371" href="/AgendaCenter/ViewFile/Agenda/_05182022-371?html=true" target="_blank" aria-describedby="h405182022-371">
+		Regular Meeting of the Farmersville Planning Commission-Cancelled
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer371" class="popoutContainer">
+			<a href="" id="btnAgendaDD371" onkeypress="this.onclick();" onclick="showDownloadMenu(371, 4, 'agendaDD371', event, false); return false;" class="button"><span id="spanDD371">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD371" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a class="html" aria-label="May 18, 2022, Regular Meeting of the Farmersville Planning Commission-Cancelled. HTML" href="/AgendaCenter/ViewFile/Agenda/_05182022-371?html=true" id="anch13719a03c938" target="_blank">HTML</a></li>
+									
+									<li><a class="pdf" aria-label="May 18, 2022, Regular Meeting of the Farmersville Planning Commission-Cancelled. PDF" href="/AgendaCenter/ViewFile/Agenda/_05182022-371" id="anch23719a03c938" target="_blank">PDF</a></li>
+									
+									<li><a class="pdf" aria-label="May 18, 2022, Regular Meeting of the Farmersville Planning Commission-Cancelled. Packet" href="/AgendaCenter/ViewFile/Agenda/_05182022-371?packet=true" id="anch33719a03c938" target="_blank">Packet</a></li>
+									
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row3689a46722a" class="catAgendaRow">
+	<td>
+		<h4 id="h404202022-368">
+			<a id="_04202022-368" name="_04202022-368"></a>
+			<strong aria-label="Agenda for April 20, 2022"><abbr title="April">Apr</abbr> 20, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="April">Apr</abbr> 15, 2022 8:14 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="04202022-368" name="368" href="/AgendaCenter/ViewFile/Agenda/_04202022-368" target="_blank" aria-describedby="h404202022-368">
+		
+Regular Meeting of the Farmersville Planning Commission
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer368" class="popoutContainer">
+			<a href="" id="btnAgendaDD368" onkeypress="this.onclick();" onclick="showDownloadMenu(368, 4, 'agendaDD368', event, false); return false;" class="button"><span id="spanDD368">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD368" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="April 20, 2022, 
+Regular Meeting of the Farmersville Planning Commission. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_04202022-368" id="anch23689a46722a" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row365c08cac6d" class="catAgendaRow">
+	<td>
+		<h4 id="h403162022-365">
+			<a id="_03162022-365" name="_03162022-365"></a>
+			<strong aria-label="Agenda for March 16, 2022"><abbr title="March">Mar</abbr> 16, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="March">Mar</abbr> 21, 2022 8:14 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="03162022-365" name="365" href="/AgendaCenter/ViewFile/Agenda/_03162022-365" target="_blank" aria-describedby="h403162022-365">
+		
+Regular Meeting of the Farmersville Planning Commission-Cancelled 
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer365" class="popoutContainer">
+			<a href="" id="btnAgendaDD365" onkeypress="this.onclick();" onclick="showDownloadMenu(365, 4, 'agendaDD365', event, false); return false;" class="button"><span id="spanDD365">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD365" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="March 16, 2022, 
+Regular Meeting of the Farmersville Planning Commission-Cancelled . Agenda" class="html" href="/AgendaCenter/ViewFile/Agenda/_03162022-365" id="anch2365c08cac6d" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row361f9ee7926" class="catAgendaRow">
+	<td>
+		<h4 id="h402162022-361">
+			<a id="_02162022-361" name="_02162022-361"></a>
+			<strong aria-label="Agenda for February 16, 2022"><abbr title="February">Feb</abbr> 16, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="February">Feb</abbr> 10, 2022 4:10 PM
+					
+			</a></h4>
+    <p>
+    
+			<a id="02162022-361" name="361" href="/AgendaCenter/ViewFile/Agenda/_02162022-361" target="_blank" aria-describedby="h402162022-361">
+		
+Regular Meeting of the Farmersville Planning Commission
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_02162022-361" aria-label="February 16, 2022, 
+Regular Meeting of the Farmersville Planning Commission. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer361" class="popoutContainer">
+			<a href="" id="btnAgendaDD361" onkeypress="this.onclick();" onclick="showDownloadMenu(361, 4, 'agendaDD361', event, false); return false;" class="button"><span id="spanDD361">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD361" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="February 16, 2022, 
+Regular Meeting of the Farmersville Planning Commission. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_02162022-361" id="anch2361f9ee7926" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+
+<tr id="row359396c4efb" class="catAgendaRow">
+	<td>
+		<h4 id="h401192022-359">
+			<a id="_01192022-359" name="_01192022-359"></a>
+			<strong aria-label="Agenda for January 19, 2022"><abbr title="January">Jan</abbr> 19, 2022</strong>
+			
+						&thinsp;&mdash;&thinsp;Posted <abbr title="January">Jan</abbr> 14, 2022 8:26 AM
+					
+			</a></h4>
+    <p>
+    
+			<a id="01192022-359" name="359" href="/AgendaCenter/ViewFile/Agenda/_01192022-359" target="_blank" aria-describedby="h401192022-359">
+		City of Farmersville Planning Commission
+    </a></p>
+		
+	</td>
+        <!--This TD actually needs to be empty of all whitespace for matching :empty css selector.-->
+		<td class="minutes"><a href="/AgendaCenter/ViewFile/Minutes/_01192022-359" aria-label="January 19, 2022, City of Farmersville Planning Commission. Minutes" target="_blank"><img src="/Areas/AgendaCenter/Assets/Images/HomeIconMinutes.png" alt="Minutes"></a></td>
+    
+	<td class="downloads">
+		
+		<div id="downloadContainer359" class="popoutContainer">
+			<a href="" id="btnAgendaDD359" onkeypress="this.onclick();" onclick="showDownloadMenu(359, 4, 'agendaDD359', event, false); return false;" class="button"><span id="spanDD359">Download&nbsp;&#9660;</span></a>
+			<div class="popout popUp" id="agendaDD359" style="display:none;">
+		
+				<div class="popoutTop">
+					<div class="popoutBtm">
+						<ol>
+								
+									<li><a aria-label="January 19, 2022, City of Farmersville Planning Commission. Agenda" class="pdf" href="/AgendaCenter/ViewFile/Agenda/_01192022-359" id="anch2359396c4efb" target="_blank">Agenda</a></li>
+								
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</tr>
+		
+		<!-- Agendas for a category ends -->					
+		</tbody>
+	</table>
+</span>
+				</div>
+		
+	<!-- Categorylist ends -->
+
+		</div>
+		
+	</div>
+	<script type="text/javascript" src="/asset.axd?id=dgAAAB-LCAAAAAAABAAdjTkOhTAQQ-_iGgaGrcg1KBEFCkEiBUsY0P9CuTsDnfX8LN8YYbobGwxaG-ZNDiSYPrYo8_vpwj9laqgi_3YrTB772CewooK4n2R-uIbjW6twKS1yZiqJmWslVj_KptYAI-F08QHSzjRqdgAAAA%3d%3d"></script>
+	
+		
+	
+<!-- END AgendaCenterContent.aspx ***** -->   
+
+	
+	<div class="newCP">
+
+	</div>
+</div>
+</div><aside data-cpRole="contentContainer" id="featureColumn" class="secondaryContent">	<div id="ccd6923f64-2522-4bce-8783-61ad1b416b69" data-containerid="d6923f64-2522-4bce-8783-61ad1b416b69" class="pageContent cpGrid cpGrid24 showInMobile" data-contentcontainerbreakpoint="40">
+				                
+
+
+
+	</div>
+</aside>
+</div><div data-cpRole="structuralContainer" id="structuralContainer3" class="siteSidebar">
+<aside data-cpRole="contentContainer" id="contentContainer3">	<div id="cc17fc1b17-a660-41d3-b47a-b7691b8b110a" data-containerid="17fc1b17-a660-41d3-b47a-b7691b8b110a" class="pageContent cpGrid cpGrid24 showInMobile" data-contentcontainerbreakpoint="40">
+				                
+
+
+
+	</div>
+</aside><nav data-cpRole="nav" id="secondaryNav" class="siteNav secondaryNav">
+
+
+
+
+	<ol role="menu" id="secondaryMenusecondaryNav" data-parent="1" class="rootNavMenu flyoutNav">
+	<li role="menuitem" aria-haspopup="true" id="SideItem27" class="topMenuItem" data-display-main-item-sub-menu-indicators="True" data-pageid="27" data-displaymegamenu="True">
+					<a class="navMainItem secondaryNavItem" href="/27/Government" target="_self">Government</a>
+			</li>
+	<li role="menuitem" aria-haspopup="true" id="SideItem101" class="topMenuItem" data-display-main-item-sub-menu-indicators="True" data-pageid="101" data-displaymegamenu="True">
+					<a class="navMainItem secondaryNavItem" href="/101/Services" target="_self">Services</a>
+			</li>
+	<li role="menuitem" aria-haspopup="true" id="SideItem35" class="topMenuItem" data-display-main-item-sub-menu-indicators="True" data-pageid="35" data-displaymegamenu="True">
+					<a class="navMainItem secondaryNavItem" href="/35/Business" target="_self">Business</a>
+			</li>
+	<li role="menuitem" aria-haspopup="true" id="SideItem31" class="topMenuItem" data-display-main-item-sub-menu-indicators="True" data-pageid="31" data-displaymegamenu="True">
+					<a class="navMainItem secondaryNavItem" href="/31/Community" target="_self">Community</a>
+			</li>
+	<li role="menuitem" aria-haspopup="true" id="SideItem9" class="topMenuItem" data-display-main-item-sub-menu-indicators="True" data-pageid="9" data-displaymegamenu="True">
+					<a class="navMainItem secondaryNavItem" href="/9/I-Want-To" target="_self">I Want To...</a>
+			</li>
+
+	</ol>
+
+
+	<script type="text/javascript">
+        $(document).ready(function () {
+            //setup menu manager properties for secondary menu
+            menuManager.isSideMenuEditable = false;
+		    menuManager.sideMenuMaxSubMenuLevels = 4;
+            menuManager.sideMenuHasCustomLinks = false;
+        });
+	</script>
+	<script type="text/javascript">
+        $(document).ready(function () {
+            //Init secondary menu
+            var setupDraggable = menuManager.isSideMenuEditable;
+			var urlToGetHiddenMenus = '/Pages/MenuSecondary/HiddenSecondarySubMenus?pageID=1&moduleID=65&themeID=1&menuContainerID=secondaryNav';
+            var menuID = 'secondaryMenusecondaryNav';
+            menuManager.setMOMMode(2, SIDE_MENU);
+            menuManager.setupMenu(menuID, 'secondaryNav', SIDE_MENU, setupDraggable, urlToGetHiddenMenus);
+        });
+	</script>
+
+
+
+
+</nav><aside data-cpRole="contentContainer" id="contentContainer4">	<div id="cc59051760-3cf5-4d76-b748-0f1d3a9a7a96" data-containerid="59051760-3cf5-4d76-b748-0f1d3a9a7a96" class="pageContent cpGrid cpGrid24 showInMobile" data-contentcontainerbreakpoint="40">
+				                
+
+
+
+	</div>
+</aside>
+</div>
+</div></div>
+</div>
+
+
+
+
+			<div id="bannerImagesJSON2" class="hidden"></div>
+				<div id="bannerSlideshowControls_banner1" class="bannerSlideshowControlsNew none " style="display:none">
+					<button id="arrowPrev_banner1" class="arrowNew prev cp-Btn--nonStyled" aria-label="Banner Arrow Previous"><svg class=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#iconSlideshowArrowLeft"></use></svg></button>
+					<button id="arrowNext_banner1" class="arrowNew next cp-Btn--nonStyled" aria-label="Banner Arrow Next"><svg class=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#iconSlideshowArrowRight"></use></svg></button>
+				</div>
+			<script type="text/javascript">
+				onOrLive($(window), function () {
+					$.when(window.Pages.rwdSetupComplete)
+						.done(function () {
+							renderExternalBannerSlideshow('banner1',
+									{"BannerOptionID":2,"ThemeID":1,"SlotName":"banner1","Name":"Default","IsDefault":true,"BannerMode":2,"SlideShowSlideTiming":null,"SlideshowTransition":0,"SlideShowTransitionTiming":null,"ImageScale":false,"ImageAlignment":2,"ImageScroll":true,"MuteSound":true,"VideoType":0,"Status":40,"SlideshowControlsPosition":0,"SlideshowControlsAlignment":0,"SlideshowBannerControlsColorScheme":0,"BannerImages":[{"BannerImageID":60,"BannerOptionID":2,"FileName":"/ImageRepository/Document?documentID=56","Height":512,"Width":1979,"StartingOn":null,"StoppingOn":null,"IsLink":false,"LinkAddress":null,"Sequence":0,"RecordStatus":0,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/","AltText":""},{"BannerImageID":61,"BannerOptionID":2,"FileName":"/ImageRepository/Document?documentID=57","Height":512,"Width":1979,"StartingOn":null,"StoppingOn":null,"IsLink":false,"LinkAddress":null,"Sequence":1,"RecordStatus":0,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/","AltText":""},{"BannerImageID":62,"BannerOptionID":2,"FileName":"/ImageRepository/Document?documentID=55","Height":512,"Width":1979,"StartingOn":null,"StoppingOn":null,"IsLink":false,"LinkAddress":null,"Sequence":2,"RecordStatus":0,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/","AltText":""}],"BannerVideos":[],"RecordStatus":0,"ModifiedBy":0,"ModifiedOn":"\/Date(-62135575200000)\/"},
+								'/App_Themes/Interior/Images/',
+								'Rotating',
+								'0');
+						});
+				}, "load");				
+			</script>
+
+
+</div>
+</div><div data-cpRole="structuralContainer" id="structuralContainer10">
+<div class="siteWrap"><aside data-cpRole="contentContainer" id="contentContainer2">	<div id="cc0df87233-1297-4ab1-b189-6e3aeb0fd721" data-containerid="0df87233-1297-4ab1-b189-6e3aeb0fd721" class="pageContent cpGrid cpGrid24 isLockedContainer showInMobile">
+				                
+
+		<div class="row outer wide"><!--
+--><div class="outer col col24 first last" style="" data-widgetcontainerid="224b381f-5c77-4556-8e7f-d88a50e00316">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col24 first last id07bab643-89f1-42e0-89ef-953e22b71e20" style="" data-widgetcontainerid="07bab643-89f1-42e0-89ef-953e22b71e20">	
+<div data-widget-id="7f2b8811-a8da-4770-a9fc-5f320d75c631" data-widget-controller-path="/GraphicLinks/Widget">
+
+
+
+
+<div id="graphicLinkWidget7f2b8811-a8da-4770-a9fc-5f320d75c631" class="widget widgetGraphicLinks skin45 widgetOptionSet26 wide" data-elementqueryclasses='{"wide-narrow":"min-width:40em"}' data-elementquerymatch='matchMultiColumn' data-elementqueryunmatch='unmatchMultiColumn' data-modulewidgettype="graphicLinks">
+	<div class="widgetHeader">
+		<div class="">
+				</div>
+	</div>
+	<div class="widgetBody cpGrid cpGrid7 ">	
+			<div class="row   wide"><!--
+--><div class="col col1 first "><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks">
+
+<div>
+	<a href="https://www.cityoffarmersville-ca.gov/348/ADA---section-504" target="_blank" class="fancyButton fancyButton134 "  aria-label="ADA opens in new window">
+		<span>
+			<span><span class="text">ADA</span></span>
+		</span>
+	</a>
+</div>
+		<style scoped="scoped">.fancyButton134.fancyButton:link,.fancyButton134.fancyButton:visited, .fancyButton134div.fancyButton{
+	padding-top: 112px;
+	background-image: url('/ImageRepository/Document?documentID=1025');
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+.fancyButton134.fancyButton:hover,.fancyButton134.fancyButton:focus,.fancyButton134.fancyButton:active,.fancyButton134.fancyButton.hover{
+	background-image: url('/ImageRepository/Document?documentID=1026');
+}
+.fancyButton134.fancyButton:link > span,.fancyButton134.fancyButton:visited > span, .fancyButton134div.fancyButton > span{
+}
+.fancyButton134.fancyButton:hover > span,.fancyButton134.fancyButton:focus > span,.fancyButton134.fancyButton:active > span,.fancyButton134.fancyButton.hover > span{
+}
+.fancyButton134.fancyButton .text{
+	color: #382514;
+	font-size: 1.2em;
+	font-family: "Libre Baskerville";
+	text-align: center;
+	font-style: normal;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+
+
+}
+.fancyButton134.fancyButton:hover .text,.fancyButton134.fancyButton:focus .text,.fancyButton134.fancyButton:active .text,.fancyButton134.fancyButton.hover .text{
+	color: #294907;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+
+
+}
+</style>
+
+ </div><!--
+--></div></div><!----><div class="col col1  "><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks">
+
+<div>
+	<a href="https://public.mygov.us/farmersville_ca" target="_self" class="fancyButton fancyButton86 " >
+		<span>
+			<span><span class="text">Requests</span></span>
+		</span>
+	</a>
+</div>
+		<style scoped="scoped">.fancyButton86.fancyButton:link,.fancyButton86.fancyButton:visited, .fancyButton86div.fancyButton{
+	padding-top: 112px;
+	background-image: url('/ImageRepository/Path?filePath=/documents/Intranet/25/Notify MeInt_201504070936095341.png');
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+.fancyButton86.fancyButton:hover,.fancyButton86.fancyButton:focus,.fancyButton86.fancyButton:active,.fancyButton86.fancyButton.hover{
+	background-image: url('/ImageRepository/Path?filePath=/documents/Intranet/25/Notify MeInt2_201504070936096122.png');
+}
+.fancyButton86.fancyButton:link > span,.fancyButton86.fancyButton:visited > span, .fancyButton86div.fancyButton > span{
+}
+.fancyButton86.fancyButton:hover > span,.fancyButton86.fancyButton:focus > span,.fancyButton86.fancyButton:active > span,.fancyButton86.fancyButton.hover > span{
+}
+.fancyButton86.fancyButton .text{
+	color: #382514;
+	font-size: 1.2em;
+	font-family: "Libre Baskerville";
+	text-align: center;
+	font-style: normal;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+
+
+}
+.fancyButton86.fancyButton:hover .text,.fancyButton86.fancyButton:focus .text,.fancyButton86.fancyButton:active .text,.fancyButton86.fancyButton.hover .text{
+	color: #294907;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+
+
+}
+</style>
+
+ </div><!--
+--></div></div><!----><div class="col col1  "><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks">
+
+<div>
+	<a href="/agendacenter" target="_self" class="fancyButton fancyButton87 " >
+		<span>
+			<span><span class="text">Agenda</span></span>
+		</span>
+	</a>
+</div>
+		<style scoped="scoped">.fancyButton87.fancyButton:link,.fancyButton87.fancyButton:visited, .fancyButton87div.fancyButton{
+	padding-top: 112px;
+	background-image: url('/ImageRepository/Path?filePath=/documents/Intranet/25/Get InvolvedInt_201504070936093934.png');
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+.fancyButton87.fancyButton:hover,.fancyButton87.fancyButton:focus,.fancyButton87.fancyButton:active,.fancyButton87.fancyButton.hover{
+	background-image: url('/ImageRepository/Path?filePath=/documents/Intranet/25/Get InvolvedInt2_201504070936094716.png');
+}
+.fancyButton87.fancyButton:link > span,.fancyButton87.fancyButton:visited > span, .fancyButton87div.fancyButton > span{
+}
+.fancyButton87.fancyButton:hover > span,.fancyButton87.fancyButton:focus > span,.fancyButton87.fancyButton:active > span,.fancyButton87.fancyButton.hover > span{
+}
+.fancyButton87.fancyButton .text{
+	color: #382514;
+	font-size: 1.2em;
+	font-family: "Libre Baskerville";
+	text-align: center;
+	font-style: normal;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+
+
+}
+.fancyButton87.fancyButton:hover .text,.fancyButton87.fancyButton:focus .text,.fancyButton87.fancyButton:active .text,.fancyButton87.fancyButton.hover .text{
+	color: #294907;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+
+
+}
+</style>
+
+ </div><!--
+--></div></div><!----><div class="col col1  "><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks">
+
+<div>
+	<a href="https://ipn.paymentus.com/otp/stde/farm" target="_blank" class="fancyButton fancyButton88 "  aria-label="Utility Payments opens in new window">
+		<span>
+			<span><span class="text">Utility Payments</span></span>
+		</span>
+	</a>
+</div>
+		<style scoped="scoped">.fancyButton88.fancyButton:link,.fancyButton88.fancyButton:visited, .fancyButton88div.fancyButton{
+	padding-top: 112px;
+	background-image: url('/ImageRepository/Path?filePath=/documents/Intranet/25/PaymentsInt_201504070936096903.png');
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+.fancyButton88.fancyButton:hover,.fancyButton88.fancyButton:focus,.fancyButton88.fancyButton:active,.fancyButton88.fancyButton.hover{
+	background-image: url('/ImageRepository/Path?filePath=/documents/Intranet/25/PaymentsInt2_201504070936097841.png');
+}
+.fancyButton88.fancyButton:link > span,.fancyButton88.fancyButton:visited > span, .fancyButton88div.fancyButton > span{
+}
+.fancyButton88.fancyButton:hover > span,.fancyButton88.fancyButton:focus > span,.fancyButton88.fancyButton:active > span,.fancyButton88.fancyButton.hover > span{
+}
+.fancyButton88.fancyButton .text{
+	color: #382514;
+	font-size: 1.2em;
+	font-family: "Libre Baskerville";
+	text-align: center;
+	font-style: normal;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+
+
+}
+.fancyButton88.fancyButton:hover .text,.fancyButton88.fancyButton:focus .text,.fancyButton88.fancyButton:active .text,.fancyButton88.fancyButton.hover .text{
+	color: #294907;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+
+
+}
+</style>
+
+ </div><!--
+--></div></div><!----><div class="col col1  "><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks">
+
+<div>
+	<a href="https://public.mygov.us/farmersville_ca/module?module=bl" target="_self" class="fancyButton fancyButton89 " >
+		<span>
+			<span><span class="text">Business License</span></span>
+		</span>
+	</a>
+</div>
+		<style scoped="scoped">.fancyButton89.fancyButton:link,.fancyButton89.fancyButton:visited, .fancyButton89div.fancyButton{
+	padding-top: 112px;
+	background-image: url('/ImageRepository/Path?filePath=/documents/Intranet/25/PermitsInt_201504070936098778.png');
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+.fancyButton89.fancyButton:hover,.fancyButton89.fancyButton:focus,.fancyButton89.fancyButton:active,.fancyButton89.fancyButton.hover{
+	background-image: url('/ImageRepository/Path?filePath=/documents/Intranet/25/PermitsInt2_201504070936099716.png');
+}
+.fancyButton89.fancyButton:link > span,.fancyButton89.fancyButton:visited > span, .fancyButton89div.fancyButton > span{
+}
+.fancyButton89.fancyButton:hover > span,.fancyButton89.fancyButton:focus > span,.fancyButton89.fancyButton:active > span,.fancyButton89.fancyButton.hover > span{
+}
+.fancyButton89.fancyButton .text{
+	color: #382514;
+	font-size: 1.2em;
+	font-family: "Libre Baskerville";
+	text-align: center;
+	font-style: normal;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+
+
+}
+.fancyButton89.fancyButton:hover .text,.fancyButton89.fancyButton:focus .text,.fancyButton89.fancyButton:active .text,.fancyButton89.fancyButton.hover .text{
+	color: #294907;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+
+
+}
+</style>
+
+ </div><!--
+--></div></div><!----><div class="col col1  "><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks">
+
+<div>
+	<a href="/256/Transparency-Portal" target="_self" class="fancyButton fancyButton90 " >
+		<span>
+			<span><span class="text">City Jobs</span></span>
+		</span>
+	</a>
+</div>
+		<style scoped="scoped">.fancyButton90.fancyButton:link,.fancyButton90.fancyButton:visited, .fancyButton90div.fancyButton{
+	padding-top: 112px;
+	background-image: url('/ImageRepository/Document?documentID=1060');
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+.fancyButton90.fancyButton:hover,.fancyButton90.fancyButton:focus,.fancyButton90.fancyButton:active,.fancyButton90.fancyButton.hover{
+	background-image: url('/ImageRepository/Document?documentID=1059');
+}
+.fancyButton90.fancyButton:link > span,.fancyButton90.fancyButton:visited > span, .fancyButton90div.fancyButton > span{
+}
+.fancyButton90.fancyButton:hover > span,.fancyButton90.fancyButton:focus > span,.fancyButton90.fancyButton:active > span,.fancyButton90.fancyButton.hover > span{
+}
+.fancyButton90.fancyButton .text{
+	color: #382514;
+	font-size: 1.2em;
+	font-family: "Libre Baskerville";
+	text-align: center;
+	font-style: normal;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+
+
+}
+.fancyButton90.fancyButton:hover .text,.fancyButton90.fancyButton:focus .text,.fancyButton90.fancyButton:active .text,.fancyButton90.fancyButton.hover .text{
+	color: #294907;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+
+
+}
+</style>
+
+ </div><!--
+--></div></div><!----><div class="col col1  last"><div class="semanticList"><!--
+	    --><div class="widgetItem GraphicLinks">
+
+<div>
+	<a href="https://public.mygov.us/farmersville_ca" target="_self" class="fancyButton fancyButton125 " >
+		<span>
+			<span><span class="text">Permits</span></span>
+		</span>
+	</a>
+</div>
+		<style scoped="scoped">.fancyButton125.fancyButton:link,.fancyButton125.fancyButton:visited, .fancyButton125div.fancyButton{
+	padding-top: 112px;
+	background-image: url('/ImageRepository/Document?documentID=708');
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+.fancyButton125.fancyButton:hover,.fancyButton125.fancyButton:focus,.fancyButton125.fancyButton:active,.fancyButton125.fancyButton.hover{
+	background-image: url('/ImageRepository/Document?documentID=709');
+}
+.fancyButton125.fancyButton:link > span,.fancyButton125.fancyButton:visited > span, .fancyButton125div.fancyButton > span{
+}
+.fancyButton125.fancyButton:hover > span,.fancyButton125.fancyButton:focus > span,.fancyButton125.fancyButton:active > span,.fancyButton125.fancyButton.hover > span{
+}
+.fancyButton125.fancyButton .text{
+	color: #382514;
+	font-size: 1.2em;
+	font-family: "Libre Baskerville";
+	text-align: center;
+	font-style: normal;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+
+
+}
+.fancyButton125.fancyButton:hover .text,.fancyButton125.fancyButton:focus .text,.fancyButton125.fancyButton:active .text,.fancyButton125.fancyButton.hover .text{
+	color: #294907;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+
+
+}
+</style>
+
+ </div><!--
+--></div></div><!--			--></div>
+	</div>
+	<div class="widgetFooter">
+			</div>
+</div>
+
+</div>
+	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!--		--></div> <!-- outer row -->
+
+
+	</div>
+</aside></div>
+</div><div data-cpRole="structuralContainer" id="structuralContainer7">
+<div class="siteWrap"><footer data-cpRole="contentContainer" id="contentContainer6" class="siteFooter">	<div id="cc7e33c007-a92d-4e0b-a28a-4fca2d132de9" data-containerid="7e33c007-a92d-4e0b-a28a-4fca2d132de9" class="pageContent cpGrid cpGrid24 isLockedContainer showInMobile" data-contentcontainerbreakpoint="41">
+				                
+
+		<div class="row outer wide"><!--
+--><div class="outer col col7 first" style="" data-widgetcontainerid="bf6f837a-8a67-491a-932b-e15e19b31903">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col7 first last id9065693a-4680-43fe-9602-68fc284891b9" style="" data-widgetcontainerid="9065693a-4680-43fe-9602-68fc284891b9">	
+<div class="widget image pageStyles" id="divImageOuter9454cce0-6ccd-402d-81d9-06636d17c3b6" data-widget-id="9454cce0-6ccd-402d-81d9-06636d17c3b6">
+    
+	<div class="widgetBody imageBorder" id="divImage9454cce0-6ccd-402d-81d9-06636d17c3b6"><img src="/ImageRepository/Document?documentID=1037" alt="PNG Color Circle" title="PNG Color Circle"/>	</div></div>
+
+	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!----><div class="outer col col1" style="" data-widgetcontainerid="0368fd8d-6410-4d53-9f5e-745306f713c4">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col1 first last ida60e66e7-0275-4fc5-a714-de2fc04351fe" style="" data-widgetcontainerid="a60e66e7-0275-4fc5-a714-de2fc04351fe">	
+
+<div class="widget widgetSpacer" id="6bde5c9a-bb2d-4966-904a-869466d11a07"></div>	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!----><div class="outer col col4" style="" data-widgetcontainerid="67df505a-a127-472b-a506-caea9ddb3cf5">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col4 first last id9d09e99c-cf15-4c1e-8f69-330bc9c1d582" style="" data-widgetcontainerid="9d09e99c-cf15-4c1e-8f69-330bc9c1d582">	
+    <div data-widget-id="67d68293-4a7e-4d47-9195-2db382bf273c" data-widget-controller-path="/InfoAdvanced/Widget">
+
+
+
+
+
+	<section id="divInfoAdv67d68293-4a7e-4d47-9195-2db382bf273c" class="widget widgetInfoAdvanced skin37 widgetOptionSet5 wide" data-modulewidgettype="infoAdv" data-elementqueryclasses='{"wide-narrow":"min-width:25em"}' data-elementquerymatch='matchMultiColumn' data-elementqueryunmatch='unmatchMultiColumn' aria-labelledby="header67d68293-4a7e-4d47-9195-2db382bf273c">
+			<header class="widgetHeader" id="header67d68293-4a7e-4d47-9195-2db382bf273c">
+		<div class="">
+					<h3 >Contact Us</h3>
+								</div>
+	</header>
+	<div class="widgetBody  cpGrid cpGrid1 ">
+		<div class="row  wide">
+					<div class="col col1 first last">
+						<ol class="pageStyles semanticList">
+
+<li class="InfoAdvanced widgetItem fr-view">
+	909 W Visalia Rd<br>Farmersville, CA 93223<br>Phone: 559-747-0458<br>Fax: 559-747-6724<br><a href="/directory.aspx" target="_self" class="Hyperlink">Contact Us</a><br>
+</li>						</ol>
+					</div>
+		</div>
+	</div>
+	<div class="widgetFooter">
+
+	</div>
+
+	</section>
+
+
+
+<script type="text/javascript">
+	//Render slideshow if info advacned items contain one.
+	$(document).ready(function (e) {
+		$('#divInfoAdv67d68293-4a7e-4d47-9195-2db382bf273c .InfoAdvanced.widgetItem').each(function () {
+			renderSlideshowIfApplicable($(this));		
+		});
+	});
+</script></div>	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!----><div class="outer col col1" style="" data-widgetcontainerid="7af90026-d96f-4b30-bb1a-b0bf2b9a52dc">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col1 first last id900ede8c-9487-4dbb-8928-6eb37ca4348f" style="" data-widgetcontainerid="900ede8c-9487-4dbb-8928-6eb37ca4348f">	
+
+<div class="widget widgetSpacer" id="59223f41-fdc9-4179-91fc-d5bc0d662665"></div>	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!----><div class="outer col col6" style="" data-widgetcontainerid="8c993f50-155b-4d59-b79a-31c9d4e7f885">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col6 first last id79158a2b-8e02-49a4-83b1-cc74dc71a77e" style="" data-widgetcontainerid="79158a2b-8e02-49a4-83b1-cc74dc71a77e">	
+<div data-widget-id="0f77a7a5-2cc0-472e-9b16-1d6652cba0bc" data-widget-controller-path="/Faq/Widget">
+  
+
+
+
+
+
+
+
+	<section id="widgetFaq0f77a7a5-2cc0-472e-9b16-1d6652cba0bc" class="widget widgetFAQ skin37 widgetOptionSet22 narrow" data-modulewidgettype="FAQ" data-elementqueryclasses='{"wide-narrow":"min-width:25em"}' data-elementquerymatch='matchMultiColumn' data-elementqueryunmatch='unmatchMultiColumn' aria-labelledby="faqHeader0f77a7a5-2cc0-472e-9b16-1d6652cba0bc">
+			<header class="widgetHeader" id="faqHeader0f77a7a5-2cc0-472e-9b16-1d6652cba0bc">
+		<div class="">
+			<h3><a href="/Faq.aspx?TID=18,">FAQs</a></h3>
+				</div>
+	</header>
+	<div class="widgetBody pageStyles cpGrid cpGrid1 ">
+        <div class="row  narrow">
+				<div class="col col1 first last">
+						<ol class="semanticList">
+
+
+        <li style="position: relative" class="widgetItem">
+            <a class="widgetDesc widgetFAQQuestion" href="/Faq.aspx?QID=71">What time is the utility payment window open?</a>
+        </li>
+
+
+        <li style="position: relative" class="widgetItem">
+            <a class="widgetDesc widgetFAQQuestion" href="/Faq.aspx?QID=70">Which days am I allowed to water?</a>
+        </li>
+
+
+        <li style="position: relative" class="widgetItem">
+            <a class="widgetDesc widgetFAQQuestion" href="/Faq.aspx?QID=68">How do I start water service?</a>
+        </li>
+						</ol>
+				</div>
+		</div>
+        	</div>
+	<div class="widgetFooter">	
+	</div>
+    <div class="addItemModal hidden">
+        <div class="url hidden">/FAQ.aspx</div>
+    </div>
+
+	</section>
+
+
+<script>
+    document.querySelectorAll(".widgetFAQ--question a").forEach(element => {
+        // When the link (or arrow?) is clicked, expand
+		element.addEventListener("click", (e) => {
+            const element = e.target;
+            const answer = document.getElementById(element.getAttribute("aria-controls")).parentElement;
+            const expandArrow = $(element).find(".widgetFAQ--arrow").length > 0 ? $(element).find(".widgetFAQ--arrow") : $(element); //element.getElementsByClassName("widgetFAQ--arrow")[0];
+            console.log(answer, expandArrow);
+            if (answer.classList.contains("hidden")) {
+                expandArrow.addClass('widgetFAQ--arrow-expanded').removeClass('widgetFAQ--arrow-collapsed');
+                answer.classList.remove("hidden");
+                element.setAttribute("aria-expanded", "true");
+            } else {
+                expandArrow.addClass('widgetFAQ--arrow-collapsed').removeClass('widgetFAQ--arrow-expanded');
+                answer.classList.add("hidden");
+                element.setAttribute("aria-expanded", "false");
+            }
+            
+			e.preventDefault();
+			e.stopImmediatePropagation();
+			e.stopPropagation();
+        });
+    });
+</script>
+</div>
+	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!----><div class="outer col col1" style="" data-widgetcontainerid="f5710efe-b5c4-40f1-9494-5324216bdf45">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col1 first last id08cdf33d-5027-48ab-9b68-a9c912d71881" style="" data-widgetcontainerid="08cdf33d-5027-48ab-9b68-a9c912d71881">	
+
+<div class="widget widgetSpacer" id="6198dd35-0804-4fa9-9842-e64248299a7e"></div>	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!----><div class="outer col col4 last" style="" data-widgetcontainerid="3d2c5b2f-3f5e-4702-9acb-35bf204a5dd4">				
+	<div class="row nest first last wide">
+	
+	<div class="inner col col4 first last idca32ef41-fa1f-441e-a89b-41b6683c65ea" style="" data-widgetcontainerid="ca32ef41-fa1f-441e-a89b-41b6683c65ea">	
+	<div data-widget-id="6ed5546a-5a86-47d2-a041-c765ee2e5f17" data-widget-controller-path="/QuickLinks/Widget">
+
+
+
+
+
+ 
+
+
+	<section id="widgetQuicklink6ed5546a-5a86-47d2-a041-c765ee2e5f17" class="widget widgetQuickLinks skin37 widgetOptionSet23 narrow" data-modulewidgettype="quickLinks" data-elementqueryclasses='{"wide-narrow":"min-width:25em"}' data-elementquerymatch='matchMultiColumn' data-elementqueryunmatch='unmatchMultiColumn' aria-labelledby="quickLinksHeader6ed5546a-5a86-47d2-a041-c765ee2e5f17">
+			<header class="widgetHeader" id="quickLinksHeader6ed5546a-5a86-47d2-a041-c765ee2e5f17">
+		<div class="">
+					<h3><a  style="" href="/QuickLinks.aspx?CID=32," >Using This Site</a></h3>
+						</div>
+	</header>
+	<div class="widgetBody cpGrid cpGrid1 ">
+        <div class="row  narrow">
+				<div class="col col1 first last">
+					<ol class="semanticList">
+
+    <li style="position:relative" class="widgetItem QuickLinks">
+        <a class="widgetDesc widgetQuickLinksLink" href="/" target="_self" >Home</a>
+    </li>
+
+    <li style="position:relative" class="widgetItem QuickLinks">
+        <a class="widgetDesc widgetQuickLinksLink" href="/sitemap" target="_self" >Site Map</a>
+    </li>
+
+    <li style="position:relative" class="widgetItem QuickLinks">
+        <a class="widgetDesc widgetQuickLinksLink" href="/Accessibility" target="_self" >Accessibility</a>
+    </li>
+
+    <li style="position:relative" class="widgetItem QuickLinks">
+        <a class="widgetDesc widgetQuickLinksLink" href="/site/copyright" target="_self" >Copyright Notices</a>
+    </li>
+
+    <li style="position:relative" class="widgetItem QuickLinks">
+        <a class="widgetDesc widgetQuickLinksLink" href="http://civicplus.com/referral" target="_self" >Government Websites by CivicPlus®</a>
+    </li>
+					</ol>
+				</div>
+		</div>
+        
+	</div>
+	<div class="widgetFooter">
+	</div>
+	<div class="addItemModal hidden">
+		<div class="url hidden">/QuickLinks.aspx</div>
+	</div>
+
+	</section>
+</div>
+	</div> <!-- inner column -->
+
+	</div> <!-- inner row -->
+
+			</div><!-- outer column --><!--		--></div> <!-- outer row -->
+
+
+	</div>
+</footer></div>
+</div>
+</div>
+
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+
+	<script type="text/javascript">function dynamicStretchContainers () {Core.Layout.stretchContainers('#structuralContainer2, #structuralContainer1, #structuralContainer3');}</script>
+
+
+
+
+
+
+	<script src="/651582127.js" type="text/javascript"></script>
+	<!-- Google Translate -->
+<script type="text/javascript">
+	var translateActiveCookie = getCookieValue('translateActive');
+
+	if (translateActiveCookie == 'true') {
+		enableGoogleTranslate();
+	} else {
+		var button = '<a href="#translate" class="translateWidget" title="Enable Google Translate" style="background-color: #FFF;border-color: #9b9b9b #d5d5d5 transparent #d5d5d5;border-style: solid;border-width: 1px 1px 0 1px;bottom: 0px;color: #000;cursor: pointer;font-size: .9em;padding: 2px 6px 3px 4px;position: fixed;right: 20px;z-index: 5;">';
+		button += '<img alt="Google Translate Icon" src="/Assets/Images/GoogleTranslate.gif" style="box-sizing: content-box !important;height:19px;margin: -2px 0 0 -2px;padding-right: 5px;width:19px;">Enable Google Translate</a>';
+		$('div[data-cprole="structuralContainer"]').last().after(button);
+	}
+
+	function googleTranslateElementInit() {
+  		new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+	}
+
+	function enableGoogleTranslate() {
+		$('#google_translate_element').show();
+		var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
+		sz.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
+		$('div[data-cprole="structuralContainer"]').last().after('<div id="google_translate_element" style="position: fixed; bottom: 0px; right: 20px; z-index: 5;"></div>');
+	        document.cookie = "translateActive=true; expires=12/31/2999; path=/";
+	}
+
+	$('a.translateWidget').unbind('click').click(function (e) {
+		$(this).hide();
+		enableGoogleTranslate();
+		return false;
+	});
+</script><!-- End Translate -->
+
+<script type="text/javascript">!function(){var b=function(){window.__AudioEyeSiteHash = "a6368c7230333660ca189db68a07922f"; var a=document.createElement("script");a.src="https://wsmcdn.audioeye.com/aem.js";a.type="text/javascript";a.setAttribute("async","");document.getElementsByTagName("body")[0].appendChild(a)};"complete"!==document.readyState?window.addEventListener?window.addEventListener("load",b):window.attachEvent&&window.attachEvent("onload",b):b()}();</script>
+
+
+	<script type="text/javascript">
+		$(function () {
+			document.cookie = "responsiveGhost=0; path=/";
+		});
+		onOrLive($(window), function () {
+			$('body').addClass('doneLoading').removeClass('hideContent');
+
+			if ($('#404Content').length > 0)
+				$('div#bodyWrapper').css('padding', '0px');
+		}, 'load');
+	</script>
+
+	<noscript>
+		<style>
+			body.hideContent {
+				opacity: 1 !important;
+			}
+		</style>
+	</noscript>
+
+		
+<div style="display: none;">
+	<svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+
+		<symbol id="iconArrow--left" viewbox="0 0 25 25">
+			<title>Arrow Left</title>
+			<polygon style="fill:currentcolor" points="18.044,25 19.498,23.545 8.409,12.454 19.408,1.455 17.954,0 5.502,12.452"></polygon>
+		</symbol>
+
+		<symbol id="iconArrow--right" viewbox="0 0 25 25">
+			<title>Arrow Right</title>
+			<polygon style="fill:currentcolor" points="6.957,0 5.502,1.455 16.591,12.546 5.592,23.545 7.047,25 19.498,12.548"></polygon>
+		</symbol>
+
+	</svg>
+</div>
+	<script type="text/javascript">loadCSS('//fonts.googleapis.com/css?family=Libre+Baskerville:700,italic,regular|');</script>
+	
+
+	<div class="hidden activeWidgetSkinComponentsOnPageJson">[]</div>
+		<div style="display: none;">
+			<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+				<symbol id="iconSlideshowArrowLeft" viewBox="0 0 22.68 40">
+					<title>Slideshow Left Arrow</title>
+					<g>
+						<path style="fill:currentcolor;" d="M20,40a2.67,2.67,0,0,1-1.9-.79L.79,21.9a2.68,2.68,0,0,1,0-3.79L18.1.79a2.68,2.68,0,1,1,3.79,3.79L6.47,20,21.89,35.42A2.68,2.68,0,0,1,20,40Z"></path>
+					</g>
+				</symbol>
+				<symbol id="iconSlideshowArrowRight" viewBox="0 0 22.68 40">
+					<title>Slideshow Right Arrow</title>
+					<g>
+						<path style="fill:currentcolor;" d="M2.68,0a2.67,2.67,0,0,1,1.9.79L21.89,18.1a2.68,2.68,0,0,1,0,3.79L4.58,39.21A2.68,2.68,0,0,1,.79,35.42L16.21,20,.79,4.58A2.68,2.68,0,0,1,2.68,0Z"></path>
+					</g>
+				</symbol>
+			</svg>
+		</div>
+	
+	
+
+	</body>
+</html>
