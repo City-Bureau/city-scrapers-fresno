@@ -1,8 +1,6 @@
 from datetime import datetime
 from os.path import dirname, join
 
-import pytest
-from city_scrapers_core.constants import NOT_CLASSIFIED
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
@@ -33,7 +31,7 @@ def test_start():
 def test_links():
     assert parsed_items[0]["links"] == [
         {
-            "href": "https://www.ci.mendota.ca.us/wp-content/uploads/2022/09/9-27-22-City-Council-Meeting-Agenda-Packet.pdf", # noqa
+            "href": "https://www.ci.mendota.ca.us/wp-content/uploads/2022/09/9-27-22-City-Council-Meeting-Agenda-Packet.pdf",  # noqa
             "title": "Agenda",
         }
     ]

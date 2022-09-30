@@ -1,10 +1,11 @@
-import requests
 import re
-from dateutil import parser
-from pdfminer.high_level import extract_text
+
+import requests
 from city_scrapers_core.constants import NOT_CLASSIFIED
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
+from dateutil import parser
+from pdfminer.high_level import extract_text
 
 
 class FreMendotaCityCouncilSpider(CityScrapersSpider):
