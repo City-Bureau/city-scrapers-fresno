@@ -120,12 +120,18 @@ class SanJoaquinRiverConservancySpider(CityScrapersSpider):
 
     def _parse_links(self, item):
         """Parse or generate links."""
-        link_dict = {}
+        link_list = []
+        link_hash_map = {}
         for sel in item[1]:
-            link = sel.css("::attr(href)").get()
-            title = link.split("/")[len(link.split("/")) - 1].split(".")[0]
-            link_dict[link] = title
-        return link_dict
+            link = sel.css("a::attr(href)").get().strip()
+            if not link_hash_map.get(link):
+                link_hash_map[str(link)] = 1
+                title = link.split("/")[len(link.split("/")) - 1].split(".")[0]
+                link_dict = {}
+                link_dict["href"] = link
+                link_dict["title"] = title
+                link_list.append(link_dict)
+        return link_list
 
     def _parse_source(self, response):
         """Parse or generate source."""

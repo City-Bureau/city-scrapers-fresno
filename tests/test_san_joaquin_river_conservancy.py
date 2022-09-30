@@ -92,28 +92,41 @@ def test_source(item):
 
 
 def test_links():
-    link_dict = {
-        (
-            "http://sjrc.ca.gov/wp-content/uploads/2022/01/"
-            "2021-December-SJRC-Draft-Minutes.pdf"
-        ): "2021-December-SJRC-Draft-Minutes",
-        (
-            "http://sjrc.ca.gov/wp-content/uploads/2022/01/"
-            "2022-Feb-SJRC-Revised-Agenda.pdf"
-        ): "2022-Feb-SJRC-Revised-Agenda",
-        (
-            "http://sjrc.ca.gov/wp-content/uploads/2022/01/"
-            "2022-February-SJRC-Board-Packet.pdf"
-        ): "2022-February-SJRC-Board-Packet",
-        (
-            "http://sjrc.ca.gov/wp-content/uploads/2022/02/" "BALL-RANCH.pdf"
-        ): "BALL-RANCH",
-        (
-            "http://sjrc.ca.gov/wp-content/uploads/2022/02/"
-            "Staff-Presentation-for-Feb-2022.pdf"
-        ): "Staff-Presentation-for-Feb-2022",
-    }
-    assert parsed_items[0]["links"] == link_dict
+    link_list = [
+        {
+            "href": (
+                "http://sjrc.ca.gov/wp-content/uploads/2022/01/"
+                "2022-Feb-SJRC-Revised-Agenda.pdf"
+            ),
+            "title": "2022-Feb-SJRC-Revised-Agenda",
+        },
+        {
+            "href": (
+                "http://sjrc.ca.gov/wp-content/uploads/2022/01/"
+                "2022-February-SJRC-Board-Packet.pdf"
+            ),
+            "title": "2022-February-SJRC-Board-Packet",
+        },
+        {
+            "href": (
+                "http://sjrc.ca.gov/wp-content/uploads/2022/01/"
+                "2021-December-SJRC-Draft-Minutes.pdf"
+            ),
+            "title": "2021-December-SJRC-Draft-Minutes",
+        },
+        {
+            "href": (
+                "http://sjrc.ca.gov/wp-content/uploads/2022/02/"
+                "Staff-Presentation-for-Feb-2022.pdf"
+            ),
+            "title": "Staff-Presentation-for-Feb-2022",
+        },
+        {
+            "href": ("http://sjrc.ca.gov/wp-content/uploads/2022/02/BALL-RANCH.pdf"),
+            "title": "BALL-RANCH",
+        },
+    ]
+    assert parsed_items[0]["links"] == link_list
 
 
 @pytest.mark.parametrize("item", parsed_items)
