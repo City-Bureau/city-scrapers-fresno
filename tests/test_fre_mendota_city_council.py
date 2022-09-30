@@ -23,14 +23,17 @@ freezer.stop()
 
 
 def test_title():
-    assert parsed_items[0]["title"] == "EXPECTED TITLE"
+    assert parsed_items[0]["title"] == "September 27, 2022"
 
 
 def test_start():
-    assert parsed_items[0]["start"] == datetime(2019, 1, 1, 0, 0)
+    assert parsed_items[0]["start"] == datetime(2022, 9, 27, 18, 0)
 
 
 def test_links():
     assert parsed_items[0]["links"] == [
-        {"href": "EXPECTED HREF", "title": "EXPECTED TITLE"}
+        {
+            "href": "https://www.ci.mendota.ca.us/wp-content/uploads/2022/09/9-27-22-City-Council-Meeting-Agenda-Packet.pdf", # noqa
+            "title": "Agenda",
+        }
     ]

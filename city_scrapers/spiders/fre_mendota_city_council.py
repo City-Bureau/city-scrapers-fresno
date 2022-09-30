@@ -14,13 +14,6 @@ class FreMendotaCityCouncilSpider(CityScrapersSpider):
     start_urls = ["https://www.ci.mendota.ca.us/agendas-and-minutes/"]
 
     def parse(self, response):
-        """
-        `parse` should always `yield` Meeting items.
-
-        Change the `_parse_title`, `_parse_start`, etc methods to fit your scraping
-        needs.
-        """
-
         # first tab is current year, each tab has 3 columns
         date_tab, link_tab1, link_tab2 = response.css(".wpb_tab")[0].css(
             ".vc_column-inner"
@@ -63,7 +56,6 @@ class FreMendotaCityCouncilSpider(CityScrapersSpider):
             yield meeting
 
     def _extract_time(self, pdflink):
-        print("PDF", pdflink)
         with open("pdf", "wb") as f:
             f.write(
                 requests.get(
@@ -74,7 +66,7 @@ class FreMendotaCityCouncilSpider(CityScrapersSpider):
                 ).content
             )
         text = extract_text("pdf")
-        for line in text:
+        for line in text.splitlines():
             time = re.findall(r"\d{1,2}:\d{2} [AP]M", line)
             if time:
                 return time[0]
