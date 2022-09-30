@@ -54,27 +54,27 @@ def test_end():
 
 def test_id():
     assert parsed_items[0]["id"] == (
-        "friant_water_authority/" "202210040900/x/kaweah_delta_wcd_bm"
+        "fre_friant_water_authority/" "202210040900/x/kaweah_delta_wcd_bm"
     )
     assert parsed_items[1]["id"] == (
-        "friant_water_authority/" "202210060900/x/pixley_id_bm"
+        "fre_friant_water_authority/" "202210060900/x/pixley_id_bm"
     )
     assert parsed_items[2]["id"] == (
-        "friant_water_authority/"
+        "fre_friant_water_authority/"
         "202210070830/x/"
         "friant_division_manager_s_group_meeting"
     )
     assert parsed_items[3]["id"] == (
-        "friant_water_authority/202210110900/x/lower_tule_river_id_bm"
+        "fre_friant_water_authority/202210110900/x/lower_tule_river_id_bm"
     )
     assert parsed_items[4]["id"] == (
-        "friant_water_authority/202210110900/x/tulare_id_bm"
+        "fre_friant_water_authority/202210110900/x/tulare_id_bm"
     )
     assert parsed_items[5]["id"] == (
-        "friant_water_authority/202210110900/x/porterville_id_bm"
+        "fre_friant_water_authority/202210110900/x/porterville_id_bm"
     )
     assert parsed_items[6]["id"] == (
-        "friant_water_authority/202210111200/x/arvin_edison_wsd_bm"
+        "fre_friant_water_authority/202210111200/x/arvin_edison_wsd_bm"
     )
 
 

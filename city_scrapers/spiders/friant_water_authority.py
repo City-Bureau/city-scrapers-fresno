@@ -6,7 +6,7 @@ from city_scrapers_core.spiders import CityScrapersSpider
 
 
 class FriantWaterAuthoritySpider(CityScrapersSpider):
-    name = "friant_water_authority"
+    name = "fre_friant_water_authority"
     agency = "Friant Water Authority"
     timezone = "America/Los_Angeles"
     start_urls = ["https://friantwater.org/meetings-events"]
