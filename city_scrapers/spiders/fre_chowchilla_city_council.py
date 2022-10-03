@@ -15,7 +15,7 @@ from pdfminer.pdfpage import PDFPage
 class FreChowchillaCityCouncilSpider(CityScrapersSpider):
     name = "fre_chowchilla_city_council"
     agency = "Chowchilla City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://www.cityofchowchilla.org/agendacenter"]
 
     def parse(self, response):

@@ -6,21 +6,22 @@ from city_scrapers_core.constants import CITY_COUNCIL
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
-from city_scrapers.spiders.fre_madera_city_council import FreMaderaCityCouncilSpider
+from city_scrapers.spiders.fre_farmersville_city_council import (
+    FreFarmersvilleCityCouncilSpider,
+)
 
 test_response = file_response(
-    join(dirname(__file__), "files", "fre_madera_city_council.html"),
-    url="http://www.madera.gov/home/departments/city-clerk/city-council-agendas-meetings/",  # noqa
+    join(dirname(__file__), "files", "fre_farmersville_city_council.html"),
+    url="https://www.cityoffarmersville-ca.gov/agendacenter",
 )
-spider = FreMaderaCityCouncilSpider()
+spider = FreFarmersvilleCityCouncilSpider()
 
-freezer = freeze_time("2022-08-21")
+freezer = freeze_time("2022-09-29")
 freezer.start()
 
 parsed_items = [item for item in spider.parse(test_response)]
 
 freezer.stop()
-
 
 """
 def test_tests():
@@ -32,7 +33,9 @@ Uncomment below
 
 
 def test_title():
-    assert parsed_items[0]["title"] == "Special Meeting of the Madera City Council"
+    assert (
+        parsed_items[0]["title"] == "Regular Meeting of the Farmersville City Council"
+    )
 
 
 def test_description():
@@ -40,7 +43,7 @@ def test_description():
 
 
 def test_start():
-    assert parsed_items[0]["start"] == datetime(2022, 8, 24, 18, 0)
+    assert parsed_items[0]["start"] == datetime(2022, 9, 12, 18, 0)
 
 
 # def test_end():
@@ -48,48 +51,43 @@ def test_start():
 
 
 def test_time_notes():
-    assert parsed_items[0]["time_notes"] == ""
+    assert (
+        parsed_items[0]["time_notes"]
+        == "Time is unscrapable from this website, meeting time is assumed to be the standard 6:00PM time. Please check the meeting agenda link to confirm time."  # noqa
+    )
 
 
 def test_id():
     assert (
         parsed_items[0]["id"]
-        == "fre_madera_city_council/202208241800/x/special_meeting_of_the_madera_city_council"  # noqa
+        == "fre_farmersville_city_council/202209121800/x/regular_meeting_of_the_farmersville_city_council"  # noqa
     )
 
 
 def test_status():
-    assert parsed_items[0]["status"] == "tentative"
+    assert parsed_items[0]["status"] == "passed"
 
 
 def test_location():
     assert parsed_items[0]["location"] == {
-        "name": "Council Chambers, City Hall",
-        "address": "205 W. 4th Street, Madera, California 93637",
+        "name": "Civic Center Chamber Council",
+        "address": "909 West Visalia Road Farmersville, California",
     }
 
 
 def test_source():
     assert (
         parsed_items[0]["source"]
-        == "http://www.madera.gov/home/departments/city-clerk/city-council-agendas-meetings/"  # noqa
+        == "https://www.cityoffarmersville-ca.gov/agendacenter"
     )
 
 
 def test_links():
     assert parsed_items[0]["links"] == [
         {
-            "href": "https://www.madera.gov/wp-content/uploads/2022/08/08.24.22s-Final-Agenda.pdf",  # noqa
+            "href": "https://www.cityoffarmersville-ca.gov/AgendaCenter/ViewFile/Agenda/_09122022-385",  # noqa
             "title": "Agenda",
-        },
-        {
-            "href": "https://www.madera.gov/wp-content/uploads/2022/08/08.24.22s-Final-Links.pdf",  # noqa
-            "title": "Report",
-        },
-        {
-            "href": None,
-            "title": "Video",
-        },
+        }
     ]
 
 

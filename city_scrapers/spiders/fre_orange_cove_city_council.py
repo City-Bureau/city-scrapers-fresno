@@ -1,19 +1,16 @@
 import re
-import ssl
 
 from city_scrapers_core.constants import CITY_COUNCIL
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
 from dateutil.parser import parser
 
-ssl._create_default_https_context = ssl._create_unverified_context
 
-
-class LemooreCityCouncilSpider(CityScrapersSpider):
-    name = "fre_lemoore_city_council"
-    agency = "Lemoore City Council"
+class FreOrangeCoveCityCouncilSpider(CityScrapersSpider):
+    name = "fre_orange_cove_city_council"
+    agency = "Orange Cove City Council"
     timezone = "America/Los_Angeles"
-    start_urls = ["https://lemoore.com/councilagendas"]
+    start_urls = ["https://cityoforangecove.com/agendas/"]
 
     def parse(self, response):
         """
@@ -22,9 +19,13 @@ class LemooreCityCouncilSpider(CityScrapersSpider):
         Change the `_parse_title`, `_parse_start`, etc methods to fit your scraping
         needs.
         """
-        for item in response.css("div[id='elementor-tab-content-7431'] table tr")[1:]:
-            date = item.css("td:nth-child(1)::text").get()
-            if date.strip() and "CX" not in date:
+        for item in response.css(
+            "div[id='2022'] div.vc_tta-panel-body div.wpb_wrapper p"
+        ):
+            meetingRaw = item.css("a::text").get()
+            if (re.search(r"\d{1,2}, 2022", meetingRaw)) and (
+                "ITEM#" not in meetingRaw
+            ):
                 meeting = Meeting(
                     title=self._parse_title(item),
                     description=self._parse_description(item),
@@ -45,17 +46,13 @@ class LemooreCityCouncilSpider(CityScrapersSpider):
 
     def _parse_title(self, item):
         """Parse or generate meeting title."""
-        return "Lemoore City Council"
+        titleRaw = item.css("a::text").get()
+        title = re.split(" ", titleRaw, 3)[3]
+        return title
 
     def _parse_description(self, item):
         """Parse or generate meeting description."""
-
-        title = (item.css("td:nth-child(1)::text").get()).strip()
-
-        if "SP" in title:
-            return "Lemoore City Council Special Meeting"
-        else:
-            return ""
+        return ""
 
     def _parse_classification(self, item):
         """Parse or generate classification from allowed options."""
@@ -63,26 +60,15 @@ class LemooreCityCouncilSpider(CityScrapersSpider):
 
     def _parse_start(self, item):
         """Parse start datetime as a naive datetime object."""
+        dateRaw = item.css("a::text").get()
 
-        # css selector to get string that contains date and time
-        date_raw = (item.css("td:nth-child(1)::text").get()).strip()
+        month = re.split(" ", dateRaw)[0]
+        day = re.split(" ", dateRaw)[1]
+        year = re.split(" ", dateRaw)[2]
 
-        # extract date from string
-        # date = re.findall(r"\w+ \d{1,2}, \d{4}", date_raw)[0]
-        date = re.findall(r"\w+ \d{1,2}, \d{4}", date_raw)[0]
+        date = month + " " + day + " " + year
 
-        # meetings are at 5:30PM
-        time = "17:30:00"
-
-        # time changes are noted on the timeChanged string
-        # assume evening time for city council meeting
-        timeChanged = re.findall(r"\d{1,2}:\d{1,2}", date_raw)
-        if timeChanged:
-            time = timeChanged[0] + " pm"
-
-        # combine date and time to get complete dt_obj
-        dt_obj = date + " " + time
-
+        dt_obj = date + " " + "00:00:00"
         return parser().parse(dt_obj)
 
     def _parse_end(self, item):
@@ -91,7 +77,7 @@ class LemooreCityCouncilSpider(CityScrapersSpider):
 
     def _parse_time_notes(self, item):
         """Parse any additional notes on the timing of the meeting"""
-        return ""
+        return "Meeting time in unscrapable from this site, please check the meeting agenda link for meeting start time."  # noqa
 
     def _parse_all_day(self, item):
         """Parse or generate all-day status. Defaults to False."""
@@ -100,30 +86,13 @@ class LemooreCityCouncilSpider(CityScrapersSpider):
     def _parse_location(self, item):
         """Parse or generate location."""
         return {
-            "address": "429 C Street, Lemoore CA 93245",
-            "name": "Lemoore Council Chambers",
+            "address": "699 6th Street, Orange Cove, California 93646",
+            "name": "Senior Center",
         }
 
     def _parse_links(self, item):
         """Parse or generate links."""
-        return [
-            {
-                "hrefAgenda": item.css("td:nth-child(2) a::attr(href)").get(),
-                "titleAgenda": "Agenda",
-                "hrefAgendaPacket": item.css("td:nth-child(3) a::attr(href)").get(),
-                "titlePacket": "Agenda Packet",
-                "hrefHandout": item.css("td:nth-child(4) a::attr(href)").get(),
-                "titleHandout": "Handout",
-                "hrefAudio": item.css(
-                    "td:nth-child(6) a:nth-child(1)::attr(href)"
-                ).get(),
-                "titleAudio": "Meeting Audio",
-                "hrefVideo": item.css(
-                    "td:nth-child(6) a:nth-child(2)::attr(href)"
-                ).get(),
-                "titleVideo": "Meeting Video",
-            }
-        ]
+        return [{"href": item.css("a::attr(href)").get(), "title": "Meeting Agenda"}]
 
     def _parse_source(self, response):
         """Parse or generate source."""

@@ -7,7 +7,7 @@ from dateutil.parser import parser
 class SanJoaquinValleyAirPollutionSpider(CityScrapersSpider):
     name = "fre_san_joaquin_valley_air_pollution"
     agency = "San Joaquin Valley Air Pollution Control District"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://www.valleyair.org/Board_meetings/GB/GB_meetings_2022.htm"]
 
     def parse(self, response):

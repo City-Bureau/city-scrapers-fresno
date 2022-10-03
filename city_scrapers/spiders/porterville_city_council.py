@@ -7,7 +7,7 @@ from dateutil.parser import parser
 class PortervilleCityCouncilSpider(CityScrapersSpider):
     name = "fre_porterville_city_council"
     agency = "Porterville City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = [
         "https://www.ci.porterville.ca.us/government/city_council/council_meeting_dates.php"  # noqa
     ]

@@ -6,15 +6,15 @@ from city_scrapers_core.constants import CITY_COUNCIL
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
-from city_scrapers.spiders.fre_madera_city_council import FreMaderaCityCouncilSpider
+from city_scrapers.spiders.fre_dinuba_city_council import FreDinubaCityCouncilSpider
 
 test_response = file_response(
-    join(dirname(__file__), "files", "fre_madera_city_council.html"),
-    url="http://www.madera.gov/home/departments/city-clerk/city-council-agendas-meetings/",  # noqa
+    join(dirname(__file__), "files", "fre_dinuba_city_council.html"),
+    url="https://dinuba.novusagenda.com/agendapublic/meetingsgeneral.aspx?MeetingType=1&Date=6ms",  # noqa
 )
-spider = FreMaderaCityCouncilSpider()
+spider = FreDinubaCityCouncilSpider()
 
-freezer = freeze_time("2022-08-21")
+freezer = freeze_time("2022-10-01")
 freezer.start()
 
 parsed_items = [item for item in spider.parse(test_response)]
@@ -32,7 +32,7 @@ Uncomment below
 
 
 def test_title():
-    assert parsed_items[0]["title"] == "Special Meeting of the Madera City Council"
+    assert parsed_items[0]["title"] == "City Council"
 
 
 def test_description():
@@ -40,7 +40,7 @@ def test_description():
 
 
 def test_start():
-    assert parsed_items[0]["start"] == datetime(2022, 8, 24, 18, 0)
+    assert parsed_items[0]["start"] == datetime(2022, 9, 27, 18, 30)
 
 
 # def test_end():
@@ -53,42 +53,37 @@ def test_time_notes():
 
 def test_id():
     assert (
-        parsed_items[0]["id"]
-        == "fre_madera_city_council/202208241800/x/special_meeting_of_the_madera_city_council"  # noqa
+        parsed_items[0]["id"] == "fre_dinuba_city_council/202209271830/x/city_council"
     )
 
 
 def test_status():
-    assert parsed_items[0]["status"] == "tentative"
+    assert parsed_items[0]["status"] == "passed"
 
 
 def test_location():
     assert parsed_items[0]["location"] == {
-        "name": "Council Chambers, City Hall",
-        "address": "205 W. 4th Street, Madera, California 93637",
+        "name": "Council Chambers",
+        "address": "405 E El Monte Way, Dinuba CA 93618",
     }
 
 
 def test_source():
     assert (
         parsed_items[0]["source"]
-        == "http://www.madera.gov/home/departments/city-clerk/city-council-agendas-meetings/"  # noqa
+        == "https://dinuba.novusagenda.com/agendapublic/meetingsgeneral.aspx?MeetingType=1&Date=6ms"  # noqa
     )
 
 
 def test_links():
     assert parsed_items[0]["links"] == [
         {
-            "href": "https://www.madera.gov/wp-content/uploads/2022/08/08.24.22s-Final-Agenda.pdf",  # noqa
-            "title": "Agenda",
+            "hrefAgenda": "https://dinuba.novusagenda.com/agendapublic/DisplayAgendaPDF.ashx?MeetingID=365",  # noqa
+            "titleAgenda": "Agenda PDF",
         },
         {
-            "href": "https://www.madera.gov/wp-content/uploads/2022/08/08.24.22s-Final-Links.pdf",  # noqa
-            "title": "Report",
-        },
-        {
-            "href": None,
-            "title": "Video",
+            "hrefPage": "https://dinuba.novusagenda.com/agendapublic/MeetingView.aspx?MeetingID=365&MinutesMeetingID=302&doctype=Agenda",  # noqa
+            "titlePage": "Agenda Page",
         },
     ]
 

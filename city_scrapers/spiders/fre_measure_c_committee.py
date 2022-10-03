@@ -1,22 +1,14 @@
-import re
-from io import StringIO
-from urllib import request
-
-from city_scrapers_core.constants import CITY_COUNCIL
+from city_scrapers_core.constants import NOT_CLASSIFIED
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
 from dateutil.parser import parser
-from pdfminer.converter import TextConverter
-from pdfminer.layout import LAParams
-from pdfminer.pdfinterp import PDFPageInterpreter, PDFResourceManager
-from pdfminer.pdfpage import PDFPage
 
 
-class FreFirebaughCityCouncilSpider(CityScrapersSpider):
-    name = "fre_firebaugh_city_council"
-    agency = "Firebaugh City Council"
-    timezone = "America/Los_Angeles"
-    start_urls = ["https://firebaugh.org/meetingsagendas/"]
+class FreMeasureCCommitteeSpider(CityScrapersSpider):
+    name = "fre_measure_c_committee"
+    agency = "Measure C Committee"
+    timezone = "America/Chicago"
+    start_urls = ["https://measurec.com/meetings/"]
 
     def parse(self, response):
         """
@@ -25,9 +17,7 @@ class FreFirebaughCityCouncilSpider(CityScrapersSpider):
         Change the `_parse_title`, `_parse_start`, etc methods to fit your scraping
         needs.
         """
-        for item in response.css(
-            "div[id='tab-1641227864702-8-0'] div div:nth-child(1) div div div div p a"
-        ):
+        for item in response.css("div.vc_custom_1642124059800 ul li"):
             meeting = Meeting(
                 title=self._parse_title(item),
                 description=self._parse_description(item),
@@ -48,12 +38,8 @@ class FreFirebaughCityCouncilSpider(CityScrapersSpider):
 
     def _parse_title(self, item):
         """Parse or generate meeting title."""
-        title = ""
-        title_raw = item.css("::text").get()
-        if "Special" in title_raw:
-            title = "City Council Meeting - Special Meeting"
-        else:
-            title = "City Council Meeting"
+
+        title = "Committee Meeting"
         return title
 
     def _parse_description(self, item):
@@ -62,39 +48,35 @@ class FreFirebaughCityCouncilSpider(CityScrapersSpider):
 
     def _parse_classification(self, item):
         """Parse or generate classification from allowed options."""
-        return CITY_COUNCIL
+        return NOT_CLASSIFIED
 
     def _parse_start(self, item):
         """Parse start datetime as a naive datetime object."""
-        date_raw = item.css("::text").get()
-        date = date_raw.split("–")[0]
+        startTime = "09:00:00"
+        startDate = ""
 
-        # meeting time noted on Agenda PDF
-        # download Agenda PDF, extract start time, delete Agenda PDF
-        agendaPDF = item.css("::attr(href)").get()
-        request.urlretrieve(agendaPDF, "pdf")
-        resource_manager = PDFResourceManager(caching=True)
-        out_text = StringIO()
-        laParams = LAParams()
-        text_converter = TextConverter(resource_manager, out_text, laparams=laParams)
-        fp = open("pdf", "rb")
-        interpreter = PDFPageInterpreter(resource_manager, text_converter)
-        for page in PDFPage.get_pages(
-            fp,
-            pagenos=set(),
-            maxpages=1,
-            password="",
-            caching=True,
-            check_extractable=True,
-        ):
-            interpreter.process_page(page)
-        text = out_text.getvalue()
-        time = re.findall(r"\d{1,2}:\d{1,2} .", text)[0]
-        fp.close()
-        text_converter.close()
-        out_text.close()
+        if item.css("::text").get():
+            date = item.css("::text").get()
+            startDate = (
+                date.split(" ", 4)[1]
+                + " "
+                + date.split(" ", 4)[2]
+                + " "
+                + date.split(" ", 4)[3]
+            )
 
-        dt_obj = date + " " + time
+        if item.css("strong::text").get():
+            date = item.css("strong::text").get()
+            startDate = (
+                date.split(" ", 4)[1]
+                + " "
+                + date.split(" ", 4)[2]
+                + " "
+                + date.split(" ", 4)[3]
+            )
+
+        dt_obj = startDate + " " + startTime
+
         return parser().parse(dt_obj)
 
     def _parse_end(self, item):
@@ -111,14 +93,18 @@ class FreFirebaughCityCouncilSpider(CityScrapersSpider):
 
     def _parse_location(self, item):
         """Parse or generate location."""
+        # if "Ash Conference Room" in description:
+        name = "Fresno Council of Government’s Ash Conference Room"
+        address = "2035 Tulare Street, Suite 201, 2nd Floor, Fresno, California"
+
         return {
-            "address": "1655 13th St, Firebaugh, CA 93622",
-            "name": "Firebaugh Community Center",
+            "address": address,
+            "name": name,
         }
 
     def _parse_links(self, item):
         """Parse or generate links."""
-        return [{"href": item.css("::attr(href)").get(), "title": "Agenda"}]
+        return [{"href": "", "title": ""}]
 
     def _parse_source(self, response):
         """Parse or generate source."""

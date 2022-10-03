@@ -6,7 +6,7 @@ from city_scrapers_core.spiders import LegistarSpider
 class FreLegislativeSpider(LegistarSpider):
     name = "fre_legislative"
     agency = "FresnoLegislative"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://fresno.legistar.com/Calendar.aspx"]
     # Add the titles of any links not included in the scraped results
     link_types = []
@@ -24,6 +24,7 @@ class FreLegislativeSpider(LegistarSpider):
                 ("Bicycle and Pedestrian Advisory Committee" in title)
                 or ("Parks, Recreation, and Arts Commission" in title)
                 or ("Planning Commission" in title)
+                or ("City Council" in title)
             ):
                 meeting = Meeting(
                     title=event["Name"]["label"],

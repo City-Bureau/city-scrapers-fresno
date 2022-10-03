@@ -7,7 +7,7 @@ from dateutil.parser import parser
 class FreHanfordCityCouncilSpider(CityScrapersSpider):
     name = "fre_hanford_city_council"
     agency = "Fresno Hanford City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["http://hanfordca.iqm2.com/Citizens/Calendar.aspx"]
 
     def parse(self, response):

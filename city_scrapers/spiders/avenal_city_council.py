@@ -18,7 +18,7 @@ ssl._create_default_https_context = ssl._create_unverified_context
 class AvenalCityCouncilSpider(CityScrapersSpider):
     name = "fre_avenal_city_council"
     agency = "Avenal City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://www.cityofavenal.com/agendacenter"]
 
     def parse(self, response):
