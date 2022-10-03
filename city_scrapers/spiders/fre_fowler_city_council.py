@@ -1,8 +1,6 @@
 from datetime import datetime
-from pdfminer.high_level import extract_text
-from city_scrapers_core.constants import (CITY_COUNCIL, 
-                                          COMMISSION, 
-                                          NOT_CLASSIFIED)
+
+from city_scrapers_core.constants import CITY_COUNCIL, COMMISSION, NOT_CLASSIFIED
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
 
@@ -28,12 +26,13 @@ class FreFowlerCityCouncilSpider(CityScrapersSpider):
         for meeting_tab in meeting_tab_sel_list:
             if str(self.cur_year) in meeting_tab.css(data_attr).get():
                 meeting_tab_title = meeting_tab.css(data_attr).get().strip()
-                for item in meeting_tab.css('div p'):
+                for item in meeting_tab.css("div p"):
                     meeting = Meeting(
                         title=self._parse_title(item, meeting_tab_title),
                         description=self._parse_description(item),
-                        classification=self._parse_classification(item, 
-                                                        meeting_tab_title),
+                        classification=self._parse_classification(
+                            item, meeting_tab_title
+                        ),
                         start=self._parse_start(item),
                         end=self._parse_end(item),
                         all_day=self._parse_all_day(item),
@@ -73,12 +72,13 @@ class FreFowlerCityCouncilSpider(CityScrapersSpider):
     def _parse_start(self, item):
         """Parse start datetime as a naive datetime object."""
         title_list = item.css("::text").get().strip(" —").split()
-        try: 
+        try:
             month = title_list[0].strip()
-            day = int(title_list[1].strip(','))
+            day = int(title_list[1].strip(","))
             year = int(title_list[2].strip())
-            return datetime.strptime(f"{year:04}-{month}-{day:02} 19:00",
-                                     "%Y-%B-%d %H:%M")
+            return datetime.strptime(
+                f"{year:04}-{month}-{day:02} 19:00", "%Y-%B-%d %H:%M"
+            )
         except Exception:
             return datetime(1, 1, 1, 0, 0)
 
@@ -88,8 +88,10 @@ class FreFowlerCityCouncilSpider(CityScrapersSpider):
 
     def _parse_time_notes(self, item):
         """Parse any additional notes on the timing of the meeting"""
-        return ("Meetings regularly take place at 7:00 PM PST, "
-                "but are subject to change. Refer to agenda if available.")
+        return (
+            "Meetings regularly take place at 7:00 PM PST, "
+            "but are subject to change. Refer to agenda if available."
+        )
 
     def _parse_all_day(self, item):
         """Parse or generate all-day status. Defaults to False."""
@@ -97,16 +99,18 @@ class FreFowlerCityCouncilSpider(CityScrapersSpider):
 
     def _parse_location(self, item):
         """Parse or generate location."""
-        return {"address" : "128 SOUTH 5TH STREET FOWLER, CA 93625",
-                "name" : "CITY COUNCIL CHAMBER"}
+        return {
+            "address": "128 SOUTH 5TH STREET FOWLER, CA 93625",
+            "name": "CITY COUNCIL CHAMBER",
+        }
 
     def _parse_links(self, item):
         """Parse or generate links."""
         link_list = []
         for link_sel in item.css("p a"):
             link = link_sel.css("::attr(href)").get()
-            title = link.split("/")[len(link.split("/"))-1][:-4]
-            link_list.append({ "href" : link, "title": title })
+            title = link.split("/")[len(link.split("/")) - 1][:-4]
+            link_list.append({"href": link, "title": title})
         return link_list
 
     def _parse_source(self, response):
