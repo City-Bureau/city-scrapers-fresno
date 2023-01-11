@@ -5,7 +5,7 @@ import pytest
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
-from city_scrapers.spiders.clovis_city_council import ClovisCityCouncilSpider
+from city_scrapers.spiders.fre_clovis_city_council import ClovisCityCouncilSpider
 
 test_response = file_response(
     join(dirname(__file__), "files", "clovis_city_council.html"),
