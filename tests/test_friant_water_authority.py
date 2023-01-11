@@ -6,7 +6,7 @@ from city_scrapers_core.constants import BOARD, COMMITTEE, NOT_CLASSIFIED
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
-from city_scrapers.spiders.friant_water_authority import FriantWaterAuthoritySpider
+from city_scrapers.spiders.fre_friant_water_authority import FriantWaterAuthoritySpider
 
 test_response = file_response(
     join(dirname(__file__), "files", "friant_water_authority.html"),
