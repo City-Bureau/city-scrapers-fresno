@@ -4,7 +4,7 @@ from os.path import dirname, join
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
-from city_scrapers.spiders.fresno_planning_commission import (
+from city_scrapers.spiders.fre_fresno_planning_commission import (
     FresnoPlanningCommissionSpider,
 )
 
