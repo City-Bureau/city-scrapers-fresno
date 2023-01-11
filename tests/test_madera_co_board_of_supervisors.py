@@ -4,7 +4,7 @@ from os.path import dirname, join
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
-from city_scrapers.spiders.madera_co_board_of_supervisors import (
+from city_scrapers.spiders.fre_madera_co_board_of_supervisors import (
     MaderaCoBoardOfSupervisorsSpider,
 )
 
