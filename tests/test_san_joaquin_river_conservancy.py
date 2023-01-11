@@ -6,7 +6,7 @@ from city_scrapers_core.constants import BOARD
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
-from city_scrapers.spiders.san_joaquin_river_conservancy import (
+from city_scrapers.spiders.fre_san_joaquin_river_conservancy import (
     SanJoaquinRiverConservancySpider,
 )
 
