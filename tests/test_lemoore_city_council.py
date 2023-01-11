@@ -6,7 +6,7 @@ from city_scrapers_core.constants import CITY_COUNCIL
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
-from city_scrapers.spiders.lemoore_city_council import LemooreCityCouncilSpider
+from city_scrapers.spiders.fre_lemoore_city_council import LemooreCityCouncilSpider
 
 test_response = file_response(
     join(dirname(__file__), "files", "lemoore_city_council.html"),
