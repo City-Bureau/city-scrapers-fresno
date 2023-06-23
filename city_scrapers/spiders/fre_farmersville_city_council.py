@@ -11,7 +11,7 @@ ssl._create_default_https_context = ssl._create_unverified_context
 class FreFarmersvilleCityCouncilSpider(CityScrapersSpider):
     name = "fre_farmersville_city_council"
     agency = "Farmersville City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://www.cityoffarmersville-ca.gov/agendacenter"]
 
     def parse(self, response):
