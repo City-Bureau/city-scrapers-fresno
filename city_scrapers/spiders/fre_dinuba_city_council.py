@@ -7,7 +7,7 @@ from dateutil.parser import parser
 class FreDinubaCityCouncilSpider(CityScrapersSpider):
     name = "fre_dinuba_city_council"
     agency = "Dinuba City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = [
         "https://dinuba.novusagenda.com/agendapublic/meetingsgeneral.aspx?MeetingType=1&Date=6ms"  # noqa
     ]
