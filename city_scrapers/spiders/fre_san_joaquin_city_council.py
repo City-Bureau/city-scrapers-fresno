@@ -7,7 +7,7 @@ from dateutil.parser import parser
 class FreSanJoaquinCityCouncilSpider(CityScrapersSpider):
     name = "fre_san_joaquin_city_council"
     agency = "San Joaquin City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://www.cityofsanjoaquin.org/government.html"]
 
     def parse(self, response):
