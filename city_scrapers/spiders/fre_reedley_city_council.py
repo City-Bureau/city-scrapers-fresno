@@ -16,7 +16,7 @@ from pdfminer.pdfpage import PDFPage
 class FreReedleyCityCouncilSpider(CityScrapersSpider):
     name = "fre_reedley_city_council"
     agency = "Reedley City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://reedley.ca.gov/city-council/city-council-agendas/"]
 
     def parse(self, response):
