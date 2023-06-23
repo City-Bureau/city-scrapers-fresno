@@ -11,7 +11,7 @@ from pdfminer.high_level import extract_text
 class FreMendotaCityCouncilSpider(CityScrapersSpider):
     name = "fre_mendota_city_council"
     agency = "Mendota City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://www.ci.mendota.ca.us/agendas-and-minutes/"]
 
     def parse(self, response):
