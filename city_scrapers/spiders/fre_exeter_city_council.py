@@ -7,7 +7,7 @@ from dateutil.parser import parser
 class FreExeterCityCouncilSpider(CityScrapersSpider):
     name = "fre_exeter_city_council"
     agency = "Exeter City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://cityofexeter.com/documents/"]
 
     def parse(self, response):

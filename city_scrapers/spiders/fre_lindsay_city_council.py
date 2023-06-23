@@ -7,7 +7,7 @@ from dateutil.parser import parser
 class FreLindsayCityCouncilSpider(CityScrapersSpider):
     name = "fre_lindsay_city_council"
     agency = "Lindsay City Council"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://www.lindsay.ca.us/meetings"]
 
     def parse(self, response):

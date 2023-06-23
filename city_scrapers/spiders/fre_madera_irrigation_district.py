@@ -15,7 +15,7 @@ from pdfminer.pdfpage import PDFPage
 class FreMaderaIrrigationDistrictSpider(CityScrapersSpider):
     name = "fre_madera_irrigation_district"
     agency = "Madera Irrigation District"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = [
         "https://www.madera-id.org/governance/agendas-and-minutes/2022-agendas-and-minutes/"  # noqa
     ]
