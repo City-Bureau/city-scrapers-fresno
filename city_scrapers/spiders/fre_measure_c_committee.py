@@ -7,7 +7,7 @@ from dateutil.parser import parser
 class FreMeasureCCommitteeSpider(CityScrapersSpider):
     name = "fre_measure_c_committee"
     agency = "Measure C Committee"
-    timezone = "America/Chicago"
+    timezone = "America/Los_Angeles"
     start_urls = ["https://measurec.com/meetings/"]
 
     def parse(self, response):
