@@ -12,7 +12,7 @@ class FreMendotaCityCouncilSpider(CityScrapersSpider):
     name = "fre_mendota_city_council"
     agency = "Mendota City Council"
     timezone = "America/Los_Angeles"
-    start_urls = ["https://www.ci.mendota.ca.us/agendas-and-minutes/"]
+    start_urls = ["https://www.cityofmendota.com/agendas-and-minutes/"]
 
     def parse(self, response):
         # first tab is current year, each tab has 3 columns
