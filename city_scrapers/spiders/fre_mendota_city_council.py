@@ -62,7 +62,7 @@ class FreMendotaCityCouncilSpider(CityScrapersSpider):
         response = requests.get(
             pdflink,
             headers={
-                "User-agent": "Mozilla/5.0 (Android 4.4; Mobile; rv:41.0) Gecko/41.0 Firefox/41.0"
+                "User-agent": "Mozilla/5.0 (Android 4.4; Mobile; rv:41.0) Gecko/41.0 Firefox/41.0"  # noqa
             },
         )
         response.raise_for_status()  # Ensure the request was successful
