@@ -1,3 +1,4 @@
+import io
 import re
 
 import requests
@@ -12,7 +13,7 @@ class FreMendotaCityCouncilSpider(CityScrapersSpider):
     name = "fre_mendota_city_council"
     agency = "Mendota City Council"
     timezone = "America/Los_Angeles"
-    start_urls = ["https://www.ci.mendota.ca.us/agendas-and-minutes/"]
+    start_urls = ["https://www.cityofmendota.com/agendas-and-minutes/"]
 
     def parse(self, response):
         # first tab is current year, each tab has 3 columns
@@ -57,16 +58,22 @@ class FreMendotaCityCouncilSpider(CityScrapersSpider):
             yield meeting
 
     def _extract_time(self, pdflink):
-        with open("pdf", "wb") as f:
-            f.write(
-                requests.get(
-                    pdflink,
-                    headers={
-                        "User-agent": "Mozilla/5.0 (Android 4.4; Mobile; rv:41.0) Gecko/41.0 Firefox/41.0"  # noqa
-                    },
-                ).content
-            )
-        text = extract_text("pdf")
+        # Request the PDF content
+        response = requests.get(
+            pdflink,
+            headers={
+                "User-agent": "Mozilla/5.0 (Android 4.4; Mobile; rv:41.0) Gecko/41.0 Firefox/41.0"  # noqa
+            },
+        )
+        response.raise_for_status()  # Ensure the request was successful
+
+        # Read the PDF content into a bytes stream
+        pdf_bytes = io.BytesIO(response.content)
+
+        # Extract text from the PDF bytes stream using pdfminer's extract_text
+        text = extract_text(pdf_bytes)
+
+        # Search for the time pattern in the extracted text
         for line in text.splitlines():
             time = re.findall(r"\d{1,2}:\d{2} [AP]M", line)
             if time:
