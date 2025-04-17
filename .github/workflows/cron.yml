@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: "1 6 * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - fix-failed-cron-job
 
 env:
   CI: true
