@@ -1,4 +1,5 @@
 import re
+from datetime import datetime
 from io import StringIO
 
 import requests
@@ -10,15 +11,22 @@ from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 from pdfminer.pdfinterp import PDFPageInterpreter, PDFResourceManager
 from pdfminer.pdfpage import PDFPage
+from scrapy import Request
 
 
 class FreMaderaIrrigationDistrictSpider(CityScrapersSpider):
     name = "fre_madera_irrigation_district"
     agency = "Madera Irrigation District"
     timezone = "America/Los_Angeles"
-    start_urls = [
-        "https://www.madera-id.org/governance/agendas-and-minutes/2022-agendas-and-minutes/"  # noqa
-    ]
+
+    def start_requests(self):
+        """Generate requests for previous, current and next year's agendas"""
+        current_year = datetime.now().year
+        years = [current_year - 1, current_year, current_year + 1]
+
+        for year in years:
+            url = f"https://www.madera-id.org/governance/agendas-and-minutes/{year}-agendas-and-minutes/"  # noqa
+            yield Request(url, callback=self.parse, meta={"year": year})
 
     def parse(self, response):
         """
@@ -27,9 +35,9 @@ class FreMaderaIrrigationDistrictSpider(CityScrapersSpider):
         Change the `_parse_title`, `_parse_start`, etc methods to fit your scraping
         needs.
         """
-        for item in response.css(
-            "main.main-2022-agendas-and-minutes div.container table tr"
-        )[1:]:
+        year = response.meta.get("year")
+        css_selector = f"main.main-{year}-agendas-and-minutes div.container table tr"
+        for item in response.css(css_selector)[1:]:
             meeting = Meeting(
                 title=self._parse_title(item),
                 description=self._parse_description(item),
