@@ -12,12 +12,16 @@ from city_scrapers.spiders.fre_san_joaquin_valley_air_pollution import (
 
 test_response = file_response(
     join(dirname(__file__), "files", "san_joaquin_valley_air_pollution.html"),
-    url="https://www.valleyair.org/Board_meetings/GB/GB_meetings_2022.htm",
+    url="https://www.valleyair.org/public-meetings-and-participation/governing-board/?year=2022",  # noqa
 )
-spider = SanJoaquinValleyAirPollutionSpider()
 
 freezer = freeze_time("2022-08-12")
 freezer.start()
+
+spider = SanJoaquinValleyAirPollutionSpider()
+spider.current_year = (
+    2022  # Set explicitly since class attr is evaluated at import time
+)
 
 parsed_items = [item for item in spider.parse(test_response)]
 
@@ -76,21 +80,15 @@ def test_location():
 def test_source():
     assert (
         parsed_items[0]["source"]
-        == "https://www.valleyair.org/Board_meetings/GB/GB_meetings_2022.htm"
+        == "https://www.valleyair.org/public-meetings-and-participation/governing-board/?year=2022"  # noqa
     )
 
 
 def test_links():
     assert parsed_items[0]["links"] == [
         {
-            "hrefAgenda": "https://www.valleyair.org/Board_meetings/GB/agenda_minutes/Agenda/2022/August/agenda.pdf",  # noqa
-            "hrefMinutes": "",
-            "hrefPresentations": "",
-            "hrefRecording": "",
-            "titleAgenda": "Agenda",
-            "titleMinutes": "Minutes",
-            "titlePresentations": "Presentations",
-            "titleRecording": "Recording",
+            "href": "https://www.valleyair.org/media/agenda-august-2022.pdf",
+            "title": "Agenda",
         }
     ]
 

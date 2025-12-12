@@ -12,10 +12,12 @@ test_response = file_response(
     join(dirname(__file__), "files", "fre_fowler_city_council.html"),
     url="https://fowlercity.org/agendas-minutes/",
 )
-spider = FreFowlerCityCouncilSpider()
 
 freezer = freeze_time(datetime(2024, 4, 24, 15, 39))
 freezer.start()
+
+spider = FreFowlerCityCouncilSpider()
+spider.cur_year = 2024  # Set explicitly since class attr is evaluated at import time
 
 parsed_items = [item for item in spider.parse(test_response)]
 parsed_item = parsed_items[0]

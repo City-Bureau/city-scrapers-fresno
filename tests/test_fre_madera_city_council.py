@@ -1,5 +1,6 @@
 from datetime import datetime
 from os.path import dirname, join
+from unittest.mock import patch
 
 import pytest
 from city_scrapers_core.constants import CITY_COUNCIL
@@ -12,12 +13,15 @@ test_response = file_response(
     join(dirname(__file__), "files", "fre_madera_city_council.html"),
     url="http://www.madera.gov/home/departments/city-clerk/city-council-agendas-meetings/",  # noqa
 )
-spider = FreMaderaCityCouncilSpider()
 
 freezer = freeze_time("2022-08-21")
 freezer.start()
 
-parsed_items = [item for item in spider.parse(test_response)]
+spider = FreMaderaCityCouncilSpider()
+
+# Mock _parse_start to avoid HTTP requests to download PDFs
+with patch.object(spider, "_parse_start", return_value=datetime(2022, 8, 24, 18, 0)):
+    parsed_items = [item for item in spider.parse(test_response)]
 
 freezer.stop()
 
