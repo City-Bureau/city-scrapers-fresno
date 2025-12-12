@@ -11,9 +11,12 @@ class SanJoaquinValleyAirPollutionSpider(CityScrapersSpider):
     agency = "San Joaquin Valley Air Pollution Control District"
     timezone = "America/Los_Angeles"
     current_year = datetime.now().year
+    base_url = (
+        "https://www.valleyair.org/public-meetings-and-participation/governing-board/"
+    )
     start_urls = [
-        f"https://www.valleyair.org/public-meetings-and-participation/governing-board/?year={current_year}",
-        f"https://www.valleyair.org/public-meetings-and-participation/governing-board/?year={current_year - 1}",
+        f"{base_url}?year={current_year}",
+        f"{base_url}?year={current_year - 1}",
     ]
 
     def parse(self, response):

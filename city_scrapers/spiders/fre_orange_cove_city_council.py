@@ -87,9 +87,7 @@ class FreOrangeCoveCityCouncilSpider(CityScrapersSpider):
 
         # Extract date using regex to handle various formats
         # Matches "Month DD, YYYY" or "MONTH DD, YYYY"
-        date_match = re.search(
-            r"([A-Za-z]+)\s+(\d{1,2}),?\s*(\d{4})", dateRaw
-        )
+        date_match = re.search(r"([A-Za-z]+)\s+(\d{1,2}),?\s*(\d{4})", dateRaw)
 
         if date_match:
             month = date_match.group(1)
