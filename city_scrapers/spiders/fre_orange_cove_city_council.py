@@ -36,8 +36,11 @@ class FreOrangeCoveCityCouncilSpider(CityScrapersSpider):
                     continue
 
                 # Check if the text contains a date pattern for the current year
-                # Pattern matches: "Month Day, Year" or "MONTH DAY, YEAR"
-                if re.search(rf"\d{{1,2}},?\s*{year}", meetingRaw, re.IGNORECASE):
+                # Require a leading month name ("Month Day, Year") so the year
+                # appearing elsewhere in the text doesn't cause false positives.
+                if re.search(
+                    rf"[A-Za-z]+\s+\d{{1,2}},?\s*{year}", meetingRaw, re.IGNORECASE
+                ):
                     meeting = Meeting(
                         title=self._parse_title(item),
                         description=self._parse_description(item),

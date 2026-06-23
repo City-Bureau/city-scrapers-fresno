@@ -15,7 +15,7 @@ test_response = file_response(
     join(dirname(__file__), "files", "fre_madera_irrigation_district.html"),
     url="https://www.madera-id.org/governance/agendas-and-minutes/2022-agendas-and-minutes/",  # noqa
 )
-test_response.meta["year"] = 2022  # Set year meta expected by spider
+# No "year" meta is set here: the spider should fall back to the year in the URL.
 
 freezer = freeze_time("2022-09-30")
 freezer.start()

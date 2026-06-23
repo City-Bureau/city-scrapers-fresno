@@ -36,6 +36,13 @@ class FreMaderaIrrigationDistrictSpider(CityScrapersSpider):
         needs.
         """
         year = response.meta.get("year")
+        if year is None:
+            # Fall back to the year embedded in the page URL, e.g.
+            # ".../2024-agendas-and-minutes/", so responses without injected
+            # meta (manual requests, redirects, fixtures) still parse.
+            url_match = re.search(r"/(\d{4})-agendas-and-minutes", response.url)
+            if url_match:
+                year = url_match.group(1)
         css_selector = f"main.main-{year}-agendas-and-minutes div.container table tr"
         for item in response.css(css_selector)[1:]:
             meeting = Meeting(
