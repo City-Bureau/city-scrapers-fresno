@@ -70,6 +70,18 @@ def test_status():
     assert parsed_items[0]["status"] == "tentative"
 
 
+def test_cancellation_notice_status():
+    # A row whose linked document is a notice of cancellation should be flagged
+    # CANCELLED rather than reported as a held meeting.
+    cancelled = [
+        item
+        for item in parsed_items
+        if item["links"] and "cancellation" in item["links"][0]["href"].lower()
+    ]
+    assert len(cancelled) == 1
+    assert cancelled[0]["status"] == "cancelled"
+
+
 def test_location():
     assert parsed_items[0]["location"] == {
         "name": "Central Region Office, Governing Board Room",

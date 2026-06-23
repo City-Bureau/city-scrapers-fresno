@@ -68,6 +68,12 @@ class FreOrangeCoveCityCouncilSpider(CityScrapersSpider):
             title = title_parts[1].strip()
             # Remove leading separators like "–", "-", or extra spaces
             title = re.sub(r"^[\s\–\-]+", "", title)
+            # Strip a trailing document descriptor so the title is the meeting
+            # name rather than the agenda document name, e.g.
+            # "City Council Regular Meeting Agenda Packet" -> "City Council Regular Meeting"  # noqa
+            title = re.sub(
+                r"\s*(?:agenda\s*packet|agenda|packet)\s*$", "", title, flags=re.I
+            ).strip()
             return title if title else "City Council Meeting"
         # Fallback to original logic if date format is different
         parts = re.split(" ", titleRaw, 3)

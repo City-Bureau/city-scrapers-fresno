@@ -44,7 +44,14 @@ class SanJoaquinValleyAirPollutionSpider(CityScrapersSpider):
                     source=self._parse_source(response),
                 )
 
-                meeting["status"] = self._get_status(meeting)
+                # Some rows are notices of cancellation rather than held
+                # meetings (e.g. the linked document is a "..._cancellation.pdf").
+                # Feed the row's text and link hrefs to _get_status so those are
+                # flagged CANCELLED instead of being reported as passed meetings.
+                cancellation_text = " ".join(
+                    item.css("*::text").getall() + item.css("a::attr(href)").getall()
+                )
+                meeting["status"] = self._get_status(meeting, text=cancellation_text)
                 meeting["id"] = self._get_id(meeting)
 
                 yield meeting

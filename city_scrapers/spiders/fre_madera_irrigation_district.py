@@ -75,6 +75,13 @@ class FreMaderaIrrigationDistrictSpider(CityScrapersSpider):
             if "Agenda" in item:
                 title = item
 
+        # Strip a trailing document descriptor so the title is the meeting name
+        # rather than the agenda document name, e.g.
+        # "Special Board Meeting Agenda" -> "Special Board Meeting"
+        title = re.sub(
+            r"\s*(?:agenda\s*packet|agenda)\s*$", "", title, flags=re.I
+        ).strip()
+
         return title
 
     def _parse_description(self, item):

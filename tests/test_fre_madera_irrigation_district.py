@@ -1,5 +1,6 @@
 from datetime import datetime
 from os.path import dirname, join
+from unittest.mock import patch
 
 import pytest
 from city_scrapers_core.constants import NOT_CLASSIFIED
@@ -21,7 +22,9 @@ freezer.start()
 
 spider = FreMaderaIrrigationDistrictSpider()
 
-parsed_items = [item for item in spider.parse(test_response)]
+# Mock _parse_start to avoid live HTTP requests to download agenda PDFs
+with patch.object(spider, "_parse_start", return_value=datetime(2022, 9, 20, 13, 0)):
+    parsed_items = [item for item in spider.parse(test_response)]
 
 freezer.stop()
 
@@ -36,7 +39,7 @@ Uncomment below
 
 
 def test_title():
-    assert parsed_items[0]["title"] == "MID-GSA Agenda"
+    assert parsed_items[0]["title"] == "MID-GSA"
 
 
 def test_description():
@@ -57,8 +60,7 @@ def test_time_notes():
 
 def test_id():
     assert (
-        parsed_items[0]["id"]
-        == "fre_madera_irrigation_district/202209201300/x/mid_gsa_agenda"
+        parsed_items[0]["id"] == "fre_madera_irrigation_district/202209201300/x/mid_gsa"
     )
 
 
